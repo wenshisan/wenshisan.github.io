@@ -71,6 +71,10 @@
   <time datetime="2019-02-26T08:52:45.000Z" itemprop="datePublished">2019-02-26</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/主页/">主页</a>►<a class="article-category-link" href="/categories/主页/概述/">概述</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -79,7 +83,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/26/概览/">概览</a>
+      <a class="article-title" href="/2019/02/26/概览/">概述</a>
     </h1>
   
 
@@ -87,11 +91,38 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p> 科学计算有着对最高性能的传统需求，然而该领域的专家们大部分都使用较慢的动态编程语言用于日常工作。我们相信这有很多好的原因在这些应用程序中偏向于使用动态编程语言，并且我们不期望他们减少使用这些语言。幸运的是 现代的程序语言设计和编译器技术最大限度地平衡性能和为足够产品化的协议和部署性能敏感的应用程序成为可能。Julia程序语言填补了这个空白：它是一个自由的动态语言，适用于科学和数字计算，而性能上能则和传统的静态类型语言旗鼓相当。</p>
+<p>由于Julia的编译器与用于Python和R语言的翻译器不同，一开始你可能不是那么地直观地体会Julia的性能。如果你发现有些代码会慢，我们强烈推荐您在尝试编写任何代码之前先阅读性能建议部分。一旦您理解Julia的工作方式，它将会很容易地编写像C语言一样快的代码。</p>
+<p>Julia以可选类型、多重分派和高性能为特点，利用类型接口和即时编译(just-in-time(JIT) compilation)，使用LLVM进行实现。它是一个多范例的，结合了命令和函数，面向对象的编程语言。Julia为高级的数字计算提供了如R、MATLAB和Python一样方式的舒适和表现力，并且同样支持普通编程。要达到这点，Julia建立在数学程序语言的血统上，同样地从包括Lisp、Perl、Python、Lua和Ruby这些流行的动态程序语言中借用了很多特点。</p>
+<p> Julia与典型的动态语言最重要的区别是：</p>
+<ul>
+<li>核心语言实现非常地小巧；Julia的基础和标准库由Julia自身编写，包含了如整数算法的基础运算</li>
+<li>为结构和订阅对象提供的一个富类型语言，这同样可以有选择性地让类型声明</li>
+<li>通过多重分派来定义跨参数类型组合的函数行为的能力</li>
+<li>为不同的参数类型创建高效、专用的代码</li>
+<li>好的性能，接近于类似C这样的静态编译的语言</li>
+</ul>
+<p>尽管有些时候动态语言说是”无类型的”，他们实际上却不是：每一个无论是否是用户定义的对象都有一个类型。然而多数动态语言类型声明的缺陷指的是不能让编译器推断出值的类型，并且常常也不能涉及到类型。另一方面，在静态语言中，尽管有些可以但是通常必须为编译器注释出类型，类型只存在于编译时并且不能在运行时进行修改或者展现。在Julia中，类型是运行时对象自身，并且同样可以背用来给编译器传递信息。</p>
+<p>虽然业余程序员不必显式地使用类型或者多重分派，他们都是Julia的核心统一特性：函数都是定义在不同的参数类型组合中并且通过分派到最明确匹配的定义来进行分配。这个模型对于数学编程很合适，但对于传统面向对象的分派中首个参数去“拥有”一个运算来说是反常的。运算符仅仅是有着特殊标识符的函数 ，“-”用来扩展附加到新的用户定义数据类型，并为“+”函数定义新的方法。然后已经存在的代码无缝地分配到这些新的数据类型。</p>
+<p>部分由于运行时类型接口（由可选类型注释增加），再一部分由于从项目的初始就强烈地关注性能，Julia的计算效率超过了其他的动态语言，甚至等同于静态编译的语言。对于大规模的数字程序，速度一直并且将会一直并且总是重要的：在过去的几十年里，计算过的数据量一直轻松地在摩尔定律上保持着。<br>Julia以创建无先例的在一个单独的语言中将易用性、强大并且高效率结合为目标。除上述之外，相比于其他类似系统，Julia的优势还包括：</p>
+<ul>
+<li>免费并且开源（MIT licensed）</li>
+<li>用户定义类型和内置类型一样的快速和紧凑</li>
+<li>无需为性能而去向量化代码；非向量代码也快</li>
+<li>为平行计算和分布式计算设计</li>
+<li>轻量化“绿色”线程（协同程序）</li>
+<li>低调但强大的类型系统</li>
+<li>优雅并且可扩展的数字和其他类型的转换和优化</li>
+<li>高效率持支Unicode,包括但不限于UTF-8</li>
+<li>直接调用C语言函数（无需包装或者专用API）</li>
+<li>强大的贝壳型进程管理能力</li>
+<li>类Lisp的宏指令和其他语言的元程序设施</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/26/概览/" data-id="cjsljaav70001xs7q10g5strm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/26/概览/" data-id="cjslk8l050001647qfm1k30vm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Julia中文文档/">Julia中文文档</a></li></ul>
@@ -138,7 +169,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/26/hello-world/" data-id="cjsljaav10000xs7qognv5b22" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/26/hello-world/" data-id="cjslk8kzh0000647qgjg2u18o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -155,6 +186,13 @@
           <aside id="sidebar">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/主页/">主页</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/主页/概述/">概述</a></li></ul></li></ul>
+    </div>
+  </div>
+
 
   
     
@@ -193,7 +231,7 @@
       <ul>
         
           <li>
-            <a href="/2019/02/26/概览/">概览</a>
+            <a href="/2019/02/26/概览/">概述</a>
           </li>
         
           <li>
