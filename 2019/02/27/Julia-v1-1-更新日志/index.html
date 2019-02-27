@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Julia">
 <meta property="og:description" content="新的语言特性 一个异常栈被修复以让每个异常控制更加的强壮并且开启根原因分析。这个栈可能在使用试验性函数 Base.catch_stack时存取（#28878） 试验性宏命令Base.@locals返回当前的本地变量名和值字典（#29733） 二元~现在可以被加点了，像是在 x .~ y（#30341）  语言变化 解析器现在将输入以逗号结尾的情况统一认定为未完成。之前取决于空格他们有时被解析为数组">
 <meta property="og:locale" content="Zh-CN">
-<meta property="og:updated_time" content="2019-02-27T04:10:23.048Z">
+<meta property="og:updated_time" content="2019-02-27T06:39:29.316Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Julia v1.1 更新日志">
 <meta name="twitter:description" content="新的语言特性 一个异常栈被修复以让每个异常控制更加的强壮并且开启根原因分析。这个栈可能在使用试验性函数 Base.catch_stack时存取（#28878） 试验性宏命令Base.@locals返回当前的本地变量名和值字典（#29733） 二元~现在可以被加点了，像是在 x .~ y（#30341）  语言变化 解析器现在将输入以逗号结尾的情况统一认定为未完成。之前取决于空格他们有时被解析为数组">
@@ -146,31 +146,52 @@
 </ul>
 </li>
 </ul>
-<h2 id="日期"><a href="#日期" class="headerlink" title="日期"></a>日期</h2><ul>
+<h3 id="日期"><a href="#日期" class="headerlink" title="日期"></a>日期</h3><ul>
 <li>新的DateTime(::Date,::Time)构造器（#29754）。</li>
 <li>TimeZone的在用作广播时的行为近似于一个数量（#30159）。</li>
 </ul>
-<h2 id="可交互实用工具"><a href="#可交互实用工具" class="headerlink" title="可交互实用工具"></a>可交互实用工具</h2><ul>
+<h3 id="可交互实用工具"><a href="#可交互实用工具" class="headerlink" title="可交互实用工具"></a>可交互实用工具</h3><ul>
 <li>edit现在可以被在已定义的文件的模块中调用（#29636）。</li>
 <li>所有的编译器镜像工具（例如函数和宏命令的code_class）现在以一般风格输出精确的线性数字和内联信息，并且给一个可选参数(debuginfo=:default)来控制元数据的显示(#29893)。 </li>
 </ul>
-<h2 id="线性代数"><a href="#线性代数" class="headerlink" title="线性代数"></a>线性代数</h2><ul>
+<h3 id="线性代数"><a href="#线性代数" class="headerlink" title="线性代数"></a>线性代数</h3><ul>
 <li>调式和缩放比例 isdiag 和 isposdef (#29638)。</li>
 <li>缩放比例 nul!、rmull!和lmul! 方法 (#29506)。</li>
 <li>斜对称和埃尔米特矩阵现在在当以数字增大时保持包装(#29469)。</li>
 <li>求幂运算符 ^ 现在支持提升无理数到抽象矩阵的能力（#29782）。</li>
 <li>添加了关键字参数 rtol、rtol 到 pinv、nullspace 和 rank (#29998, #29926)。</li>
 </ul>
-<h2 id="随机"><a href="#随机" class="headerlink" title="随机"></a>随机</h2><ul>
+<h3 id="随机"><a href="#随机" class="headerlink" title="随机"></a>随机</h3><ul>
 <li>randperm 和 randcycle 现在使用他们的参数类型确定返回数组的元素类型(#29670)。</li>
 <li>一个新方法 rand(::Tuple) 实现了来自元组的值的样本(#25278)。</li>
 <li>serialize 和 deserialize 现在和 write 、read 一样接受一个文件名参数(#30151)。</li>
+</ul>
+<h3 id="稀疏数组"><a href="#稀疏数组" class="headerlink" title="稀疏数组"></a>稀疏数组</h3><ul>
+<li>sprandn 现在支持确定输出元素类型（#30083）。</li>
+</ul>
+<h3 id="统计"><a href="#统计" class="headerlink" title="统计"></a>统计</h3><ul>
+<li>mean 和 var 现在可以控制更多类型的空输入（#29003）。</li>
+</ul>
+<p>External dependencies</p>
+<h2 id="外部依赖"><a href="#外部依赖" class="headerlink" title="外部依赖"></a>外部依赖</h2><ul>
+<li>7zip（在windows上和Julia捆绑）从版本16.04升级到了18.05（#30035）。</li>
+<li>Busybox 不再与Windows上的Julia捆绑（#30022）。</li>
+<li>OpenBLAS 从0.3.2 升级到 0.3.3（#29845）。</li>
+<li>Pkg的源代码不再包含进JuliaLang/julia. Pkg 在编译过程被被替换下载（#29615）。</li>
+<li>LLVM升级到了6.0.1并且减少到支持小于6.0版本(#28745, #28696)。</li>
+<li>Pkg 升级到1.1版（#30342）。</li>
+</ul>
+<h2 id="否决或移除"><a href="#否决或移除" class="headerlink" title="否决或移除"></a>否决或移除</h2><ul>
+<li>one(i::CartesianIndex) 被替换为 oneunit(i::CartesianIndex)(#29442)。</li>
+<li>内部数组 Base.Grisu.DIGITS 被否决; 新代码需要使用 Base.Grisu.getbuf() 以获得一个合适的 task-local 缓存，并代替而用它传递给 grisu()。</li>
+<li>移除了内部函数 Base._default_type(T)。它的调用应该只被替换为参数T(#29739)。</li>
+<li>peakflops 被计划从 InteractiveUtils 移动到 LinearAlgebra, 但它现在已经可以在 LinearAlgebra.peakflops 可用(#29978)。</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/27/Julia-v1-1-更新日志/" data-id="cjsml8zm50000e87qmurhoeum" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/27/Julia-v1-1-更新日志/" data-id="cjsmty5210000647qg6eure3v" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Julia中文文档/">Julia中文文档</a></li></ul>
