@@ -7,18 +7,18 @@
   
   <title>Julia v1.1 更新日志 | Julia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Julia1.1更新日志新语言特性  一个异常栈被修复以让每个异常控制更加的强壮并且开启根原因分析。这个栈可能在使用试验性函数 Base.catch_stack时存取（#28878） 试验性宏命令Base.@locals返回当前的本地变量名和值字典（#29733） 二元~现在可以被加点了，像是在 x .~ y（#30341）  语言变化  解析器现在将输入以逗号结尾的情况统一认定为未完成。之前取决">
+  <meta name="description" content="新的语言特性 一个异常栈被修复以让每个异常控制更加的强壮并且开启根原因分析。这个栈可能在使用试验性函数 Base.catch_stack时存取（#28878） 试验性宏命令Base.@locals返回当前的本地变量名和值字典（#29733） 二元~现在可以被加点了，像是在 x .~ y（#30341）  语言变化 解析器现在将输入以逗号结尾的情况统一认定为未完成。之前取决于空格他们有时被解析为数组">
 <meta name="keywords" content="Julia中文文档">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Julia v1.1 更新日志">
 <meta property="og:url" content="http://yoursite.com/2019/02/27/Julia-v1-1-更新日志/index.html">
 <meta property="og:site_name" content="Julia">
-<meta property="og:description" content="Julia1.1更新日志新语言特性  一个异常栈被修复以让每个异常控制更加的强壮并且开启根原因分析。这个栈可能在使用试验性函数 Base.catch_stack时存取（#28878） 试验性宏命令Base.@locals返回当前的本地变量名和值字典（#29733） 二元~现在可以被加点了，像是在 x .~ y（#30341）  语言变化  解析器现在将输入以逗号结尾的情况统一认定为未完成。之前取决">
+<meta property="og:description" content="新的语言特性 一个异常栈被修复以让每个异常控制更加的强壮并且开启根原因分析。这个栈可能在使用试验性函数 Base.catch_stack时存取（#28878） 试验性宏命令Base.@locals返回当前的本地变量名和值字典（#29733） 二元~现在可以被加点了，像是在 x .~ y（#30341）  语言变化 解析器现在将输入以逗号结尾的情况统一认定为未完成。之前取决于空格他们有时被解析为数组">
 <meta property="og:locale" content="Zh-CN">
-<meta property="og:updated_time" content="2019-02-27T01:30:25.862Z">
+<meta property="og:updated_time" content="2019-02-27T01:32:37.035Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Julia v1.1 更新日志">
-<meta name="twitter:description" content="Julia1.1更新日志新语言特性  一个异常栈被修复以让每个异常控制更加的强壮并且开启根原因分析。这个栈可能在使用试验性函数 Base.catch_stack时存取（#28878） 试验性宏命令Base.@locals返回当前的本地变量名和值字典（#29733） 二元~现在可以被加点了，像是在 x .~ y（#30341）  语言变化  解析器现在将输入以逗号结尾的情况统一认定为未完成。之前取决">
+<meta name="twitter:description" content="新的语言特性 一个异常栈被修复以让每个异常控制更加的强壮并且开启根原因分析。这个栈可能在使用试验性函数 Base.catch_stack时存取（#28878） 试验性宏命令Base.@locals返回当前的本地变量名和值字典（#29733） 二元~现在可以被加点了，像是在 x .~ y（#30341）  语言变化 解析器现在将输入以逗号结尾的情况统一认定为未完成。之前取决于空格他们有时被解析为数组">
   
     <link rel="alternate" href="/atom.xml" title="Julia" type="application/atom+xml">
   
@@ -72,7 +72,7 @@
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/主页/">主页</a>►<a class="article-category-link" href="/categories/主页/Julia-v1-1-更新日志/">Julia v1.1 更新日志</a>
+    <a class="article-category-link" href="/categories/Julia-v1-1-更新日志/">Julia v1.1 更新日志</a>
   </div>
 
   </div>
@@ -91,14 +91,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Julia1.1更新日志<br>新语言特性</p>
-<ul>
+        <h2 id="新的语言特性"><a href="#新的语言特性" class="headerlink" title="新的语言特性"></a>新的语言特性</h2><ul>
 <li>一个异常栈被修复以让每个异常控制更加的强壮并且开启根原因分析。这个栈可能在使用试验性函数 Base.catch_stack时存取（#28878）</li>
 <li>试验性宏命令Base.@locals返回当前的本地变量名和值字典（#29733）</li>
 <li>二元~现在可以被加点了，像是在 x .~ y（#30341）</li>
 </ul>
-<p>语言变化</p>
-<ul>
+<h2 id="语言变化"><a href="#语言变化" class="headerlink" title="语言变化"></a>语言变化</h2><ul>
 <li>解析器现在将输入以逗号结尾的情况统一认定为未完成。之前取决于空格他们有时被解析为数组（#28506）。</li>
 <li>广播调用语法，e.g.f. (x)中允许意外空格。现在不再允许，统一被认定为正常函数调用语法（#29781）。</li>
 <li>大整数字符和命令语法（反引号）现在被格式化为宏命令的名字（@int128_str,@uint128_str,@big_str,@cmd）以合格地适用于核心模块（#29968）。</li>
@@ -107,13 +105,11 @@
 <li>为了其他数组类型的一致性，当a是一个矩阵或者较高维的数组时findmin（::BitArray）和 findmax（::BitArray）现在返回一个CartesianIndex。使用LinearIndices(a)[findmin(a)[2]]以获得旧行为，或者在早期版本的Julia中使用CartesianIndices(a)[findmin(a)[2]]以获得新的行为。</li>
 <li>类似f(::Type{T},::T) where {T &lt;: X} and f(::Type{X}, ::Any)现在都被认为是混淆的。早期的一个故障导致第一个在某些情况下被看作更加明确（#30160）。</li>
 </ul>
-<p>命令行选项变化</p>
-<ul>
+<h2 id="命令行选项变化"><a href="#命令行选项变化" class="headerlink" title="命令行选项变化"></a>命令行选项变化</h2><ul>
 <li>当脚本运行在交互模式（-i）时会抛出一个异常，在异常被抛出后REPL才开始启动。在先前REPL仅在脚本无错误完全开始后才启动（#21233）。</li>
 <li>代码覆盖选项现在支持在LCOV跟踪文件格式并且传播到子进程，比如预编译步骤和测试器（#30381）。</li>
 </ul>
-<p>新的库函数</p>
-<ul>
+<h2 id="新的库函数"><a href="#新的库函数" class="headerlink" title="新的库函数"></a>新的库函数</h2><ul>
 <li>splitpath(p::String)函数，是joinpath(parts…)反函数：它分割一个文件路径进入它的组件中（#28156）。</li>
 <li>isnothing(::Any)判定语句，用于检查参数的有无。（#29679）</li>
 <li>getpid(::Process)方法(#24064)。</li>
@@ -123,8 +119,7 @@
 <li>添加了为检测BSD系统的判断语句Sys.isfreebsd,Sys.isopenbsd,Sys.isnetbsd,and Sys.isdragonfly（#30249）。</li>
 <li>内部的Base.disable_library_threading 设置库去使用一个线程。它执行用Base.at_disable_library_threading注册的函数钩子（#30004）。</li>
 </ul>
-<p>标准库变化</p>
-<ul>
+<h2 id="标准库变化"><a href="#标准库变化" class="headerlink" title="标准库变化"></a>标准库变化</h2><ul>
 <li>CartesianIndices现在可以从两个CartesianIndexes I and I:J进行构造（#29440）。</li>
 <li>CartesianIndices支持使用一个CartesianIndex的广播算法（ + 和 - ）（#29890）。</li>
 <li>支持数组、字典和集合的copy!现在从Future包被移动到Base（#29173）。<ul>
@@ -151,7 +146,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/27/Julia-v1-1-更新日志/" data-id="cjsmiwlxz0000ok7qmok27fu2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/27/Julia-v1-1-更新日志/" data-id="cjsmkxly50000eg7qeid3f5ds" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Julia中文文档/">Julia中文文档</a></li></ul>
@@ -163,9 +158,9 @@
 <nav id="article-nav">
   
   
-    <a href="/2019/02/26/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/02/26/概述/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
+      <div class="article-nav-title">概述</div>
     </a>
   
 </nav>
@@ -181,7 +176,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/主页/">主页</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/主页/Julia-v1-1-更新日志/">Julia v1.1 更新日志</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/主页/概述/">概述</a></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Julia-v1-1-更新日志/">Julia v1.1 更新日志</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/主页/">主页</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/主页/概述/">概述</a></li></ul></li></ul>
     </div>
   </div>
 
@@ -227,11 +222,7 @@
           </li>
         
           <li>
-            <a href="/2019/02/26/hello-world/">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/2019/02/26/概览/">概述</a>
+            <a href="/2019/02/26/概述/">概述</a>
           </li>
         
       </ul>

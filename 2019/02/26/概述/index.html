@@ -5,19 +5,20 @@
   
 
   
-  <title>Julia</title>
+  <title>概述 | Julia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="AI,人工智能,Julia中文文档，Julia编程语言">
-<meta name="keywords" content="AI,人工智能,Julia中文文档，Julia编程语言">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Julia">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="科学计算有着对最高性能的传统需求，然而该领域的专家们大部分都使用较慢的动态编程语言用于日常工作。我们相信这有很多好的原因在这些应用程序中偏向于使用动态编程语言，并且我们不期望他们减少使用这些语言。幸运的是,现代的程序语言设计和编译器技术最大限度地让平衡性能和为足够产品化的协议以及部署性能敏感的应用程序成为可能。Julia程序语言就填补了这个空白：它是一个自由的动态语言，适用于科学和数字计算，而性">
+<meta name="keywords" content="Julia中文文档">
+<meta property="og:type" content="article">
+<meta property="og:title" content="概述">
+<meta property="og:url" content="http://yoursite.com/2019/02/26/概述/index.html">
 <meta property="og:site_name" content="Julia">
-<meta property="og:description" content="AI,人工智能,Julia中文文档，Julia编程语言">
+<meta property="og:description" content="科学计算有着对最高性能的传统需求，然而该领域的专家们大部分都使用较慢的动态编程语言用于日常工作。我们相信这有很多好的原因在这些应用程序中偏向于使用动态编程语言，并且我们不期望他们减少使用这些语言。幸运的是,现代的程序语言设计和编译器技术最大限度地让平衡性能和为足够产品化的协议以及部署性能敏感的应用程序成为可能。Julia程序语言就填补了这个空白：它是一个自由的动态语言，适用于科学和数字计算，而性">
 <meta property="og:locale" content="Zh-CN">
+<meta property="og:updated_time" content="2019-02-27T02:34:41.539Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Julia">
-<meta name="twitter:description" content="AI,人工智能,Julia中文文档，Julia编程语言">
+<meta name="twitter:title" content="概述">
+<meta name="twitter:description" content="科学计算有着对最高性能的传统需求，然而该领域的专家们大部分都使用较慢的动态编程语言用于日常工作。我们相信这有很多好的原因在这些应用程序中偏向于使用动态编程语言，并且我们不期望他们减少使用这些语言。幸运的是,现代的程序语言设计和编译器技术最大限度地让平衡性能和为足够产品化的协议以及部署性能敏感的应用程序成为可能。Julia程序语言就填补了这个空白：它是一个自由的动态语言，适用于科学和数字计算，而性">
   
     <link rel="alternate" href="/atom.xml" title="Julia" type="application/atom+xml">
   
@@ -64,102 +65,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-Julia-v1-1-更新日志" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/02/27/Julia-v1-1-更新日志/" class="article-date">
-  <time datetime="2019-02-27T01:27:08.000Z" itemprop="datePublished">2019-02-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Julia-v1-1-更新日志/">Julia v1.1 更新日志</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/27/Julia-v1-1-更新日志/">Julia v1.1 更新日志</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="新的语言特性"><a href="#新的语言特性" class="headerlink" title="新的语言特性"></a>新的语言特性</h2><ul>
-<li>一个异常栈被修复以让每个异常控制更加的强壮并且开启根原因分析。这个栈可能在使用试验性函数 Base.catch_stack时存取（#28878）</li>
-<li>试验性宏命令Base.@locals返回当前的本地变量名和值字典（#29733）</li>
-<li>二元~现在可以被加点了，像是在 x .~ y（#30341）</li>
-</ul>
-<h2 id="语言变化"><a href="#语言变化" class="headerlink" title="语言变化"></a>语言变化</h2><ul>
-<li>解析器现在将输入以逗号结尾的情况统一认定为未完成。之前取决于空格他们有时被解析为数组（#28506）。</li>
-<li>广播调用语法，e.g.f. (x)中允许意外空格。现在不再允许，统一被认定为正常函数调用语法（#29781）。</li>
-<li>大整数字符和命令语法（反引号）现在被格式化为宏命令的名字（@int128_str,@uint128_str,@big_str,@cmd）以合格地适用于核心模块（#29968）。</li>
-<li>本地变量和静态参数使用同一名称将为是一个错误而不是警告（#29429）。</li>
-<li>为了findall方法的一致性，当a是一个矩阵或一个较高维的数组时，findall(in(b),a)现在返回一个CartesianIndex。使用LinearIndices(a)[findall(in(b),a)]获得旧的行为，或者在Julia的早期版本中使用CartesianIndices(a)[findall(in(b),a)]获得新行为（#30226）。</li>
-<li>为了其他数组类型的一致性，当a是一个矩阵或者较高维的数组时findmin（::BitArray）和 findmax（::BitArray）现在返回一个CartesianIndex。使用LinearIndices(a)[findmin(a)[2]]以获得旧行为，或者在早期版本的Julia中使用CartesianIndices(a)[findmin(a)[2]]以获得新的行为。</li>
-<li>类似f(::Type{T},::T) where {T &lt;: X} and f(::Type{X}, ::Any)现在都被认为是混淆的。早期的一个故障导致第一个在某些情况下被看作更加明确（#30160）。</li>
-</ul>
-<h2 id="命令行选项变化"><a href="#命令行选项变化" class="headerlink" title="命令行选项变化"></a>命令行选项变化</h2><ul>
-<li>当脚本运行在交互模式（-i）时会抛出一个异常，在异常被抛出后REPL才开始启动。在先前REPL仅在脚本无错误完全开始后才启动（#21233）。</li>
-<li>代码覆盖选项现在支持在LCOV跟踪文件格式并且传播到子进程，比如预编译步骤和测试器（#30381）。</li>
-</ul>
-<h2 id="新的库函数"><a href="#新的库函数" class="headerlink" title="新的库函数"></a>新的库函数</h2><ul>
-<li>splitpath(p::String)函数，是joinpath(parts…)反函数：它分割一个文件路径进入它的组件中（#28156）。</li>
-<li>isnothing(::Any)判定语句，用于检查参数的有无。（#29679）</li>
-<li>getpid(::Process)方法(#24064)。</li>
-<li>eachrow,eachcol和eachslice函数在数组段上提供了高效的迭代器（#29749）。</li>
-<li>fieldtypes(T::Type)返回在类型T中的字段的类型。</li>
-<li>uuid5 现在被添加到了UUIDs的标准库（#28761）。</li>
-<li>添加了为检测BSD系统的判断语句Sys.isfreebsd,Sys.isopenbsd,Sys.isnetbsd,and Sys.isdragonfly（#30249）。</li>
-<li>内部的Base.disable_library_threading 设置库去使用一个线程。它执行用Base.at_disable_library_threading注册的函数钩子（#30004）。</li>
-</ul>
-<h2 id="标准库变化"><a href="#标准库变化" class="headerlink" title="标准库变化"></a>标准库变化</h2><ul>
-<li>CartesianIndices现在可以从两个CartesianIndexes I and I:J进行构造（#29440）。</li>
-<li>CartesianIndices支持使用一个CartesianIndex的广播算法（ + 和 - ）（#29890）。</li>
-<li>支持数组、字典和集合的copy!现在从Future包被移动到Base（#29173）。<ul>
-<li>频道现在替代了需要类型去匹配而转换进值里（类似于容器）（#29092）。</li>
-<li>range 可以接受一个停止值作为位置参数，例如range(1,10,step=2)（#28708）。</li>
-<li>diff 现在支持任意维度的数组，并且支持在任何唯独上进行计算（#29827）。</li>
-<li>构造器BigFloat(::BigFloat)现在遵守全局精度设置并且总是返回一个和precision(BigFloat)一样精度的BigFloat（#29127）。可选的可以重写全局设置的precision参数现在被从固定参数替代为关键字。（#29157）</li>
-<li>在输出BigFloat类型的值时科学符号现在被和其他浮点类型一直看待（#29211）。</li>
-<li>Regex在广播中使用时的行为像似一个纯量（#29913）。</li>
-<li>Char的行为现在如同一个只读的0维数组（#29819）。</li>
-<li>对于Bool类型parse现在允许字符串类型代替整数类型0和1（#29980）。</li>
-<li>Base.tail现在可以在已命名的元组中工作了（#29595）。</li>
-<li>为了跟踪多进程的内容分配，进程id被追加到内存分配日志文件中（#29969）。</li>
-<li>Base.julia_cmd 现在可以传递 –-inline=(yes|no)标识（#29858）。</li>
-<li>Base.@kwdef现在可以被用于参数结构和用超级类型的结构（#29316）。</li>
-<li>merge(::NamedTuple,::NamedTuple)现在可以和多于2个的NamedTuples（#29259）使用。</li>
-<li>新的ncodeunits(c::Char)方法等于一个快速的ncodeunits(string(c))（#29153）。</li>
-<li>新的sort!(::AbstractArray;dims)方法现在可以按照dims维度排序数组（#28902）。</li>
-<li></li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/27/Julia-v1-1-更新日志/" data-id="cjsmkxly50000eg7qeid3f5ds" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Julia中文文档/">Julia中文文档</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-概述" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-概述" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/02/26/概述/" class="article-date">
   <time datetime="2019-02-26T08:52:45.000Z" itemprop="datePublished">2019-02-26</time>
@@ -176,8 +82,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/26/概述/">概述</a>
+    <h1 class="article-title" itemprop="name">
+      概述
     </h1>
   
 
@@ -224,11 +130,23 @@
     </footer>
   </div>
   
-</article>
-
+    
+<nav id="article-nav">
+  
+    <a href="/2019/02/27/Julia-v1-1-更新日志/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Julia v1.1 更新日志
+        
+      </div>
+    </a>
+  
+  
+</nav>
 
   
-
+</article>
 
 </section>
         
