@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Julia">
 <meta property="og:description" content="新的语言特性 一个异常栈被修复以让每个异常控制更加的强壮并且开启根原因分析。这个栈可能在使用试验性函数 Base.catch_stack时存取（#28878） 试验性宏命令Base.@locals返回当前的本地变量名和值字典（#29733） 二元~现在可以被加点了，像是在 x .~ y（#30341）  语言变化 解析器现在将输入以逗号结尾的情况统一认定为未完成。之前取决于空格他们有时被解析为数组">
 <meta property="og:locale" content="Zh-CN">
-<meta property="og:updated_time" content="2019-02-27T01:32:37.035Z">
+<meta property="og:updated_time" content="2019-02-27T04:10:23.048Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Julia v1.1 更新日志">
 <meta name="twitter:description" content="新的语言特性 一个异常栈被修复以让每个异常控制更加的强壮并且开启根原因分析。这个栈可能在使用试验性函数 Base.catch_stack时存取（#28878） 试验性宏命令Base.@locals返回当前的本地变量名和值字典（#29733） 二元~现在可以被加点了，像是在 x .~ y（#30341）  语言变化 解析器现在将输入以逗号结尾的情况统一认定为未完成。之前取决于空格他们有时被解析为数组">
@@ -138,15 +138,39 @@
 <li>merge(::NamedTuple,::NamedTuple)现在可以和多于2个的NamedTuples（#29259）使用。</li>
 <li>新的ncodeunits(c::Char)方法等于一个快速的ncodeunits(string(c))（#29153）。</li>
 <li>新的sort!(::AbstractArray;dims)方法现在可以按照dims维度排序数组（#28902）。</li>
-<li></li>
+<li>get(A::AbstractArray, (), default) 现在返回A[]而不是空数组()(#30270)。</li>
+<li>现在支持parse(Bool, str) (#29997)。</li>
+<li>copyto!(::AbstractMatrix, ::UniformScaling) 现在支持正则矩阵(#28790)。</li>
+<li>current_project() 现在搜索Git仓库的父级目录以查找Project.toml文件。这同样影响使用默认 --project=@时的 –project 命令行选项（#29108）。</li>
+<li>spwan API现在更加灵活地直接把IOBuffer作为I/O流获取，如果需要则会转换为系统管线（#30278）。</li>
 </ul>
 </li>
+</ul>
+<h2 id="日期"><a href="#日期" class="headerlink" title="日期"></a>日期</h2><ul>
+<li>新的DateTime(::Date,::Time)构造器（#29754）。</li>
+<li>TimeZone的在用作广播时的行为近似于一个数量（#30159）。</li>
+</ul>
+<h2 id="可交互实用工具"><a href="#可交互实用工具" class="headerlink" title="可交互实用工具"></a>可交互实用工具</h2><ul>
+<li>edit现在可以被在已定义的文件的模块中调用（#29636）。</li>
+<li>所有的编译器镜像工具（例如函数和宏命令的code_class）现在以一般风格输出精确的线性数字和内联信息，并且给一个可选参数(debuginfo=:default)来控制元数据的显示(#29893)。 </li>
+</ul>
+<h2 id="线性代数"><a href="#线性代数" class="headerlink" title="线性代数"></a>线性代数</h2><ul>
+<li>调式和缩放比例 isdiag 和 isposdef (#29638)。</li>
+<li>缩放比例 nul!、rmull!和lmul! 方法 (#29506)。</li>
+<li>斜对称和埃尔米特矩阵现在在当以数字增大时保持包装(#29469)。</li>
+<li>求幂运算符 ^ 现在支持提升无理数到抽象矩阵的能力（#29782）。</li>
+<li>添加了关键字参数 rtol、rtol 到 pinv、nullspace 和 rank (#29998, #29926)。</li>
+</ul>
+<h2 id="随机"><a href="#随机" class="headerlink" title="随机"></a>随机</h2><ul>
+<li>randperm 和 randcycle 现在使用他们的参数类型确定返回数组的元素类型(#29670)。</li>
+<li>一个新方法 rand(::Tuple) 实现了来自元组的值的样本(#25278)。</li>
+<li>serialize 和 deserialize 现在和 write 、read 一样接受一个文件名参数(#30151)。</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/27/Julia-v1-1-更新日志/" data-id="cjsmkxly50000eg7qeid3f5ds" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/27/Julia-v1-1-更新日志/" data-id="cjsml8zm50000e87qmurhoeum" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Julia中文文档/">Julia中文文档</a></li></ul>
