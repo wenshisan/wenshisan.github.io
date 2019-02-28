@@ -373,7 +373,144 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">'println("Greetings! 你好! 안녕하세요?")'</span> &gt; ~/.julia/config/startup.jl</span><br><span class="line">$ julia</span><br><span class="line">Greetings! 你好! 안녕하세요?</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 <p>有多种多样的方式去执行Julia代码并提供选项，类似于这些用于 perl 和 ruby 程序里的：</p>
 <pre><code>julia [switches] -- [programfile] [args...]
-</code></pre>
+</code></pre><table>
+<thead>
+<tr>
+<th>Switch</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-v, –version</td>
+<td>Display version information</td>
+</tr>
+<tr>
+<td>-h, –help</td>
+<td>Print this message</td>
+</tr>
+<tr>
+<td>–project[={<dir> &#166; @.}]</dir></td>
+<td>Set <dir> as the home project/environment. The default @. option will search through parent directories until a Project.toml or JuliaProject.toml file is found.</dir></td>
+</tr>
+<tr>
+<td>-J, –sysimage <file></file></td>
+<td>Start up with the given system image file</td>
+</tr>
+<tr>
+<td>-H, –home <dir></dir></td>
+<td>Set location of julia executable</td>
+</tr>
+<tr>
+<td>–startup-file={yes&brvbar;no}</td>
+<td>Load ~/.julia/config/startup.jl</td>
+</tr>
+<tr>
+<td>–handle-signals={yes&brvbar;no}</td>
+<td>Enable or disable Julia’s default signal handlers</td>
+</tr>
+<tr>
+<td>–sysimage-native-code={yes&brvbar;no}</td>
+<td>Use native code from system image if available</td>
+</tr>
+<tr>
+<td>–compiled-modules={yes&brvbar;no}</td>
+<td>Enable or disable incremental precompilation of modules</td>
+</tr>
+<tr>
+<td>-e, –eval <expr></expr></td>
+<td>Evaluate <expr></expr></td>
+</tr>
+<tr>
+<td>-E, –print <expr></expr></td>
+<td>Evaluate <expr> and display the result</expr></td>
+</tr>
+<tr>
+<td>-L, –load <file></file></td>
+<td>Load <file> immediately on all processors</file></td>
+</tr>
+<tr>
+<td>-p, –procs {N&brvbar;auto}</td>
+<td>Integer value N launches N additional local worker processes; auto launches as many workers as the number of local CPU threads (logical cores)</td>
+</tr>
+<tr>
+<td>–machine-file <file></file></td>
+<td>Run processes on hosts listed in <file></file></td>
+</tr>
+<tr>
+<td>-i</td>
+<td>Interactive mode; REPL runs and isinteractive() is true</td>
+</tr>
+<tr>
+<td>-q, –quiet</td>
+<td>Quiet startup: no banner, suppress REPL warnings</td>
+</tr>
+<tr>
+<td>–banner={yes&brvbar;no&brvbar;auto}</td>
+<td>Enable or disable startup banner</td>
+</tr>
+<tr>
+<td>–color={yes&brvbar;no&brvbar;auto}</td>
+<td>Enable or disable color text</td>
+</tr>
+<tr>
+<td>–history-file={yes&brvbar;no}</td>
+<td>Load or save history</td>
+</tr>
+<tr>
+<td>–depwarn={yes&brvbar;no&brvbar;error}</td>
+<td>Enable or disable syntax and method deprecation warnings (error turns warnings into errors)</td>
+</tr>
+<tr>
+<td>–warn-overwrite={yes&brvbar;no}</td>
+<td>Enable or disable method overwrite warnings</td>
+</tr>
+<tr>
+<td>-C, –cpu-target <target></target></td>
+<td>Limit usage of CPU features up to <target>; set to help to see the available options</target></td>
+</tr>
+<tr>
+<td>-O, –optimize={0,1,2,3}</td>
+<td>Set the optimization level (default level is 2 if unspecified or 3 if used without a level)</td>
+</tr>
+<tr>
+<td>-g, -g <level></level></td>
+<td>Enable / Set the level of debug info generation (default level is 1 if unspecified or 2 if used without a level)</td>
+</tr>
+<tr>
+<td>–inline={yes&brvbar;no}</td>
+<td>Control whether inlining is permitted, including overriding @inline declarations</td>
+</tr>
+<tr>
+<td>–check-bounds={yes&brvbar;no}</td>
+<td>Emit bounds checks always or never (ignoring declarations)</td>
+</tr>
+<tr>
+<td>–math-mode={ieee,fast}</td>
+<td>Disallow or enable unsafe floating point optimizations (overrides @fastmath declaration)</td>
+</tr>
+<tr>
+<td>–code-coverage={none&brvbar;user&brvbar;all}</td>
+<td>Count executions of source lines</td>
+</tr>
+<tr>
+<td>–code-coverage</td>
+<td>equivalent to –code-coverage=user</td>
+</tr>
+<tr>
+<td>–track-allocation={none&brvbar;user&brvbar;all}</td>
+<td>Count bytes allocated by each source line</td>
+</tr>
+<tr>
+<td>–track-allocation</td>
+<td>equivalent to –track-allocation=user</td>
+</tr>
+</tbody>
+</table>
+<p>Julia 1.1<br>在Julia 1.0，默认的 <code>--project=@.</code> 选项不再从 <code>Project.toml</code> 文件Git仓库的根目录搜索。但从 Julia 1.1 往前，则会搜索。</p>
+<p>Resources<br>A curated list of useful learning resources to help new users get started can be found on the learning page of the main Julia web site.</p>
+<h2 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h2><p>可以在Julia的主网站的[学习]: <a href="https://julialang.org/learning/" target="_blank" rel="noopener">https://julialang.org/learning/</a> 页面找到精选后帮助新用户入门的实用资源列表。</p>
+
           
         
       
