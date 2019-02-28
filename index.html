@@ -367,7 +367,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">'println(PROGRAM_FILE); for x in ARGS; println(x); end'</span> &gt; script.jl</span><br><span class="line">$ julia script.jl foo bar</span><br><span class="line">script.jl</span><br><span class="line">foo</span><br><span class="line">bar</span><br></pre></td></tr></table></figure>
 <p><code>-- delimiter</code> 可以专门用来拆分来自专用于Julia的参数的脚本文件命令行参数：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ julia --color=yes -O -- foo.jl arg1 arg2..</span><br></pre></td></tr></table></figure>
-<p>在 [脚本]: <a href="https://docs.julialang.org/en/v1/manual/faq/#man-scripting-1" target="_blank" rel="noopener">https://docs.julialang.org/en/v1/manual/faq/#man-scripting-1</a> 上查看编写Julia脚本的更多信息。</p>
+<p>在 <a href="https://docs.julialang.org/en/v1/manual/faq/#man-scripting-1" target="_blank" rel="noopener">脚本</a> 上查看编写Julia脚本的更多信息。</p>
 <p>Julia可以通过 <code>-p</code> 或者 <code>--machine-file</code> 选项在平行模式中启动。 <code>-p n</code> 将会载入一个额外的 <code>n</code> 工作进程， 同时 <code>--machine-file</code> 文件将会为每一个文件中的行在归档的文件中载入一个工作。 在机器中定义的文件必须可以通过无密码的 <code>ssh</code> 登陆，并且Julia和当前的主机安装在同一个位置。每个机器定义带有格式 <code>[count*][user@]host[:port][bind_addr[:port]]</code>。 用户为默认用户，端口为标准 ssh 端口。数量为节点产生的工作数，默认为1。 可选的 <code>bind-to bind_addr[:port]</code> 定义了用于连接到此工作项的工作项的端口和IP地址。</p>
 <p>如果您希望您的代码在当Julia启动时执行，您可以把它放到<code>~/.julia/config/startup.jl</code>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">'println("Greetings! 你好! 안녕하세요?")'</span> &gt; ~/.julia/config/startup.jl</span><br><span class="line">$ julia</span><br><span class="line">Greetings! 你好! 안녕하세요?</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
@@ -507,9 +507,8 @@
 </tr>
 </tbody>
 </table>
-<p>Julia 1.1<br>在Julia 1.0，默认的 <code>--project=@.</code> 选项不再从 <code>Project.toml</code> 文件Git仓库的根目录搜索。但从 Julia 1.1 往前，则会搜索。</p>
-<p>Resources<br>A curated list of useful learning resources to help new users get started can be found on the learning page of the main Julia web site.</p>
-<h2 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h2><p>可以在Julia的主网站的[学习]: <a href="https://julialang.org/learning/" target="_blank" rel="noopener">https://julialang.org/learning/</a> 页面找到精选后帮助新用户入门的实用资源列表。</p>
+<p>Julia 1.1<br>在Julia 1.0，默认的 <code>--project=@.</code> 选项不再从 <code>Project.toml</code> 文件Git仓库的根目录搜索。但从 Julia 1.1 版本开始则会搜索。</p>
+<h2 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h2><p>可以在Julia的主网站的<a href="https://julialang.org/learning/" target="_blank" rel="noopener">学习</a> 页面找到精选后帮助新用户入门的实用资源列表。</p>
 
           
         
