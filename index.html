@@ -240,6 +240,176 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/28/GettingStart/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Julia">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Julia">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/28/GettingStart/" itemprop="url">入门</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-28T09:13:43+08:00">
+                2019-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/手册/" itemprop="url" rel="index">
+                    <span itemprop="name">手册</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/手册/入门/" itemprop="url" rel="index">
+                    <span itemprop="name">入门</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>无论使用从源代码的预编译二进制文件还是编译文件，Julia的安装都简单直接。可以在 <a href="https://julialang.org/downloads/" target="_blank" rel="noopener">https://julialang.org/downloads/</a> 按照指引下载和安装Julia。<br>学习和体验Julia最简单的方式就是双击Julia的可执行程序或从命令行来启动Julia以开始一个可交互会话（也叫做 读取-求值-输出 循环 或简称为 “REPL）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$ julia</span><br><span class="line"></span><br><span class="line">               _</span><br><span class="line">   _       _ _(_)_     |  Documentation: https://docs.julialang.org</span><br><span class="line">  (_)     | (_) (_)    |</span><br><span class="line">   _ _   _| |_  __ _   |  Type <span class="string">"?"</span> <span class="keyword">for</span> <span class="built_in">help</span>, <span class="string">"]?"</span> <span class="keyword">for</span> Pkg <span class="built_in">help</span>.</span><br><span class="line">  | | | | | | |/ _` |  |</span><br><span class="line">  | | |_| | | | (_| |  |  Version 1.1.0 (2019-01-21)</span><br><span class="line"> _/ |\__<span class="string">'_|_|_|\__'</span>_|  |  </span><br><span class="line">|__/                   |</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">julia&gt; 1 + 2</span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">julia&gt; ans</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+<p>输入CTRL-D(同时按下 ctrl 和 d 键)或输入<code>exit()</code>退出交互会话。当Julia运行在交互模式时会显示标题提示用户输入。一旦用户输入了一个完整的表达式，比如 1+2，并且敲击 enter 键， 交互会话会计算表达式并显示出它的值。如果在交互会话中的表达式以分号结尾，将不会显示它的值。无论值显示与否变量 ans 的值都是最后计算的表达式的结果。这个变量只能存在于交互会话中，Julia代码在其他方式运行时不存在。</p>
+<p>要计算在资源文件 <code>file.jl</code> 中的表达式，输入 <code>include(&quot;file.jl&quot;)</code></p>
+<p>要在文件中无交互性地运行代码，你可以把它作为首个参数传递给 Julia 命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ julia script.jl arg1 arg2...</span><br></pre></td></tr></table></figure>
+<p>如示例代码所示，下列传递给Julia命令行代码参数被翻译为程序 <code>script.jl</code> 的命令行参数, 传入全局常量 <code>ARGS</code>。 脚本本身的名称作为全局<br><code>PROGRAM_FILE</code>传入。 注意当 Julia 表达式在命令行中使用 <code>-e</code> 选项时 <code>ARGS</code> 也被设置（查看下方 Julia 输出的帮助） 但是 <code>PROGRAM_FILE</code> 将会为空。例如仅打印出传递给脚本的参数，您可以这么做：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ julia -e <span class="string">'println(PROGRAM_FILE); for x in ARGS; println(x); end'</span> foo bar</span><br><span class="line"></span><br><span class="line">foo</span><br><span class="line">bar</span><br></pre></td></tr></table></figure>
+<p>或者你可以把代码放入脚本中并且执行它：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">'println(PROGRAM_FILE); for x in ARGS; println(x); end'</span> &gt; script.jl</span><br><span class="line">$ julia script.jl foo bar</span><br><span class="line">script.jl</span><br><span class="line">foo</span><br><span class="line">bar</span><br></pre></td></tr></table></figure>
+<p><code>-- delimiter</code> 可以专门用来拆分来自专用于Julia的参数的脚本文件命令行参数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ julia --color=yes -O -- foo.jl arg1 arg2..</span><br></pre></td></tr></table></figure>
+<p>在 [脚本]: <a href="https://docs.julialang.org/en/v1/manual/faq/#man-scripting-1" target="_blank" rel="noopener">https://docs.julialang.org/en/v1/manual/faq/#man-scripting-1</a> 上查看编写Julia脚本的更多信息。</p>
+<p>Julia可以通过 <code>-p</code> 或者 <code>--machine-file</code> 选项在平行模式中启动。 <code>-p n</code> 将会载入一个额外的 <code>n</code> 工作进程， 同时 <code>--machine-file</code> 文件将会为每一个文件中的行在归档的文件中载入一个工作。 在机器中定义的文件必须可以通过无密码的 <code>ssh</code> 登陆，并且Julia和当前的主机安装在同一个位置。每个机器定义带有格式 <code>[count*][user@]host[:port][bind_addr[:port]]</code>。 用户为默认用户，端口为标准 ssh 端口。数量为节点产生的工作数，默认为1。 可选的 <code>bind-to bind_addr[:port]</code> 定义了用于连接到此工作项的工作项的端口和IP地址。</p>
+<p>如果您希望您的代码在当Julia启动时执行，您可以把它放到<code>~/.julia/config/startup.jl</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">'println("Greetings! 你好! 안녕하세요?")'</span> &gt; ~/.julia/config/startup.jl</span><br><span class="line">$ julia</span><br><span class="line">Greetings! 你好! 안녕하세요?</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>有多种多样的方式去执行Julia代码并提供选项，类似于这些用于 perl 和 ruby 程序里的：</p>
+<pre><code>julia [switches] -- [programfile] [args...]
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/27/Julia-v1-1-更新日志/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -688,7 +858,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -699,7 +869,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">文档目录</span>
                 </a>
               </div>
