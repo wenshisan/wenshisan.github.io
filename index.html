@@ -240,6 +240,183 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/28/Variables/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="醍醐果冻">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="醍醐果冻">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/28/Variables/" itemprop="url">变量</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-28T17:37:37+08:00">
+                2019-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Julia中文文档/" itemprop="url" rel="index">
+                    <span itemprop="name">Julia中文文档</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Julia中文文档/手册/" itemprop="url" rel="index">
+                    <span itemprop="name">手册</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Julia中文文档/手册/变量/" itemprop="url" rel="index">
+                    <span itemprop="name">变量</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在Julia中，变量是一个对应（或绑定）到一个值的名称。这对您想要储存一个值以备后用（比如您从某些数学中获得的值）来说很有帮助。例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Assign the value 10 to the variable x</span></span><br><span class="line">julia&gt; x = 10</span><br><span class="line">10</span><br><span class="line"></span><br><span class="line"><span class="comment"># Doing math with x's value</span></span><br><span class="line">julia&gt; x + 1</span><br><span class="line">11</span><br><span class="line"></span><br><span class="line"><span class="comment"># Reassign x's value</span></span><br><span class="line">julia&gt; x = 1 + 1</span><br><span class="line">2</span><br><span class="line"></span><br><span class="line"><span class="comment"># You can assign values of other types, like strings of text</span></span><br><span class="line">julia&gt; x = <span class="string">"Hello World!"</span></span><br><span class="line"><span class="string">"Hello World!"</span></span><br></pre></td></tr></table></figure>
+<p>Julia为变量的命名提供了一个极其灵活的系统。 变量名是区分大小写且没有语义上的意义（是的，语言不会因为他们的名字而区别对待）。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; x = 1.0</span><br><span class="line">1.0</span><br><span class="line"></span><br><span class="line">julia&gt; y = -3</span><br><span class="line">-3</span><br><span class="line"></span><br><span class="line">julia&gt; Z = <span class="string">"My string"</span></span><br><span class="line"><span class="string">"My string"</span></span><br><span class="line"></span><br><span class="line">julia&gt; customary_phrase = <span class="string">"Hello world!"</span></span><br><span class="line"><span class="string">"Hello world!"</span></span><br><span class="line"></span><br><span class="line">julia&gt; UniversalDeclarationOfHumanRightsStart = <span class="string">"人人生而自由，在尊严和权利上一律平等。"</span></span><br><span class="line"><span class="string">"人人生而自由，在尊严和权利上一律平等。"</span></span><br><span class="line">Unicode names (<span class="keyword">in</span> UTF-8 encoding) are allowed:</span><br><span class="line"></span><br><span class="line">julia&gt; δ = 0.00001</span><br><span class="line">1.0e-5</span><br><span class="line"></span><br><span class="line">julia&gt; 안녕하세요 = <span class="string">"Hello"</span></span><br><span class="line"><span class="string">"Hello"</span></span><br></pre></td></tr></table></figure>
+<p>In the Julia REPL and several other Julia editing environments, you can type many Unicode math symbols by typing the backslashed LaTeX symbol name followed by tab. For example, the variable name δ can be entered by typing \delta-tab, or even α̂₂ by \alpha-tab-\hat- tab-_2-tab. (If you find a symbol somewhere, e.g. in someone else’s code, that you don’t know how to type, the REPL help will tell you: just type ? and then paste the symbol.)</p>
+<p>Julia will even let you redefine built-in constants and functions if needed (although this is not recommended to avoid potential confusions):</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; pi = 3</span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">julia&gt; pi</span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">julia&gt; sqrt = 4</span><br><span class="line">4</span><br><span class="line">However, <span class="keyword">if</span> you try to redefine a built-in constant or <span class="keyword">function</span> already <span class="keyword">in</span> use, Julia will give you an error:</span><br><span class="line"></span><br><span class="line">julia&gt; pi</span><br><span class="line">π = 3.1415926535897...</span><br><span class="line"></span><br><span class="line">julia&gt; pi = 3</span><br><span class="line">ERROR: cannot assign variable MathConstants.pi from module Main</span><br><span class="line"></span><br><span class="line">julia&gt; sqrt(100)</span><br><span class="line">10.0</span><br><span class="line"></span><br><span class="line">julia&gt; sqrt = 4</span><br><span class="line">ERROR: cannot assign variable Base.sqrt from module Main</span><br></pre></td></tr></table></figure>
+<p>Allowed Variable Names<br>Variable names must begin with a letter (A-Z or a-z), underscore, or a subset of Unicode code points greater than 00A0; in particular, Unicode character categories Lu/Ll/Lt/Lm/Lo/Nl (letters), Sc/So (currency and other symbols), and a few other letter-like characters (e.g. a subset of the Sm math symbols) are allowed. Subsequent characters may also include ! and digits (0-9 and other characters in categories Nd/No), as well as other Unicode code points: diacritics and other modifying marks (categories Mn/Mc/Me/Sk), some punctuation connectors (category Pc), primes, and a few other characters.</p>
+<p>Operators like + are also valid identifiers, but are parsed specially. In some contexts, operators can be used just like variables; for example (+) refers to the addition function, and (+) = f will reassign it. Most of the Unicode infix operators (in category Sm), such as ⊕, are parsed as infix operators and are available for user-defined methods (e.g. you can use const ⊗ = kron to define ⊗ as an infix Kronecker product). Operators can also be suffixed with modifying marks, primes, and sub/superscripts, e.g. +̂ₐ″ is parsed as an infix operator with the same precedence as +.</p>
+<p>The only explicitly disallowed names for variables are the names of built-in statements:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; <span class="keyword">else</span> = <span class="literal">false</span></span><br><span class="line">ERROR: syntax: unexpected <span class="string">"else"</span></span><br><span class="line"></span><br><span class="line">julia&gt; try = <span class="string">"No"</span></span><br><span class="line">ERROR: syntax: unexpected <span class="string">"="</span></span><br></pre></td></tr></table></figure>
+<p>Some Unicode characters are considered to be equivalent in identifiers. Different ways of entering Unicode combining characters (e.g., accents) are treated as equivalent (specifically, Julia identifiers are NFC-normalized). The Unicode characters ɛ (U+025B: Latin small letter open e) and µ (U+00B5: micro sign) are treated as equivalent to the corresponding Greek letters, because the former are easily accessible via some input methods.</p>
+<p>Stylistic Conventions<br>While Julia imposes few restrictions on valid names, it has become useful to adopt the following conventions:</p>
+<p>Names of variables are in lower case.<br>Word separation can be indicated by underscores (‘_’), but use of underscores is discouraged unless the name would be hard to read otherwise.<br>Names of Types and Modules begin with a capital letter and word separation is shown with upper camel case instead of underscores.<br>Names of functions and macros are in lower case, without underscores.<br>Functions that write to their arguments have names that end in !. These are sometimes called “mutating” or “in-place” functions because they are intended to produce changes in their arguments after the function is called, not just return a value.<br>For more information about stylistic conventions, see the Style Guide.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/28/GettingStart/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1016,7 +1193,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -1027,7 +1204,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">文档目录</span>
                 </a>
               </div>
@@ -1038,7 +1215,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
