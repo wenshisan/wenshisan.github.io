@@ -396,19 +396,6 @@
           
             
             
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/02/28/Variables/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/02/28/Variables/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -541,14 +528,6 @@
 
           </div>
           
-
-  
-    <div class="comments" id="comments">
-      
-        <div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div>
-        <div id="gitment-container" style="display: none"></div>
-      
-    </div>
 
   
 
@@ -826,55 +805,6 @@
   
   
 
-
-  
-    <!-- LOCAL: You can save these files to your site and update links -->
-
-  
-  <script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitmint.browser.js"></script>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css">
-<!-- END LOCAL -->
-
-<style>
-#gitment-container a {
-  border-bottom: none;
-}
-
-  a.gitment-editor-footer-tip, .gitment-container.gitment-footer-container {
-    display: none;
-  }
-
-</style>
-
-<script>
-  function renderGitment() {
-    var gitment = new Gitmint({
-      id: window.location.pathname,
-      owner: 'wenshisan',
-      repo: 'gitcommits',
-      
-        lang: '' || navigator.language || navigator.systemLanguage || navigator.userLanguage,
-      
-      oauth: {
-      
-      
-        client_secret: '1761827020f8bace92a40e1c344557b85f5e0d01',
-      
-        client_id: '822d796801eaf0e717f6'
-      }
-    });
-    gitment.render('gitment-container');
-  }
-
-  
-    function showGitment() {
-      document.getElementById('gitment-display-button').style.display = 'none';
-      document.getElementById('gitment-container').style.display = 'block';
-      renderGitment();
-    }
-  
-</script>
 
   
 
