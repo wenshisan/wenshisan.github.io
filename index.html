@@ -366,7 +366,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-01 14:46:56" itemprop="dateModified" datetime="2019-03-01T14:46:56+08:00">2019-03-01</time>
+                <time title="修改时间：2019-03-01 17:03:07" itemprop="dateModified" datetime="2019-03-01T17:03:07+08:00">2019-03-01</time>
               
             
           </span>
@@ -434,20 +434,31 @@
       
         
           
-            <p>在Julia中，变量是一个对应（或绑定）到一个值的名称。这对您想要储存一个值以备后用（比如您从某些数学计算中获得的值）来说很有帮助。例如：</p>
+            <h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>在Julia中，变量是一个对应（或绑定）到一个值的名称。这对您想要储存一个值以备后用（比如您从某些数学中获得的值）来说很有帮助。例如：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Assign the value 10 to the variable x</span></span><br><span class="line">julia&gt; x = 10</span><br><span class="line">10</span><br><span class="line"></span><br><span class="line"><span class="comment"># Doing math with x's value</span></span><br><span class="line">julia&gt; x + 1</span><br><span class="line">11</span><br><span class="line"></span><br><span class="line"><span class="comment"># Reassign x's value</span></span><br><span class="line">julia&gt; x = 1 + 1</span><br><span class="line">2</span><br><span class="line"></span><br><span class="line"><span class="comment"># You can assign values of other types, like strings of text</span></span><br><span class="line">julia&gt; x = <span class="string">"Hello World!"</span></span><br><span class="line"><span class="string">"Hello World!"</span></span><br></pre></td></tr></table></figure>
 <p>Julia为变量的命名提供了一个极其灵活的系统。 变量名是区分大小写且没有语义上的意义（是的，语言不会因为他们的名字而区别对待）。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; x = 1.0</span><br><span class="line">1.0</span><br><span class="line"></span><br><span class="line">julia&gt; y = -3</span><br><span class="line">-3</span><br><span class="line"></span><br><span class="line">julia&gt; Z = <span class="string">"My string"</span></span><br><span class="line"><span class="string">"My string"</span></span><br><span class="line"></span><br><span class="line">julia&gt; customary_phrase = <span class="string">"Hello world!"</span></span><br><span class="line"><span class="string">"Hello world!"</span></span><br><span class="line"></span><br><span class="line">julia&gt; UniversalDeclarationOfHumanRightsStart = <span class="string">"人人生而自由，在尊严和权利上一律平等。"</span></span><br><span class="line"><span class="string">"人人生而自由，在尊严和权利上一律平等。"</span></span><br><span class="line">Unicode names (<span class="keyword">in</span> UTF-8 encoding) are allowed:</span><br><span class="line"></span><br><span class="line">julia&gt; δ = 0.00001</span><br><span class="line">1.0e-5</span><br><span class="line"></span><br><span class="line">julia&gt; 안녕하세요 = <span class="string">"Hello"</span></span><br><span class="line"><span class="string">"Hello"</span></span><br></pre></td></tr></table></figure>
-<p>In the Julia REPL and several other Julia editing environments, you can type many Unicode math symbols by typing the backslashed LaTeX symbol name followed by tab. For example, the variable name δ can be entered by typing \delta-tab, or even α̂₂ by \alpha-tab-\hat- tab-_2-tab. (If you find a symbol somewhere, e.g. in someone else’s code, that you don’t know how to type, the REPL help will tell you: just type ? and then paste the symbol.)</p>
 <p>Julia will even let you redefine built-in constants and functions if needed (although this is not recommended to avoid potential confusions):</p>
+<p>在Julia的REPL和其他一些Julia编辑环境中，您可以通过输入反斜杠 LaTeX 符号跟着 tab 输入很多Unicode数学符号。例如，变量名 <code>δ</code> 可以通过输入 \delta-tab 键入，<code>α̂₂</code> 通过\alpha-tab-\hat- tab-_2-tab。（如果你在某个例如其他人的代码里找到了您不知道如何输入的符号，REPL帮助将会告诉您：只需输入?然后粘贴这个符号）。</p>
+<p>如果需要的话Julia将也允许您重新定义内置的常量和函数（然而为避免潜在的混淆并不推荐您这么做）</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; pi = 3</span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">julia&gt; pi</span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">julia&gt; sqrt = 4</span><br><span class="line">4</span><br><span class="line">However, <span class="keyword">if</span> you try to redefine a built-in constant or <span class="keyword">function</span> already <span class="keyword">in</span> use, Julia will give you an error:</span><br><span class="line"></span><br><span class="line">julia&gt; pi</span><br><span class="line">π = 3.1415926535897...</span><br><span class="line"></span><br><span class="line">julia&gt; pi = 3</span><br><span class="line">ERROR: cannot assign variable MathConstants.pi from module Main</span><br><span class="line"></span><br><span class="line">julia&gt; sqrt(100)</span><br><span class="line">10.0</span><br><span class="line"></span><br><span class="line">julia&gt; sqrt = 4</span><br><span class="line">ERROR: cannot assign variable Base.sqrt from module Main</span><br></pre></td></tr></table></figure>
-<p>Allowed Variable Names<br>Variable names must begin with a letter (A-Z or a-z), underscore, or a subset of Unicode code points greater than 00A0; in particular, Unicode character categories Lu/Ll/Lt/Lm/Lo/Nl (letters), Sc/So (currency and other symbols), and a few other letter-like characters (e.g. a subset of the Sm math symbols) are allowed. Subsequent characters may also include ! and digits (0-9 and other characters in categories Nd/No), as well as other Unicode code points: diacritics and other modifying marks (categories Mn/Mc/Me/Sk), some punctuation connectors (category Pc), primes, and a few other characters.</p>
-<p>Operators like + are also valid identifiers, but are parsed specially. In some contexts, operators can be used just like variables; for example (+) refers to the addition function, and (+) = f will reassign it. Most of the Unicode infix operators (in category Sm), such as ⊕, are parsed as infix operators and are available for user-defined methods (e.g. you can use const ⊗ = kron to define ⊗ as an infix Kronecker product). Operators can also be suffixed with modifying marks, primes, and sub/superscripts, e.g. +̂ₐ″ is parsed as an infix operator with the same precedence as +.</p>
-<p>The only explicitly disallowed names for variables are the names of built-in statements:</p>
+<h3 id="允许的变量名"><a href="#允许的变量名" class="headerlink" title="允许的变量名"></a>允许的变量名</h3><p>变量名必须以字母开头（A-Z 或 a-z），下划线，或者大于00A0的 Unicode 代码标点集合，尤其是 Unicode 字符分类 <code>Lu/Ll/Lt/Lm/Lo/Nl</code>（字母），<code>Sc/So</code>（货币和其他符号），还有其他一些类似字母的字符（例如 Sm 数学符号的集合）都被允许使用。随后的字符也可能包括 <code>!</code> 和数字（0-9和其他分类的字符 <code>Nd/No</code>），同时其他的Unicode代码标点：区分标识和其他标识符（<code>Mn/Mc/Me/Sk</code>分类），一些连接字符（<code>Pc</code> 分类）,上撇号，还有一些其他的字符。</p>
+<p>类似+的运算符也都是有效的标识符，但被特殊的格式化了。在一些上下文中，运算符也可以像变量一样使用，例如<code>(+)</code>指的是加法函数，<code>(+) = f</code>将会把它重新赋值。多数的Unicode中缀运算符（在 <code>Sm</code> 分类中）,如<code>⊕</code>，都被格式化为中缀运算符并可用于用户定义的的方法（例如您可以使用 <code>const ⊗ = kron</code> 来定义<code>⊗</code>为一个中缀克罗内克积（Koronecker）乘积）。运算符也可以用修饰符、上撇号和上/下标作为后缀，例如<code>+̂ₐ″</code> 被格式化为以+号开头的中缀运算符。</p>
+<p>仅内置语句的名称明确的不能作为变量使用。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; <span class="keyword">else</span> = <span class="literal">false</span></span><br><span class="line">ERROR: syntax: unexpected <span class="string">"else"</span></span><br><span class="line"></span><br><span class="line">julia&gt; try = <span class="string">"No"</span></span><br><span class="line">ERROR: syntax: unexpected <span class="string">"="</span></span><br></pre></td></tr></table></figure>
-<p>Some Unicode characters are considered to be equivalent in identifiers. Different ways of entering Unicode combining characters (e.g., accents) are treated as equivalent (specifically, Julia identifiers are NFC-normalized). The Unicode characters ɛ (U+025B: Latin small letter open e) and µ (U+00B5: micro sign) are treated as equivalent to the corresponding Greek letters, because the former are easily accessible via some input methods.</p>
-<p>Stylistic Conventions<br>While Julia imposes few restrictions on valid names, it has become useful to adopt the following conventions:</p>
+<p>一些Unicode字符被视为等同于标识符。Unicode组合字符的不同输入方式（例如 <code>,</code> 强调）都被视为相同（Julia标识都是特别的、NPC-标准化的）。Unicode字符<code>ɛ</code>(<code>U+025B</code>:小写拉丁字母 e)和<code>µ</code>（<code>U+00B5</code>: 读谬miu，英文micro sign）都被视为等于对应的希腊字母，因为前者更容易使用输入法输入。</p>
+<p>Stylistic Conventions</p>
+<h3 id="格式转换"><a href="#格式转换" class="headerlink" title="格式转换"></a>格式转换</h3><p>While Julia imposes few restrictions on valid names, it has become useful to adopt the following conventions:</p>
 <p>Names of variables are in lower case.<br>Word separation can be indicated by underscores (‘_’), but use of underscores is discouraged unless the name would be hard to read otherwise.<br>Names of Types and Modules begin with a capital letter and word separation is shown with upper camel case instead of underscores.<br>Names of functions and macros are in lower case, without underscores.<br>Functions that write to their arguments have names that end in !. These are sometimes called “mutating” or “in-place” functions because they are intended to produce changes in their arguments after the function is called, not just return a value.<br>For more information about stylistic conventions, see the Style Guide.</p>
+<p>Julia在有效命名上做了少量限制规则，以变得有益于接下来的类型转换：</p>
+<ul>
+<li>变量名都是小写。</li>
+<li>可以使用下划线标（<code>&#39;_&#39;</code>）出单词分隔,但是除非名称难以阅读否则不建议使用下划线。</li>
+<li>类型和模块的名称的开头以及单词分隔使用首字母大写的驼峰形式代替下划线。</li>
+<li>函数和宏命令的名称为小谢形式，没有下划线。</li>
+<li>参数名以<code>!</code>结尾的函数。有时被称之为 “变异” 或 “原位” 函数，因为他们在被调用后会改变他们的参数，不只是返回值。</li>
+<li>更新格式转换的信息，查看<a href="https://docs.julialang.org/en/v1/manual/style-guide/#Style-Guide-1" target="_blank" rel="noopener">格式指南</a>。</li>
+</ul>
 
           
         
@@ -566,7 +577,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-01 14:46:40" itemprop="dateModified" datetime="2019-03-01T14:46:40+08:00">2019-03-01</time>
+                <time title="修改时间：2019-03-01 14:50:54" itemprop="dateModified" datetime="2019-03-01T14:50:54+08:00">2019-03-01</time>
               
             
           </span>
@@ -661,143 +672,123 @@
 </thead>
 <tbody>
 <tr>
-<td><code>-v, --version</code></td>
+<td>-v, –version</td>
 <td>显示版本信息</td>
 </tr>
 <tr>
-<td><code>-h, --help</code></td>
+<td>-h, –help</td>
 <td>显示帮助信息</td>
 </tr>
 <tr>
-<td>`–project[={<dir></dir></td>
-<td>@.}]`</td>
+<td>–project[={<dir> &#166; @.}]</dir></td>
 <td>设置 <code>&lt;dir&gt;</code> 为项目或环境的主页。默认的<code>@.</code>选项将会搜索父级目录直到找到<code>Project.toml</code>或者<code>JuliaProject.toml</code>文件</td>
 </tr>
 <tr>
-<td><code>-J, --sysimage &lt;file&gt;</code></td>
+<td>-J, –sysimage <file></file></td>
 <td>以给定的系统图片文件启动</td>
 </tr>
 <tr>
-<td><code>-H, --home &lt;dir&gt;</code></td>
+<td>-H, –home <dir></dir></td>
 <td>设置Julia的可执行位置</td>
 </tr>
 <tr>
-<td>`–startup-file={yes</td>
-<td>no}`</td>
+<td>–startup-file={yes&brvbar;no}</td>
 <td>加载 <code>~/.julia/config/startup.jl</code></td>
 </tr>
 <tr>
-<td>`–handle-signals={yes</td>
-<td>no}`</td>
+<td>–handle-signals={yes&brvbar;no}</td>
 <td>启用或关闭Julia的信号控制器</td>
 </tr>
 <tr>
-<td>`–sysimage-native-code={yes</td>
-<td>no}`</td>
+<td>–sysimage-native-code={yes&brvbar;no}</td>
 <td>如果可用则使用系统镜像里的本地代码</td>
 </tr>
 <tr>
-<td>`–compiled-modules={yes</td>
-<td>no}`</td>
+<td>–compiled-modules={yes&brvbar;no}</td>
 <td>启用或关闭模块的增加预编译</td>
 </tr>
 <tr>
-<td><code>-e, --eval &lt;expr&gt;</code></td>
+<td>-e, –eval <expr></expr></td>
 <td>求值 <code>&lt;expr&gt;</code></td>
 </tr>
 <tr>
-<td><code>-E, --print &lt;expr&gt;</code></td>
+<td>-E, –print <expr></expr></td>
 <td>求 <code>&lt;expr&gt;</code> 的值并显示结果</td>
 </tr>
 <tr>
-<td><code>-L, --load &lt;file&gt;</code></td>
+<td>-L, –load <file></file></td>
 <td>立即在所有进程上加载 <code>&lt;file&gt;</code></td>
 </tr>
 <tr>
-<td>`-p, –procs {N</td>
-<td>auto}`</td>
+<td>-p, –procs {N&brvbar;auto}</td>
 <td>整数值 N 开始 N 个额外的本地工作进程；自动开始和本地CPU线程一样多的工作数（逻辑核心）</td>
 </tr>
 <tr>
-<td><code>--machine-file &lt;file&gt;</code></td>
+<td>–machine-file <file></file></td>
 <td>在主机上运行列于<code>&lt;file&gt;</code>的进程</td>
 </tr>
 <tr>
-<td><code>-i</code></td>
+<td>-i</td>
 <td>交互模式；REPL 运行并且 <code>isinteractive()</code> 置为 <code>true</code></td>
 </tr>
 <tr>
-<td><code>-q, --quiet</code></td>
+<td>-q, –quiet</td>
 <td>静默启动：没有大标题，封滞REPL警告</td>
 </tr>
 <tr>
-<td>`–banner={yes</td>
-<td>no</td>
-<td>auto}`</td>
+<td>–banner={yes&brvbar;no&brvbar;auto}</td>
 <td>启用或关闭启动大标题</td>
 </tr>
 <tr>
-<td>`–color={yes</td>
-<td>no</td>
-<td>auto} `</td>
+<td>–color={yes&brvbar;no&brvbar;auto}</td>
 <td>启用或关闭彩色文本</td>
 </tr>
 <tr>
-<td>`–history-file={yes</td>
-<td>no} `</td>
+<td>–history-file={yes&brvbar;no}</td>
 <td>加载或保存历史</td>
 </tr>
 <tr>
-<td>`–depwarn={yes</td>
-<td>no</td>
-<td>error}`</td>
+<td>–depwarn={yes&brvbar;no&brvbar;error}</td>
 <td>启用或关闭语法和方法否决警告（错误变成警告到错误中）</td>
 </tr>
 <tr>
-<td>`–warn-overwrite={yes</td>
-<td>no} `</td>
+<td>–warn-overwrite={yes&brvbar;no}</td>
 <td>启用或关闭方法重写警告</td>
 </tr>
 <tr>
-<td><code>-C, --cpu-target &lt;target&gt;</code></td>
+<td>-C, –cpu-target <target></target></td>
 <td>限制CPU特性使用直到<code>&lt;target&gt;</code>；调到帮助以查看可用选项</td>
 </tr>
 <tr>
-<td><code>-O, --optimize={0,1,2,3}</code></td>
+<td>-O, –optimize={0,1,2,3}</td>
 <td>设置优化级别（如果未定义默认级别是2，如果不按级别使用则默认级别为3）</td>
 </tr>
 <tr>
-<td><code>-g, -g &lt;level&gt;</code></td>
+<td>-g, -g <level></level></td>
 <td>启用/设置 调试信息的创建级别（如果未定义则默认级别为1，如果不按基本使用则默认级别为2）</td>
 </tr>
 <tr>
-<td>`–inline={yes</td>
-<td>no} `</td>
+<td>–inline={yes&brvbar;no}</td>
 <td>控制是否允许 <code>inling</code>，包括重写 <code>@inlie</code> 声明</td>
 </tr>
 <tr>
-<td>`–check-bounds={yes</td>
-<td>no}`</td>
+<td>–check-bounds={yes&brvbar;no}</td>
 <td>限制总是或从不进行边界检查（除声明时）</td>
 </tr>
 <tr>
-<td><code>--math-mode={ieee,fast}</code></td>
+<td>–math-mode={ieee,fast}</td>
 <td>不允许或启用不安全浮点优化（重写 <code>@fastmath</code> 声明）</td>
 </tr>
 <tr>
-<td>`–code-coverage={none</td>
-<td>user</td>
-<td>all}`</td>
+<td>–code-coverage={none&brvbar;user&brvbar;all}</td>
 <td>执行资源行的总数计算</td>
 </tr>
 <tr>
-<td><code>--code-coverage</code></td>
+<td>–code-coverage</td>
 <td>等同于 <code>--code-coverage=user</code></td>
 </tr>
 <tr>
-<td>`–track-allocation={none</td>
-<td>user</td>
-<td>all}`</td>
+<td>–track-allocation={none&brvbar;user&brvbar;all}</td>
 <td>通过每个资源行计算字节分配总数</td>
 </tr>
 <tr>
@@ -1200,7 +1191,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-28 16:06:48" itemprop="dateModified" datetime="2019-02-28T16:06:48+08:00">2019-02-28</time>
+                <time title="修改时间：2019-03-01 17:37:15" itemprop="dateModified" datetime="2019-03-01T17:37:15+08:00">2019-03-01</time>
               
             
           </span>
@@ -1261,32 +1252,33 @@
       
         
           
-            <p> 科学计算有着对最高性能的传统需求，然而该领域的专家们大部分都使用较慢的动态编程语言用于日常工作。我们相信这有很多好的原因在这些应用程序中偏向于使用动态编程语言，并且我们不期望他们减少使用这些语言。幸运的是,现代的程序语言设计和编译器技术最大限度地让平衡性能和为足够产品化的协议以及部署性能敏感的应用程序成为可能。Julia程序语言就填补了这个空白：它是一个自由的动态语言，适用于科学和数字计算，而性能上能则接近于传统的静态类型语言。</p>
-<p>由于Julia的编译器与用于Python和R语言的翻译器不同，一开始你可能不是那么地直观地体会到Julia的性能。如果你发现有些代码会有些慢，我们强烈推荐您在尝试编写代码之前先阅读性能建议部分。一旦您理解Julia的工作方式，它将会很容易地编写像C语言一样快的代码。</p>
-<p>Julia以可选类型、多重分派和高性能为特点，利用类型接口和即时编译(just-in-time(JIT) compilation)，使用LLVM进行实现。它是一个多范例的，结合了命令和函数，面向对象的编程语言。Julia为高级的数字计算提供了如R、MATLAB和Python一样方式的舒适和表现力，并且同样支持普通编程。要达到这点，Julia建立在数学程序语言的血统上，同样地从包括Lisp、Perl、Python、Lua和Ruby这些流行的动态程序语言中借用了很多特点。</p>
+            <p> 科学计算有着对最高性能的传统需求，然而该领域的专家们大部分都使用较慢的动态编程语言用于日常工作。我们相信这些应用程序有很多偏爱使用动态编程语言益处和原因，我们也不是期望他们能少一些使用这些语言。幸运的是，现代的程序语言设计和编译器技术让在足够产品化的原型设计和足够高效的部署性能敏感的应用程序最大限度地平衡性能并提供一个单一的环境成为可能。Julia程序语言填补了这项空白：它是一个自由的动态语言，适用于科学和数字计算，而性能上则接近于传统的静态类型语言。</p>
+<p>由于Julia的编译器与用于 Python 和 R 语言的翻译器不同，一开始您可能不是那么地直观地体会到Julia的性能。如果您发现有些代码会有些慢，我们强烈推荐您在尝试编写代码之前先阅读<a href="https://docs.julialang.org/en/v1/manual/performance-tips/#man-performance-tips-1" target="_blank" rel="noopener">性能建议</a>部分。一旦您理解了 Julia 的工作方式，它将会很容易地编写像 C 语言一样快的代码。</p>
+<p>Julia 以可选类型、多重分派和高性能为特点，利用类型接口和<a href="https://en.wikipedia.org/wiki/Just-in-time_compilation" target="_blank" rel="noopener">即时编译</a>，利用 <a href="https://en.wikipedia.org/wiki/Low_Level_Virtual_Machine" target="_blank" rel="noopener">LLVM</a> 进行具体实现。它是一个多范例的，结合了命令和函数，面向对象的编程语言。Julia 为高级的数字计算提供了如 R、MATLAB 和 Python 同样的舒适度和表现力，并且同样支持普通编程。要达到这点，Julia 继承了数学程序语言的血统，同样地从包括Lisp、Perl、Python、Lua和Ruby这些流行的动态程序语言中借用了很多特点。</p>
 <p> Julia与典型的动态语言最重要的区别是：</p>
 <ul>
-<li>核心语言实现非常地小巧；Julia的基础和标准库由Julia自身编写，包含了如整数算法的基础运算</li>
-<li>为结构和订阅对象提供的一个富类型语言，这同样可以有选择性地让类型声明</li>
+<li>核心语言实现非常地小巧；Julia 的基础和标准库由Julia自身编写，包含了如整数算法的基础运算</li>
+<li>为结构和订阅对象提供的一个富类型语言，这同样可以有选择性地进行类型声明</li>
 <li>通过多重分派来定义跨参数类型组合的函数行为的能力</li>
 <li>为不同的参数类型创建高效、专用的代码</li>
-<li>好的性能，接近于类似C这样的静态编译的语言</li>
+<li>良好的性能，接近于类似 C 这样的静态编译的语言</li>
 </ul>
-<p>尽管有些时候动态语言说是”无类型的”，他们实际上却不是：每一个无论是否是用户定义的对象都有一个类型。然而多数动态语言类型声明的缺陷指的是不能让编译器推断出值的类型，并且常常也不能涉及到类型。另一方面，在静态语言中，尽管有些可以但是通常必须为编译器注释出类型，类型只存在于编译时并且不能在运行时进行修改或者展现。在Julia中，类型是运行时对象自身，并且同样可以背用来给编译器传递信息。</p>
-<p>虽然业余程序员不必显式地使用类型或者多重分派，他们都是Julia的核心统一特性：函数都是定义在不同的参数类型组合中并且通过分派到最明确匹配的定义来进行分配。这个模型对于数学编程很合适，但对于传统面向对象的分派中首个参数去“拥有”一个运算来说是反常的。运算符仅仅是有着特殊标识符的函数 ，“-”用来扩展附加到新的用户定义数据类型，并为“+”函数定义新的方法。然后已经存在的代码无缝地分配到这些新的数据类型。</p>
-<p>部分由于运行时类型接口（由可选类型注释增加），再一部分由于从项目的初始就强烈地关注性能，Julia的计算效率超过了其他的动态语言，甚至等同于静态编译的语言。对于大规模的数字程序，速度一直并且将会一直并且总是重要的：在过去的几十年里，计算过的数据量一直轻松地在摩尔定律上保持着。<br>Julia以创建无先例的在一个单独的语言中将易用性、强大并且高效率结合为目标。除上述之外，相比于其他类似系统，Julia的优势还包括：</p>
+<p>尽管有些时候动态语言说是”无类型的”，他们实际上却不是：每一个无论是否是用户定义的对象都有一个类型。然而多数动态语言类型声明的缺陷指的是不能让编译器推断出值的类型，且通常也不能够涉及到类型。另一方面，在尽管有些静态语言可以推断，但是通常必须为编译器注释出类型，类型只存在于编译时并且不能在运行时进行修改或者展现。在 Julia 中，类型是运行时对象自身，并且同样可以用来给编译器传递信息。</p>
+<p>虽然非职业的程序员不必显式地使用类型或者多重分派，他们都是 Juliau 一致的核心特性：函数都是定义在不同的参数类型组合中并且通过分派到最明确匹配的定义来进行分配。这个模型对于数学编程很合适，但对于传统面向对象的分派中首个参数去 “拥有” 一个运算来说却是反常的。运算符仅仅是有着特殊标识符的函数 ，<code>“-”</code>用来扩展附加到新的用户定义数据类型，并为 <code>“+”</code> 函数定义新的方法。然后已经存在的代码无缝地分配到这些新的数据类型。</p>
+<p>部分由于运行时类型接口（由可选类型注释增加），部分则由于从项目的初始就强烈地关注性能，Julia的计算效率超过了其他的动态语言，甚至等同于静态编译的语言。对于大规模的数字程序，速度一直并且将会一直并且总是重要的：在过去的几十年里，计算过的数据量一直轻松地在摩尔定律上保持着增长。</p>
+<p>Julia开拓性以的在一个单独的语言中将易用性、强大并且高效率结合为目标。除上述之外，相比于其他类似的系统，Julia的优势还包括：</p>
 <ul>
 <li>免费并且开源（MIT licensed）</li>
 <li>用户定义类型和内置类型一样的快速和紧凑</li>
-<li>无需为性能而去向量化代码；非向量代码也快</li>
+<li>无需为性能而去矢量化代码；非矢量代码一样快</li>
 <li>为平行计算和分布式计算设计</li>
 <li>轻量化“绿色”线程（协同程序）</li>
 <li>低调但强大的类型系统</li>
 <li>优雅并且可扩展的数字和其他类型的转换和优化</li>
 <li>高效率持支Unicode,包括但不限于UTF-8</li>
-<li>直接调用C语言函数（无需包装或者专用API）</li>
+<li>直接调用 C 语言函数（无需包装或者专用API）</li>
 <li>强大的贝壳型进程管理能力</li>
-<li>类Lisp的宏指令和其他语言的元程序设施</li>
+<li>类 Lisp 的宏指令和其他语言的元程序设施</li>
 </ul>
 
           

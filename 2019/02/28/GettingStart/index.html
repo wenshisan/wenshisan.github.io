@@ -119,7 +119,7 @@
 <meta property="og:site_name" content="醍醐果冻">
 <meta property="og:description" content="无论使用从源代码的预编译二进制文件还是编译文件，Julia的安装都简单直接。可以在 https://julialang.org/downloads/ 按照指引下载和安装Julia。学习和体验Julia最简单的方式就是双击Julia的可执行程序或从命令行来启动Julia以开始一个可交互会话（也叫做 读取-求值-输出 循环 或简称为 “REPL）： 1234567891011121314151617$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-01T06:46:40.325Z">
+<meta property="og:updated_time" content="2019-03-01T06:50:54.744Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="入门">
 <meta name="twitter:description" content="无论使用从源代码的预编译二进制文件还是编译文件，Julia的安装都简单直接。可以在 https://julialang.org/downloads/ 按照指引下载和安装Julia。学习和体验Julia最简单的方式就是双击Julia的可执行程序或从命令行来启动Julia以开始一个可交互会话（也叫做 读取-求值-输出 循环 或简称为 “REPL）： 1234567891011121314151617$">
@@ -366,7 +366,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-01 14:46:40" itemprop="dateModified" datetime="2019-03-01T14:46:40+08:00">2019-03-01</time>
+                <time title="修改时间：2019-03-01 14:50:54" itemprop="dateModified" datetime="2019-03-01T14:50:54+08:00">2019-03-01</time>
               
             
           </span>
@@ -459,143 +459,123 @@
 </thead>
 <tbody>
 <tr>
-<td><code>-v, --version</code></td>
+<td>-v, –version</td>
 <td>显示版本信息</td>
 </tr>
 <tr>
-<td><code>-h, --help</code></td>
+<td>-h, –help</td>
 <td>显示帮助信息</td>
 </tr>
 <tr>
-<td>`–project[={<dir></dir></td>
-<td>@.}]`</td>
+<td>–project[={<dir> &#166; @.}]</dir></td>
 <td>设置 <code>&lt;dir&gt;</code> 为项目或环境的主页。默认的<code>@.</code>选项将会搜索父级目录直到找到<code>Project.toml</code>或者<code>JuliaProject.toml</code>文件</td>
 </tr>
 <tr>
-<td><code>-J, --sysimage &lt;file&gt;</code></td>
+<td>-J, –sysimage <file></file></td>
 <td>以给定的系统图片文件启动</td>
 </tr>
 <tr>
-<td><code>-H, --home &lt;dir&gt;</code></td>
+<td>-H, –home <dir></dir></td>
 <td>设置Julia的可执行位置</td>
 </tr>
 <tr>
-<td>`–startup-file={yes</td>
-<td>no}`</td>
+<td>–startup-file={yes&brvbar;no}</td>
 <td>加载 <code>~/.julia/config/startup.jl</code></td>
 </tr>
 <tr>
-<td>`–handle-signals={yes</td>
-<td>no}`</td>
+<td>–handle-signals={yes&brvbar;no}</td>
 <td>启用或关闭Julia的信号控制器</td>
 </tr>
 <tr>
-<td>`–sysimage-native-code={yes</td>
-<td>no}`</td>
+<td>–sysimage-native-code={yes&brvbar;no}</td>
 <td>如果可用则使用系统镜像里的本地代码</td>
 </tr>
 <tr>
-<td>`–compiled-modules={yes</td>
-<td>no}`</td>
+<td>–compiled-modules={yes&brvbar;no}</td>
 <td>启用或关闭模块的增加预编译</td>
 </tr>
 <tr>
-<td><code>-e, --eval &lt;expr&gt;</code></td>
+<td>-e, –eval <expr></expr></td>
 <td>求值 <code>&lt;expr&gt;</code></td>
 </tr>
 <tr>
-<td><code>-E, --print &lt;expr&gt;</code></td>
+<td>-E, –print <expr></expr></td>
 <td>求 <code>&lt;expr&gt;</code> 的值并显示结果</td>
 </tr>
 <tr>
-<td><code>-L, --load &lt;file&gt;</code></td>
+<td>-L, –load <file></file></td>
 <td>立即在所有进程上加载 <code>&lt;file&gt;</code></td>
 </tr>
 <tr>
-<td>`-p, –procs {N</td>
-<td>auto}`</td>
+<td>-p, –procs {N&brvbar;auto}</td>
 <td>整数值 N 开始 N 个额外的本地工作进程；自动开始和本地CPU线程一样多的工作数（逻辑核心）</td>
 </tr>
 <tr>
-<td><code>--machine-file &lt;file&gt;</code></td>
+<td>–machine-file <file></file></td>
 <td>在主机上运行列于<code>&lt;file&gt;</code>的进程</td>
 </tr>
 <tr>
-<td><code>-i</code></td>
+<td>-i</td>
 <td>交互模式；REPL 运行并且 <code>isinteractive()</code> 置为 <code>true</code></td>
 </tr>
 <tr>
-<td><code>-q, --quiet</code></td>
+<td>-q, –quiet</td>
 <td>静默启动：没有大标题，封滞REPL警告</td>
 </tr>
 <tr>
-<td>`–banner={yes</td>
-<td>no</td>
-<td>auto}`</td>
+<td>–banner={yes&brvbar;no&brvbar;auto}</td>
 <td>启用或关闭启动大标题</td>
 </tr>
 <tr>
-<td>`–color={yes</td>
-<td>no</td>
-<td>auto} `</td>
+<td>–color={yes&brvbar;no&brvbar;auto}</td>
 <td>启用或关闭彩色文本</td>
 </tr>
 <tr>
-<td>`–history-file={yes</td>
-<td>no} `</td>
+<td>–history-file={yes&brvbar;no}</td>
 <td>加载或保存历史</td>
 </tr>
 <tr>
-<td>`–depwarn={yes</td>
-<td>no</td>
-<td>error}`</td>
+<td>–depwarn={yes&brvbar;no&brvbar;error}</td>
 <td>启用或关闭语法和方法否决警告（错误变成警告到错误中）</td>
 </tr>
 <tr>
-<td>`–warn-overwrite={yes</td>
-<td>no} `</td>
+<td>–warn-overwrite={yes&brvbar;no}</td>
 <td>启用或关闭方法重写警告</td>
 </tr>
 <tr>
-<td><code>-C, --cpu-target &lt;target&gt;</code></td>
+<td>-C, –cpu-target <target></target></td>
 <td>限制CPU特性使用直到<code>&lt;target&gt;</code>；调到帮助以查看可用选项</td>
 </tr>
 <tr>
-<td><code>-O, --optimize={0,1,2,3}</code></td>
+<td>-O, –optimize={0,1,2,3}</td>
 <td>设置优化级别（如果未定义默认级别是2，如果不按级别使用则默认级别为3）</td>
 </tr>
 <tr>
-<td><code>-g, -g &lt;level&gt;</code></td>
+<td>-g, -g <level></level></td>
 <td>启用/设置 调试信息的创建级别（如果未定义则默认级别为1，如果不按基本使用则默认级别为2）</td>
 </tr>
 <tr>
-<td>`–inline={yes</td>
-<td>no} `</td>
+<td>–inline={yes&brvbar;no}</td>
 <td>控制是否允许 <code>inling</code>，包括重写 <code>@inlie</code> 声明</td>
 </tr>
 <tr>
-<td>`–check-bounds={yes</td>
-<td>no}`</td>
+<td>–check-bounds={yes&brvbar;no}</td>
 <td>限制总是或从不进行边界检查（除声明时）</td>
 </tr>
 <tr>
-<td><code>--math-mode={ieee,fast}</code></td>
+<td>–math-mode={ieee,fast}</td>
 <td>不允许或启用不安全浮点优化（重写 <code>@fastmath</code> 声明）</td>
 </tr>
 <tr>
-<td>`–code-coverage={none</td>
-<td>user</td>
-<td>all}`</td>
+<td>–code-coverage={none&brvbar;user&brvbar;all}</td>
 <td>执行资源行的总数计算</td>
 </tr>
 <tr>
-<td><code>--code-coverage</code></td>
+<td>–code-coverage</td>
 <td>等同于 <code>--code-coverage=user</code></td>
 </tr>
 <tr>
-<td>`–track-allocation={none</td>
-<td>user</td>
-<td>all}`</td>
+<td>–track-allocation={none&brvbar;user&brvbar;all}</td>
 <td>通过每个资源行计算字节分配总数</td>
 </tr>
 <tr>
@@ -624,7 +604,7 @@
     
       <div>
         <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-  <div>打赏</div>
+  <div>本站文章皆由本站原创或原创精译干货，若看官阅过尚有三分益处，请点击下方红色按钮</div>
   <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById(&quot;QR&quot;); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
     <span>打赏</span>
   </button>
