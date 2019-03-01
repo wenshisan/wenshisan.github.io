@@ -111,18 +111,18 @@
 
 
 
-  <meta name="description" content="变量在Julia中，变量是一个对应（或绑定）到一个值的名称。这对您想要储存一个值以备后用（比如您从某些数学中获得的值）来说很有帮助。例如： 123456789101112131415# Assign the value 10 to the variable xjulia&amp;gt; x = 1010# Doing math with x&apos;s valuejulia&amp;gt; x + 111# Reassi">
+  <meta name="description" content="变量&amp;emsp;在Julia中，变量是一个对应（或绑定）到一个值的名称。这对您想要储存一个值以备后用（比如您从某些数学计算中得到的值）来说很有帮助。例如： 123456789101112131415# Assign the value 10 to the variable xjulia&amp;gt; x = 1010# Doing math with x&apos;s valuejulia&amp;gt; x + 111">
 <meta name="keywords" content="Julia中文文档">
 <meta property="og:type" content="article">
 <meta property="og:title" content="变量">
 <meta property="og:url" content="http://www.thgd.net/2019/02/28/Variables/index.html">
 <meta property="og:site_name" content="醍醐果冻">
-<meta property="og:description" content="变量在Julia中，变量是一个对应（或绑定）到一个值的名称。这对您想要储存一个值以备后用（比如您从某些数学中获得的值）来说很有帮助。例如： 123456789101112131415# Assign the value 10 to the variable xjulia&amp;gt; x = 1010# Doing math with x&apos;s valuejulia&amp;gt; x + 111# Reassi">
+<meta property="og:description" content="变量&amp;emsp;在Julia中，变量是一个对应（或绑定）到一个值的名称。这对您想要储存一个值以备后用（比如您从某些数学计算中得到的值）来说很有帮助。例如： 123456789101112131415# Assign the value 10 to the variable xjulia&amp;gt; x = 1010# Doing math with x&apos;s valuejulia&amp;gt; x + 111">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-01T09:03:07.846Z">
+<meta property="og:updated_time" content="2019-03-01T09:50:18.748Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="变量">
-<meta name="twitter:description" content="变量在Julia中，变量是一个对应（或绑定）到一个值的名称。这对您想要储存一个值以备后用（比如您从某些数学中获得的值）来说很有帮助。例如： 123456789101112131415# Assign the value 10 to the variable xjulia&amp;gt; x = 1010# Doing math with x&apos;s valuejulia&amp;gt; x + 111# Reassi">
+<meta name="twitter:description" content="变量&amp;emsp;在Julia中，变量是一个对应（或绑定）到一个值的名称。这对您想要储存一个值以备后用（比如您从某些数学计算中得到的值）来说很有帮助。例如： 123456789101112131415# Assign the value 10 to the variable xjulia&amp;gt; x = 1010# Doing math with x&apos;s valuejulia&amp;gt; x + 111">
 
 
 
@@ -366,7 +366,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-01 17:03:07" itemprop="dateModified" datetime="2019-03-01T17:03:07+08:00">2019-03-01</time>
+                <time title="修改时间：2019-03-01 17:50:18" itemprop="dateModified" datetime="2019-03-01T17:50:18+08:00">2019-03-01</time>
               
             
           </span>
@@ -432,26 +432,22 @@
       
 
       
-        <h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>在Julia中，变量是一个对应（或绑定）到一个值的名称。这对您想要储存一个值以备后用（比如您从某些数学中获得的值）来说很有帮助。例如：</p>
+        <h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>&emsp;在Julia中，变量是一个对应（或绑定）到一个值的名称。这对您想要储存一个值以备后用（比如您从某些数学计算中得到的值）来说很有帮助。例如：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Assign the value 10 to the variable x</span></span><br><span class="line">julia&gt; x = 10</span><br><span class="line">10</span><br><span class="line"></span><br><span class="line"><span class="comment"># Doing math with x's value</span></span><br><span class="line">julia&gt; x + 1</span><br><span class="line">11</span><br><span class="line"></span><br><span class="line"><span class="comment"># Reassign x's value</span></span><br><span class="line">julia&gt; x = 1 + 1</span><br><span class="line">2</span><br><span class="line"></span><br><span class="line"><span class="comment"># You can assign values of other types, like strings of text</span></span><br><span class="line">julia&gt; x = <span class="string">"Hello World!"</span></span><br><span class="line"><span class="string">"Hello World!"</span></span><br></pre></td></tr></table></figure>
-<p>Julia为变量的命名提供了一个极其灵活的系统。 变量名是区分大小写且没有语义上的意义（是的，语言不会因为他们的名字而区别对待）。</p>
+<p>&emsp;Julia 为变量的命名提供了一个极其灵活的系统。 变量名是区分大小写且没有语义上的意义（是的，语言不会因为他们的名字而进行区别对待）。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; x = 1.0</span><br><span class="line">1.0</span><br><span class="line"></span><br><span class="line">julia&gt; y = -3</span><br><span class="line">-3</span><br><span class="line"></span><br><span class="line">julia&gt; Z = <span class="string">"My string"</span></span><br><span class="line"><span class="string">"My string"</span></span><br><span class="line"></span><br><span class="line">julia&gt; customary_phrase = <span class="string">"Hello world!"</span></span><br><span class="line"><span class="string">"Hello world!"</span></span><br><span class="line"></span><br><span class="line">julia&gt; UniversalDeclarationOfHumanRightsStart = <span class="string">"人人生而自由，在尊严和权利上一律平等。"</span></span><br><span class="line"><span class="string">"人人生而自由，在尊严和权利上一律平等。"</span></span><br><span class="line">Unicode names (<span class="keyword">in</span> UTF-8 encoding) are allowed:</span><br><span class="line"></span><br><span class="line">julia&gt; δ = 0.00001</span><br><span class="line">1.0e-5</span><br><span class="line"></span><br><span class="line">julia&gt; 안녕하세요 = <span class="string">"Hello"</span></span><br><span class="line"><span class="string">"Hello"</span></span><br></pre></td></tr></table></figure>
-<p>Julia will even let you redefine built-in constants and functions if needed (although this is not recommended to avoid potential confusions):</p>
-<p>在Julia的REPL和其他一些Julia编辑环境中，您可以通过输入反斜杠 LaTeX 符号跟着 tab 输入很多Unicode数学符号。例如，变量名 <code>δ</code> 可以通过输入 \delta-tab 键入，<code>α̂₂</code> 通过\alpha-tab-\hat- tab-_2-tab。（如果你在某个例如其他人的代码里找到了您不知道如何输入的符号，REPL帮助将会告诉您：只需输入?然后粘贴这个符号）。</p>
-<p>如果需要的话Julia将也允许您重新定义内置的常量和函数（然而为避免潜在的混淆并不推荐您这么做）</p>
+<p>&emsp;在Julia的REPL和其他一些Julia编辑环境中，您可以通过输入反斜杠 LaTeX 符号跟着 <code>tab</code> 输入很多Unicode数学符号。例如，变量名 <code>δ</code> 可以通过输入 <code>\delta-tab</code> 键入，<code>α̂₂</code> 通过 <code>\alpha-tab-\hat- tab-\_2-tab</code> 。（如果你在某个例如其他人的代码里找到了您不知道如何输入的符号，REPL帮助将会告诉您：只需输入 <code>?</code> 然后粘贴这个符号）。</p>
+<p>&emsp;如果需要的话Julia将也允许您重新定义内置的常量和函数（然而为避免潜在的混淆并不推荐您这么做）</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; pi = 3</span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">julia&gt; pi</span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">julia&gt; sqrt = 4</span><br><span class="line">4</span><br><span class="line">However, <span class="keyword">if</span> you try to redefine a built-in constant or <span class="keyword">function</span> already <span class="keyword">in</span> use, Julia will give you an error:</span><br><span class="line"></span><br><span class="line">julia&gt; pi</span><br><span class="line">π = 3.1415926535897...</span><br><span class="line"></span><br><span class="line">julia&gt; pi = 3</span><br><span class="line">ERROR: cannot assign variable MathConstants.pi from module Main</span><br><span class="line"></span><br><span class="line">julia&gt; sqrt(100)</span><br><span class="line">10.0</span><br><span class="line"></span><br><span class="line">julia&gt; sqrt = 4</span><br><span class="line">ERROR: cannot assign variable Base.sqrt from module Main</span><br></pre></td></tr></table></figure>
-<h3 id="允许的变量名"><a href="#允许的变量名" class="headerlink" title="允许的变量名"></a>允许的变量名</h3><p>变量名必须以字母开头（A-Z 或 a-z），下划线，或者大于00A0的 Unicode 代码标点集合，尤其是 Unicode 字符分类 <code>Lu/Ll/Lt/Lm/Lo/Nl</code>（字母），<code>Sc/So</code>（货币和其他符号），还有其他一些类似字母的字符（例如 Sm 数学符号的集合）都被允许使用。随后的字符也可能包括 <code>!</code> 和数字（0-9和其他分类的字符 <code>Nd/No</code>），同时其他的Unicode代码标点：区分标识和其他标识符（<code>Mn/Mc/Me/Sk</code>分类），一些连接字符（<code>Pc</code> 分类）,上撇号，还有一些其他的字符。</p>
-<p>类似+的运算符也都是有效的标识符，但被特殊的格式化了。在一些上下文中，运算符也可以像变量一样使用，例如<code>(+)</code>指的是加法函数，<code>(+) = f</code>将会把它重新赋值。多数的Unicode中缀运算符（在 <code>Sm</code> 分类中）,如<code>⊕</code>，都被格式化为中缀运算符并可用于用户定义的的方法（例如您可以使用 <code>const ⊗ = kron</code> 来定义<code>⊗</code>为一个中缀克罗内克积（Koronecker）乘积）。运算符也可以用修饰符、上撇号和上/下标作为后缀，例如<code>+̂ₐ″</code> 被格式化为以+号开头的中缀运算符。</p>
-<p>仅内置语句的名称明确的不能作为变量使用。</p>
+<h3 id="允许的变量名"><a href="#允许的变量名" class="headerlink" title="允许的变量名"></a>允许的变量名</h3><p>&emsp;变量名必须以字母开头（<code>A-Z</code> 或 <code>a-z</code>），下划线，或者大于00A0的 Unicode 代码标点集合，尤其是 Unicode 字符分类 <code>Lu/Ll/Lt/Lm/Lo/Nl</code>（字母），<code>Sc/So</code>（货币和其他符号），还有其他一些类似字母的字符（例如 Sm 数学符号的集合）都被允许使用。随后的字符也可能包括 <code>!</code> 和数字（0-9和其他分类的字符 <code>Nd/No</code>），同时其他的Unicode代码标点：区分标识和其他标识符（<code>Mn/Mc/Me/Sk</code>分类），一些连接字符（<code>Pc</code> 分类）,上撇号，还有一些其他的字符。</p>
+<p>&emsp;类似+的运算符也都是有效的标识符，但被特殊的格式化了。在一些上下文中，运算符也可以像变量一样使用，例如<code>(+)</code>指的是加法函数，<code>(+) = f</code>将会把它重新赋值。多数的Unicode中缀运算符（在 <code>Sm</code> 分类中）,如<code>⊕</code>，都被格式化为中缀运算符并可用于用户定义的的方法（例如您可以使用 <code>const ⊗ = kron</code> 来定义<code>⊗</code>为一个中缀克罗内克积（Koronecker）乘积）。运算符也可以用修饰符、上撇号和上/下标作为后缀，例如<code>+̂ₐ″</code> 被格式化为以+号开头的中缀运算符。</p>
+<p>&emsp;仅内置语句的名称明确的不能作为变量使用。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; <span class="keyword">else</span> = <span class="literal">false</span></span><br><span class="line">ERROR: syntax: unexpected <span class="string">"else"</span></span><br><span class="line"></span><br><span class="line">julia&gt; try = <span class="string">"No"</span></span><br><span class="line">ERROR: syntax: unexpected <span class="string">"="</span></span><br></pre></td></tr></table></figure>
-<p>一些Unicode字符被视为等同于标识符。Unicode组合字符的不同输入方式（例如 <code>,</code> 强调）都被视为相同（Julia标识都是特别的、NPC-标准化的）。Unicode字符<code>ɛ</code>(<code>U+025B</code>:小写拉丁字母 e)和<code>µ</code>（<code>U+00B5</code>: 读谬miu，英文micro sign）都被视为等于对应的希腊字母，因为前者更容易使用输入法输入。</p>
-<p>Stylistic Conventions</p>
-<h3 id="格式转换"><a href="#格式转换" class="headerlink" title="格式转换"></a>格式转换</h3><p>While Julia imposes few restrictions on valid names, it has become useful to adopt the following conventions:</p>
-<p>Names of variables are in lower case.<br>Word separation can be indicated by underscores (‘_’), but use of underscores is discouraged unless the name would be hard to read otherwise.<br>Names of Types and Modules begin with a capital letter and word separation is shown with upper camel case instead of underscores.<br>Names of functions and macros are in lower case, without underscores.<br>Functions that write to their arguments have names that end in !. These are sometimes called “mutating” or “in-place” functions because they are intended to produce changes in their arguments after the function is called, not just return a value.<br>For more information about stylistic conventions, see the Style Guide.</p>
-<p>Julia在有效命名上做了少量限制规则，以变得有益于接下来的类型转换：</p>
+<p>&emsp;一些Unicode字符被视为等同于标识符。Unicode组合字符的不同输入方式（例如 <code>,</code> 强调）都被视为相同（Julia标识都是特别的、NPC-标准化的）。Unicode字符<code>ɛ</code>(<code>U+025B</code>:小写拉丁字母 e)和<code>µ</code>（<code>U+00B5</code>: 读谬miu，英文micro sign）都被视为等于对应的希腊字母，因为前者更容易使用输入法输入。</p>
+<h3 id="格式转换"><a href="#格式转换" class="headerlink" title="格式转换"></a>格式转换</h3><p>Julia在有效命名上做了少量限制规则，以变得有益于接下来的类型转换：</p>
 <ul>
-<li>变量名都是小写。</li>
-<li>可以使用下划线标（<code>&#39;_&#39;</code>）出单词分隔,但是除非名称难以阅读否则不建议使用下划线。</li>
+<li>变量名都小写。</li>
+<li>可以使用下划线（<code>&#39;_&#39;</code>）标出单词分隔,但是除非名称难以阅读否则不建议使用下划线。</li>
 <li>类型和模块的名称的开头以及单词分隔使用首字母大写的驼峰形式代替下划线。</li>
 <li>函数和宏命令的名称为小谢形式，没有下划线。</li>
 <li>参数名以<code>!</code>结尾的函数。有时被称之为 “变异” 或 “原位” 函数，因为他们在被调用后会改变他们的参数，不只是返回值。</li>
@@ -475,7 +471,7 @@
     
       <div>
         <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-  <div>本站文章皆由本站原创或原创精译干货，若看官阅过尚有三分益处，请点击下方红色按钮</div>
+  <div>本站皆原创/精译干货，若称君意，请您：</div>
   <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById(&quot;QR&quot;); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
     <span>打赏</span>
   </button>
