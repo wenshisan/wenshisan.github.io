@@ -22,10 +22,6 @@
 <meta name="theme-color" content="#222">
 
 
-  
-  
-  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
-
 
 
   
@@ -304,6 +300,336 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.thgd.net/2019/02/28/IntegersAndFloat-PointNumbers/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="醍醐果冻">
+      <meta itemprop="description" content="AI,人工智能,Julia中文文档，Julia编程语言">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="醍醐果冻">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/02/28/IntegersAndFloat-PointNumbers/" class="post-title-link" itemprop="url">整数和浮点数</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-28 17:37:37" itemprop="dateCreated datePublished" datetime="2019-02-28T17:37:37+08:00">2019-02-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-04 14:55:46" itemprop="dateModified" datetime="2019-03-04T14:55:46+08:00">2019-03-04</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Julia中文文档/" itemprop="url" rel="index"><span itemprop="name">Julia中文文档</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Julia中文文档/手册/" itemprop="url" rel="index"><span itemprop="name">手册</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Julia中文文档/手册/整数和浮点数/" itemprop="url" rel="index"><span itemprop="name">整数和浮点数</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="整数和浮点数"><a href="#整数和浮点数" class="headerlink" title="整数和浮点数"></a>整数和浮点数</h3><p>&emsp;整数和浮点数是算法和计算的基础构件。尽管整数和浮点数直接值的表示在代码中被看作是数字字符，一些内置值的表示则被称之为数值类型。例如虽然 <code>1.0</code> 是一个浮点数字符， <code>1</code> 是一个整数字符，他们在内存中的二进制对象都是数值类型。</p>
+<p>&emsp;Julia 提供了一个范围广泛的基础数字类型并且在他们之上定义了标准数学函数还有完整的算法和按位运算的补集。这些直接在数字类型和运算上的映射都原生地被现代计算机所支持，因此让 Julia 可以最大限度的利用计算资源。此外 Julia 提供了可以控制无法有效地在原本的硬件中表示的数值计算的高精度计算的软件支持，但会导致较低性能。</p>
+<p>下列内容为 Julia 的基础数字类型：</p>
+<p> &emsp;- 整数类型：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">有符号?</th>
+<th style="text-align:center">位数</th>
+<th style="text-align:center">最小值</th>
+<th style="text-align:center">最大值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Int8</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">-2^7</td>
+<td style="text-align:center">2^7 - 1</td>
+</tr>
+<tr>
+<td style="text-align:center">UInt8</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">2^8 - 1</td>
+</tr>
+<tr>
+<td style="text-align:center">Int16</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">16</td>
+<td style="text-align:center">-2^15</td>
+<td style="text-align:center">2^15 - 1</td>
+</tr>
+<tr>
+<td style="text-align:center">UInt16</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">16</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">2^16 - 1</td>
+</tr>
+<tr>
+<td style="text-align:center">Int32</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">32</td>
+<td style="text-align:center">-2^31</td>
+<td style="text-align:center">2^31 - 1</td>
+</tr>
+<tr>
+<td style="text-align:center">UInt32</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">32</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">2^32 - 1</td>
+</tr>
+<tr>
+<td style="text-align:center">Int64</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">64</td>
+<td style="text-align:center">-2^63</td>
+<td style="text-align:center">2^63 - 1</td>
+</tr>
+<tr>
+<td style="text-align:center">UInt64</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">64</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">2^64 - 1</td>
+</tr>
+<tr>
+<td style="text-align:center">Int128</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">128</td>
+<td style="text-align:center">-2^127</td>
+<td style="text-align:center">2^127 - 1</td>
+</tr>
+<tr>
+<td style="text-align:center">UInt128</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">128</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">2^128 - 1</td>
+</tr>
+<tr>
+<td style="text-align:center">Bool</td>
+<td style="text-align:center">N/A</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">false (0)</td>
+<td style="text-align:center">true (1)</td>
+</tr>
+</tbody>
+</table>
+<p>&emsp;- 浮点类型：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">精度</th>
+<th style="text-align:center">位数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Float16</td>
+<td style="text-align:center">半精度</td>
+<td style="text-align:center">16</td>
+</tr>
+<tr>
+<td style="text-align:center">Float32</td>
+<td style="text-align:center">单精度</td>
+<td style="text-align:center">32</td>
+</tr>
+<tr>
+<td style="text-align:center">Float64</td>
+<td style="text-align:center">双精度</td>
+<td style="text-align:center">64</td>
+</tr>
+</tbody>
+</table>
+<p>此外，复数和有理数的完全支持是建立在这些基础数字类型上的。所有数字类型不用刻意分配即可自然交互，感谢灵活的、用户可扩展的类型提升系统。</p>
+<h3 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h3><p>整数字面上以正常形式表示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; 1</span><br><span class="line">1</span><br><span class="line"></span><br><span class="line">julia&gt; 1234</span><br><span class="line">1234</span><br></pre></td></tr></table></figure>
+<p>整数字符的默认类型取决于目标系统是 32 位架构或 64 位架构：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 32-bit system:</span></span><br><span class="line">julia&gt; typeof(1)</span><br><span class="line">Int32</span><br><span class="line"></span><br><span class="line"><span class="comment"># 64-bit system:</span></span><br><span class="line">julia&gt; typeof(1)</span><br><span class="line">Int64</span><br></pre></td></tr></table></figure>
+<p>Julia 内置的变量 <code>Sys.WORD_SIZE</code> 标示出目标系统是 <code>32</code> 位或 <code>64</code> 位：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 32-bit system:</span></span><br><span class="line">julia&gt; Sys.WORD_SIZE</span><br><span class="line">32</span><br><span class="line"></span><br><span class="line"><span class="comment"># 64-bit system:</span></span><br><span class="line">julia&gt; Sys.WORD_SIZE</span><br><span class="line">64</span><br></pre></td></tr></table></figure>
+<p>Julia 也分别规定了系统的有符号和无符号整数类型的别名类型 <code>Int</code> 和 <code>UInt</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 32-bit system:</span></span><br><span class="line">julia&gt; Int</span><br><span class="line">Int32</span><br><span class="line">julia&gt; UInt</span><br><span class="line">UInt32</span><br><span class="line"></span><br><span class="line"><span class="comment"># 64-bit system:</span></span><br><span class="line">julia&gt; Int</span><br><span class="line">Int64</span><br><span class="line">julia&gt; UInt</span><br><span class="line">UInt64</span><br></pre></td></tr></table></figure>
+<p>不论系统类型是什么，较大的整数字符不止能使用 32 位表示，而且还可以以 64 位表示并创建 64 位整数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 32-bit or 64-bit system:</span></span><br><span class="line">julia&gt; typeof(3000000000)</span><br><span class="line">Int64</span><br></pre></td></tr></table></figure>
+<p>无符号整数可以使用前缀 <code>0x</code> 和十六进制（基数为 <code>16</code>）的数字 <code>0-9a-f</code> （以数字 <code>A-F</code> 在输入中同样有效）输入和输出。无符号值的大小取决于所使用的十六进制数字的数量：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; 0x1</span><br><span class="line">0x01</span><br><span class="line"></span><br><span class="line">julia&gt; typeof(ans)</span><br><span class="line">UInt8</span><br><span class="line"></span><br><span class="line">julia&gt; 0x123</span><br><span class="line">0x0123</span><br><span class="line"></span><br><span class="line">julia&gt; typeof(ans)</span><br><span class="line">UInt16</span><br><span class="line"></span><br><span class="line">julia&gt; 0x1234567</span><br><span class="line">0x01234567</span><br><span class="line"></span><br><span class="line">julia&gt; typeof(ans)</span><br><span class="line">UInt32</span><br><span class="line"></span><br><span class="line">julia&gt; 0x123456789abcdef</span><br><span class="line">0x0123456789abcdef</span><br><span class="line"></span><br><span class="line">julia&gt; typeof(ans)</span><br><span class="line">UInt64</span><br><span class="line"></span><br><span class="line">julia&gt; 0x11112222333344445555666677778888</span><br><span class="line">0x11112222333344445555666677778888</span><br><span class="line"></span><br><span class="line">julia&gt; typeof(ans)</span><br><span class="line">UInt128</span><br></pre></td></tr></table></figure>
+<p>这个行为基于当为整数值使用无符号十六进制字符时的观察，典型是使用他们代表一个固定的数字字节序列，而不只是一个整数值。</p>
+<p>回调变量 <code>ans</code> 是最后一个可交互表达式计算后的值。这个不会出现在以其他方式运行的 Julia 代码中。</p>
+<p>同样支持二进制和八进制字符：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; 0b10</span><br><span class="line">0x02</span><br><span class="line"></span><br><span class="line">julia&gt; typeof(ans)</span><br><span class="line">UInt8</span><br><span class="line"></span><br><span class="line">julia&gt; 0o010</span><br><span class="line">0x08</span><br><span class="line"></span><br><span class="line">julia&gt; typeof(ans)</span><br><span class="line">UInt8</span><br><span class="line"></span><br><span class="line">julia&gt; 0x00000000000000001111222233334444</span><br><span class="line">0x00000000000000001111222233334444</span><br><span class="line"></span><br><span class="line">julia&gt; typeof(ans)</span><br><span class="line">UInt128</span><br></pre></td></tr></table></figure>
+<p>至于十六进制字符，二进制和八进制字符产生无符号整数类型。如果字符的首位数字不是0，二进制数据项的大小为最小必须大小。就首位为0的情况来说，大小取决于有着相同长度但首位为1的字符的最小大小。这允许用户控制那些不能存入 <code>UInt128</code> 不能被写成那种字符的值的大小。</p>
+<p>二进制、八进制和十六进制字符可能被直接在无符号证书前直接加上 <code>-</code> 。 他们产生出一个带有和无符号大小相同的有符号整数和该值的两个整数的补集：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; -0x2</span><br><span class="line">0xfe</span><br><span class="line"></span><br><span class="line">julia&gt; -0x0002</span><br><span class="line">0xfffe</span><br></pre></td></tr></table></figure>
+<p>如整数一样的基础数字类型可表示的最大和最小值可用使用 <code>typemin</code> 和 <code>typemax</code> 求出：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; (typemin(Int32), typemax(Int32))</span><br><span class="line">(-2147483648, 2147483647)</span><br><span class="line"></span><br><span class="line">julia&gt; <span class="keyword">for</span> T <span class="keyword">in</span> [Int8,Int16,Int32,Int64,Int128,UInt8,UInt16,UInt32,UInt64,UInt128]</span><br><span class="line">           println(<span class="string">"<span class="variable">$(lpad(T,7)</span>): [<span class="variable">$(typemin(T)</span>),<span class="variable">$(typemax(T)</span>)]"</span>)</span><br><span class="line">       end</span><br><span class="line">   Int8: [-128,127]</span><br><span class="line">  Int16: [-32768,32767]</span><br><span class="line">  Int32: [-2147483648,2147483647]</span><br><span class="line">  Int64: [-9223372036854775808,9223372036854775807]</span><br><span class="line"> Int128: [-170141183460469231731687303715884105728,170141183460469231731687303715884105727]</span><br><span class="line">  UInt8: [0,255]</span><br><span class="line"> UInt16: [0,65535]</span><br><span class="line"> UInt32: [0,4294967295]</span><br><span class="line"> UInt64: [0,18446744073709551615]</span><br><span class="line">UInt128: [0,340282366920938463463374607431768211455]</span><br></pre></td></tr></table></figure>
+<p><code>typemin</code> 和 <code>typemax</code> 的返回值总是给定的参数类型。（上面的表达式使用了一些还没有介绍的特性，包括 <code>for</code> 循环、 <code>String</code> 和互操作，但是对于已经有一些编程经验的用户来说已经足够容易理解了）。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.thgd.net/2019/02/28/Variables/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -366,7 +692,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-01 17:50:18" itemprop="dateModified" datetime="2019-03-01T17:50:18+08:00">2019-03-01</time>
+                <time title="修改时间：2019-03-04 09:39:14" itemprop="dateModified" datetime="2019-03-04T09:39:14+08:00">2019-03-04</time>
               
             
           </span>
@@ -573,7 +899,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-01 17:51:29" itemprop="dateModified" datetime="2019-03-01T17:51:29+08:00">2019-03-01</time>
+                <time title="修改时间：2019-03-04 10:47:06" itemprop="dateModified" datetime="2019-03-04T10:47:06+08:00">2019-03-04</time>
               
             
           </span>
@@ -662,8 +988,8 @@
 <table>
 <thead>
 <tr>
-<th>Switch</th>
-<th>Description</th>
+<th>选项切换</th>
+<th>描述</th>
 </tr>
 </thead>
 <tbody>
@@ -1359,7 +1685,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1384,7 +1710,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">6</span>
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1401,7 +1729,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
@@ -1480,12 +1810,6 @@
       </div>
     
 
-    
-      <div id="needsharebutton-float">
-        <span class="btn">
-          <i class="fa fa-share-alt" aria-hidden="true"></i>
-        </span>
-      </div>
     
 
     
@@ -1623,26 +1947,6 @@
   
 
   
-  
-  
-  <script src="/lib/needsharebutton/needsharebutton.js"></script>
-  <script>
-    
-    
-      flOptions = {};
-      
-        flOptions.iconStyle = "default";
-      
-        flOptions.boxForm = "vertical";
-      
-        flOptions.position = "topRight";
-      
-        flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
-      
-      new needShareButton('#needsharebutton-float', flOptions);
-    
-  </script>
-
 
   
 
