@@ -362,7 +362,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-04 16:18:52" itemprop="dateModified" datetime="2019-03-04T16:18:52+08:00">2019-03-04</time>
+                <time title="修改时间：2019-03-04 16:27:54" itemprop="dateModified" datetime="2019-03-04T16:27:54+08:00">2019-03-04</time>
               
             
           </span>
@@ -434,7 +434,9 @@
 <p>&emsp;整数和浮点数是算法和计算的基础构件。尽管整数和浮点数直接值的表示在代码中被看作是数字字符，一些内置值的表示则被称之为数值类型。例如虽然 <code>1.0</code> 是一个浮点数字符， <code>1</code> 是一个整数字符，他们在内存中的二进制对象都是数值类型。</p>
 <p>&emsp;Julia 提供了一个范围广泛的基础数字类型并且在他们之上定义了标准数学函数还有完整的算法和按位运算的补集。这些直接在数字类型和运算上的映射都原生地被现代计算机所支持，因此让 Julia 可以最大限度的利用计算资源。此外 Julia 提供了可以控制无法有效地在原本的硬件中表示的数值计算的高精度计算的软件支持，但会导致较低性能。</p>
 <p>下列内容为 Julia 的基础数字类型：</p>
-<p> &emsp;- 整数类型：</p>
+<ul>
+<li>整数类型：</li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -525,7 +527,9 @@
 </tr>
 </tbody>
 </table>
-<p>&emsp;- 浮点类型：</p>
+<ul>
+<li>浮点类型：</li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -578,8 +582,65 @@
 <h5 id="溢出行为"><a href="#溢出行为" class="headerlink" title="溢出行为"></a>溢出行为</h5><p>在Julia中，超过给定的类型的最大可表示值将导致包绕行为：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; x = typemax(Int64)</span><br><span class="line">9223372036854775807</span><br><span class="line"></span><br><span class="line">julia&gt; x + 1</span><br><span class="line">-9223372036854775808</span><br><span class="line"></span><br><span class="line">julia&gt; x + 1 == typemin(Int64)</span><br><span class="line"><span class="literal">true</span></span><br></pre></td></tr></table></figure>
 <p>&emsp;因此使用 Julia 的整数算法实际上是一种模数算法形式。这也反映出了现代计算机上的底层整数算法特征。在可能出现溢出的应用中明确地检查溢出所产生的包绕是十分必要的，否则推荐使用高精度计算来代替。</p>
-<p>Division errors<br>Integer division (the div function) has two exceptional cases: dividing by zero, and dividing the lowest negative number (typemin) by -1. Both of these cases throw a DivideError. The remainder and modulus functions (rem and mod) throw a DivideError when their second argument is zero.</p>
 <h5 id="除法错误"><a href="#除法错误" class="headerlink" title="除法错误"></a>除法错误</h5><p>&emsp;整数除法（ <code>div</code> 函数）有两种异常情况：用 <code>0</code> 除和用最小负整数（ <code>typemin</code> ） <code>-1</code> 除。这两种情形抛出一个 <code>DivideError</code>。<br>取余和取模函数（<code>rem</code> 和 <code>mod</code>）在他们的第二个参数为 <code>0</code> 时抛出 <code>DivideError</code>。</p>
+<p>Floating-Point Numbers<br>Literal floating-point numbers are represented in the standard formats, using E-notation when necessary:</p>
+<p>julia&gt; 1.0<br>1.0</p>
+<p>julia&gt; 1.<br>1.0</p>
+<p>julia&gt; 0.5<br>0.5</p>
+<p>julia&gt; .5<br>0.5</p>
+<p>julia&gt; -1.23<br>-1.23</p>
+<p>julia&gt; 1e10<br>1.0e10</p>
+<p>julia&gt; 2.5e-4<br>0.00025<br>The above results are all Float64 values. Literal Float32 values can be entered by writing an f in place of e:</p>
+<p>julia&gt; 0.5f0<br>0.5f0</p>
+<p>julia&gt; typeof(ans)<br>Float32</p>
+<p>julia&gt; 2.5f-4<br>0.00025f0<br>Values can be converted to Float32 easily:</p>
+<p>julia&gt; Float32(-1.5)<br>-1.5f0</p>
+<p>julia&gt; typeof(ans)<br>Float32<br>Hexadecimal floating-point literals are also valid, but only as Float64 values, with p preceding the base-2 exponent:</p>
+<p>julia&gt; 0x1p0<br>1.0</p>
+<p>julia&gt; 0x1.8p3<br>12.0</p>
+<p>julia&gt; 0x.4p-1<br>0.125</p>
+<p>julia&gt; typeof(ans)<br>Float64<br>Half-precision floating-point numbers are also supported (Float16), but they are implemented in software and use Float32 for calculations.</p>
+<p>julia&gt; sizeof(Float16(4.))<br>2</p>
+<p>julia&gt; 2*Float16(4.)<br>Float16(8.0)<br>The underscore _ can be used as digit separator:</p>
+<p>julia&gt; 10_000, 0.000_000_005, 0xdead_beef, 0b1011_0010<br>(10000, 5.0e-9, 0xdeadbeef, 0xb2)<br>Floating-point zero<br>Floating-point numbers have two zeros, positive zero and negative zero. They are equal to each other but have different binary representations, as can be seen using the bitstring function:</p>
+<p>julia&gt; 0.0 == -0.0<br>true</p>
+<p>julia&gt; bitstring(0.0)<br>“0000000000000000000000000000000000000000000000000000000000000000”</p>
+<p>julia&gt; bitstring(-0.0)<br>“1000000000000000000000000000000000000000000000000000000000000000”<br>Special floating-point values<br>There are three specified standard floating-point values that do not correspond to any point on the real number line:</p>
+<p>Float16    Float32    Float64    Name    Description<br>Inf16    Inf32    Inf    positive infinity    a value greater than all finite floating-point values<br>-Inf16    -Inf32    -Inf    negative infinity    a value less than all finite floating-point values<br>NaN16    NaN32    NaN    not a number    a value not == to any floating-point value (including itself)<br>For further discussion of how these non-finite floating-point values are ordered with respect to each other and other floats, see Numeric Comparisons. By the IEEE 754 standard, these floating-point values are the results of certain arithmetic operations:</p>
+<p>julia&gt; 1/Inf<br>0.0</p>
+<p>julia&gt; 1/0<br>Inf</p>
+<p>julia&gt; -5/0<br>-Inf</p>
+<p>julia&gt; 0.000001/0<br>Inf</p>
+<p>julia&gt; 0/0<br>NaN</p>
+<p>julia&gt; 500 + Inf<br>Inf</p>
+<p>julia&gt; 500 - Inf<br>-Inf</p>
+<p>julia&gt; Inf + Inf<br>Inf</p>
+<p>julia&gt; Inf - Inf<br>NaN</p>
+<p>julia&gt; Inf * Inf<br>Inf</p>
+<p>julia&gt; Inf / Inf<br>NaN</p>
+<p>julia&gt; 0 * Inf<br>NaN<br>The typemin and typemax functions also apply to floating-point types:</p>
+<p>julia&gt; (typemin(Float16),typemax(Float16))<br>(-Inf16, Inf16)</p>
+<p>julia&gt; (typemin(Float32),typemax(Float32))<br>(-Inf32, Inf32)</p>
+<p>julia&gt; (typemin(Float64),typemax(Float64))<br>(-Inf, Inf)<br>Machine epsilon<br>Most real numbers cannot be represented exactly with floating-point numbers, and so for many purposes it is important to know the distance between two adjacent representable floating-point numbers, which is often known as machine epsilon.</p>
+<p>Julia provides eps, which gives the distance between 1.0 and the next larger representable floating-point value:</p>
+<p>julia&gt; eps(Float32)<br>1.1920929f-7</p>
+<p>julia&gt; eps(Float64)<br>2.220446049250313e-16</p>
+<p>julia&gt; eps() # same as eps(Float64)<br>2.220446049250313e-16<br>These values are 2.0^-23 and 2.0^-52 as Float32 and Float64 values, respectively. The eps function can also take a floating-point value as an argument, and gives the absolute difference between that value and the next representable floating point value. That is, eps(x) yields a value of the same type as x such that x + eps(x) is the next representable floating-point value larger than x:</p>
+<p>julia&gt; eps(1.0)<br>2.220446049250313e-16</p>
+<p>julia&gt; eps(1000.)<br>1.1368683772161603e-13</p>
+<p>julia&gt; eps(1e-27)<br>1.793662034335766e-43</p>
+<p>julia&gt; eps(0.0)<br>5.0e-324<br>The distance between two adjacent representable floating-point numbers is not constant, but is smaller for smaller values and larger for larger values. In other words, the representable floating-point numbers are densest in the real number line near zero, and grow sparser exponentially as one moves farther away from zero. By definition, eps(1.0) is the same as eps(Float64) since 1.0 is a 64-bit floating-point value.</p>
+<p>Julia also provides the nextfloat and prevfloat functions which return the next largest or smallest representable floating-point number to the argument respectively:</p>
+<p>julia&gt; x = 1.25f0<br>1.25f0</p>
+<p>julia&gt; nextfloat(x)<br>1.2500001f0</p>
+<p>julia&gt; prevfloat(x)<br>1.2499999f0</p>
+<p>julia&gt; bitstring(prevfloat(x))<br>“00111111100111111111111111111111”</p>
+<p>julia&gt; bitstring(x)<br>“00111111101000000000000000000000”</p>
+<p>julia&gt; bitstring(nextfloat(x))<br>“00111111101000000000000000000001”<br>This example highlights the general principle that the adjacent representable floating-point numbers also have adjacent binary integer representations.</p>
+<p>Rounding modes<br>If a number doesn’t have an exact floating-point representation, it must be rounded to an appropriate representable value. However, the manner in which this rounding is done can be changed if required according to the rounding modes presented in the IEEE 754 standard.</p>
+<p>The default mode used is always RoundNearest, which rounds to the nearest representable value, with ties rounded towards the nearest value with an even least significant bit.</p>
+<p>Background and References<br>Floating-point arithmetic entails many subtleties which can be surprising to users who are unfamiliar with the low-level implementation details. However, these subtleties are described in detail in most books on scientific computation, and also in the following references:</p>
+<p>The definitive guide to floating point arithmetic is the IEEE 754-2008 Standard; however, it is not available for free online.<br>For a brief but lucid presentation of how floating-point numbers are represented, see John D. Cook’s article on the subject as well as his introduction to some of the issues arising from how this representation differs in behavior from the idealized abstraction of real numbers.<br>Also recommended is Bruce Dawson’s series of blog posts on floating-point numbers.<br>For an excellent, in-depth discussion of floating-point numbers and issues of numerical accuracy encountered when computing with them, see David Goldberg’s paper What Every Computer Scientist Should Know About Floating-Point Arithmetic.<br>For even more extensive documentation of the history of, rationale for, and issues with floating-point numbers, as well as discussion of many other topics in numerical computing, see the collected writings of William Kahan, commonly known as the “Father of Floating-Point”. Of particular interest may be An Interview with the Old Man of Floating-Point.</p>
 
           
         
@@ -1692,7 +1753,7 @@
                   <a href="/archives">
                 
                     <span class="site-state-item-count">5</span>
-                    <span class="site-state-item-name">日志</span>
+                    <span class="site-state-item-name">文章</span>
                   </a>
                 </div>
               
