@@ -85,7 +85,7 @@
     root: '/',
     scheme: 'Muse',
     version: '7.0.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false,"dimmer":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true,"dimmer":false},
     fancybox: true,
     fastclick: true,
     lazyload: true,
@@ -221,34 +221,15 @@
         
         
           
-          <li class="menu-item menu-item-home menu-item-active">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
-
-  </li>
-        
-        
-        
-          
           <li class="menu-item menu-item-categories">
 
     
     
     
-      
-    
 
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section">分类</a>
 
   </li>
 
@@ -569,7 +550,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-05 12:03:12" itemprop="dateModified" datetime="2019-03-05T12:03:12+08:00">2019-03-05</time>
+                <time title="修改时间：2019-03-06 10:24:00" itemprop="dateModified" datetime="2019-03-06T10:24:00+08:00">2019-03-06</time>
               
             
           </span>
@@ -869,24 +850,51 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; setrounding(BigFloat, RoundUp) <span class="keyword">do</span></span><br><span class="line">           BigFloat(1) + parse(BigFloat, <span class="string">"0.1"</span>)</span><br><span class="line">       end</span><br><span class="line">1.100000000000000000000000000000000000000000000000000000000000000000000000000003</span><br><span class="line"></span><br><span class="line">julia&gt; setrounding(BigFloat, RoundDown) <span class="keyword">do</span></span><br><span class="line">           BigFloat(1) + parse(BigFloat, <span class="string">"0.1"</span>)</span><br><span class="line">       end</span><br><span class="line">1.099999999999999999999999999999999999999999999999999999999999999999999999999986</span><br><span class="line"></span><br><span class="line">julia&gt; setprecision(40) <span class="keyword">do</span></span><br><span class="line">           BigFloat(1) + parse(BigFloat, <span class="string">"0.1"</span>)</span><br><span class="line">       end</span><br><span class="line">1.1000000000004</span><br></pre></td></tr></table></figure>
 <h3 id="数字字符系数"><a href="#数字字符系数" class="headerlink" title="数字字符系数"></a>数字字符系数</h3><p>&emsp;为了让一般的数字方程和表达式更清晰，Julia 允许在变量前直接使用意指相乘的数字字符。这让书写多项式变得清晰很多：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; x = 3</span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">julia&gt; 2x^2 - 3x + 1</span><br><span class="line">10</span><br><span class="line"></span><br><span class="line">julia&gt; 1.5x^2 - .5x + 1</span><br><span class="line">13.0</span><br><span class="line">It also makes writing exponential <span class="built_in">functions</span> more elegant:</span><br><span class="line"></span><br><span class="line">julia&gt; 2^2x</span><br><span class="line">64</span><br></pre></td></tr></table></figure>
-<p>The precedence of numeric literal coefficients is slightly lower than that of unary operators such as negation. So -2x is parsed as (-2) <em> x and √2x is parsed as (√2) </em> x. However, numeric literal coefficients parse similarly to unary operators when combined with exponentiation. For example 2^3x is parsed as 2^(3x), and 2x^3 is parsed as 2*(x^3).</p>
-<p>Numeric literals also work as coefficients to parenthesized expressions:</p>
-<p>julia&gt; 2(x-1)^2 - 3(x-1) + 1<br>3<br>Note<br>The precedence of numeric literal coefficients used for implicit multiplication is higher than other binary operators such as multiplication (*), and division (/, \, and //). This means, for example, that 1 / 2im equals -0.5im and 6 // 2(2 + 1) equals 1 // 1.</p>
-<p>Additionally, parenthesized expressions can be used as coefficients to variables, implying multiplication of the expression by the variable:</p>
-<p>julia&gt; (x-1)x<br>6<br>Neither juxtaposition of two parenthesized expressions, nor placing a variable before a parenthesized expression, however, can be used to imply multiplication:</p>
-<p>julia&gt; (x-1)(x+1)<br>ERROR: MethodError: objects of type Int64 are not callable</p>
-<p>julia&gt; x(x+1)<br>ERROR: MethodError: objects of type Int64 are not callable<br>Both expressions are interpreted as function application: any expression that is not a numeric literal, when immediately followed by a parenthetical, is interpreted as a function applied to the values in parentheses (see Functions for more about functions). Thus, in both of these cases, an error occurs since the left-hand value is not a function.</p>
-<p>The above syntactic enhancements significantly reduce the visual noise incurred when writing common mathematical formulae. Note that no whitespace may come between a numeric literal coefficient and the identifier or parenthesized expression which it multiplies.</p>
-<p>Syntax Conflicts<br>Juxtaposed literal coefficient syntax may conflict with two numeric literal syntaxes: hexadecimal integer literals and engineering notation for floating-point literals. Here are some situations where syntactic conflicts arise:</p>
-<p>The hexadecimal integer literal expression 0xff could be interpreted as the numeric literal 0 multiplied by the variable xff.<br>The floating-point literal expression 1e10 could be interpreted as the numeric literal 1 multiplied by the variable e10, and similarly with the equivalent E form.<br>The 32-bit floating-point literal expression 1.5f22 could be interpreted as the numeric literal 1.5 multiplied by the variable f22.<br>In all cases the ambiguity is resolved in favor of interpretation as numeric literals:</p>
-<p>Expressions starting with 0x are always hexadecimal literals.<br>Expressions starting with a numeric literal followed by e or E are always floating-point literals.<br>Expressions starting with a numeric literal followed by f are always 32-bit floating-point literals.<br>Unlike E, which is equivalent to e in numeric literals for historical reasons, F is just another letter and does not behave like f in numeric literals. Hence, expressions starting with a numeric literal followed by F are interpreted as the numerical literal multiplied by a variable, which means that, for example, 1.5F22 is equal to 1.5 * F22.</p>
-<p>Literal zero and one<br>Julia provides functions which return literal 0 and 1 corresponding to a specified type or the type of a given variable.</p>
-<p>Function    Description<br>zero(x)    Literal zero of type x or type of variable x<br>one(x)    Literal one of type x or type of variable x<br>These functions are useful in Numeric Comparisons to avoid overhead from unnecessary type conversion.</p>
-<p>Examples:</p>
-<p>julia&gt; zero(Float32)<br>0.0f0</p>
-<p>julia&gt; zero(1.0)<br>0.0</p>
-<p>julia&gt; one(Int32)<br>1</p>
-<p>julia&gt; one(BigFloat)<br>1.0</p>
+<p>&emsp;数字字符系数的优先级稍低于诸如负数的一元运算符。所以 <code>-2</code> 被解析为 <code>(-2) * x</code> 并且  <code>√2x</code> 被解析为 <code>√2x * x</code>。不过当和乘方组合时数字字符系数的解析就类似于一元运算符了。例如 <code>2^3x</code> 被解析为 <code>2^(3x)</code>，<code>2x^3</code> 被解析为 <code>2*(x^3)</code>。</p>
+<p>对于有括号的表达式数字字符同样可以作为系数工作：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; 2(x-1)^2 - 3(x-1) + 1</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+<p>注意<br>用于隐式乘法的数字字符系数的优先级要高于其他的二元运算符，比如乘法 <code>(*)</code> 和除法 <code>(/、\ 和 //)</code>。 也就是说例如 <code>1 / 2im</code> 等于 <code>-0.5im</code> 并且 <code>6 // 2(2 + 1)</code> 等于 <code>1 // 1</code>。</p>
+<p>此外加括号的表达式可以作为变量的因数，暗指和变量相乘。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; (x-1)x</span><br><span class="line">6</span><br></pre></td></tr></table></figure>
+<p>然而隐式的相乘既不能是并列两个括号表达式，也不能在括号表达式前放置一个变量：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; (x-1)(x+1)</span><br><span class="line">ERROR: MethodError: objects of <span class="built_in">type</span> Int64 are not callable</span><br><span class="line"></span><br><span class="line">julia&gt; x(x+1)</span><br><span class="line">ERROR: MethodError: objects of <span class="built_in">type</span> Int64 are not callable</span><br></pre></td></tr></table></figure>
+<p>&emsp;两者的表达式都被解释为函数应用：一个非数字字符的表达式，当其直接在括号中跟随时将被解释为函数在括号中应用在值上（在<a href>函数</a>查看有关函数的内容）。因为在这两种情形里当左边的值不是函数时将出现错误。</p>
+<p>&emsp;上述的语法改进显著地减少了在编写一般数学公式时的视觉干扰。注意相乘的数字字符系数和标识符或括号之间不能有空格。</p>
+<h3 id="语法冲突"><a href="#语法冲突" class="headerlink" title="语法冲突"></a>语法冲突</h3><p>&emsp;并列的字符系数语法可能会和两个数字字符语法冲突：浮点字符的十六进制整数字符和工程符号。这里有一些语法冲突出现的情况：</p>
+<ul>
+<li>十六进制整数字符表达式 <code>0xff</code> 有可能被解释为和变量 <code>xff</code> 相乘的数字字符 <code>0</code>。</li>
+<li>浮点字符表达式 <code>1e10</code> 可能被解释为和变量 <code>e10</code> 相乘的数字字符 <code>1</code> 并同样使用等价的 <code>E</code> 形式。</li>
+<li>32位浮点字符表达式 <code>1.5f22</code> 可能被解释位和变量 <code>f22</code> 相乘的数字字符 <code>1.5</code>。</li>
+</ul>
+<p>所有情形下的混淆使用解释为数字字符替代解决：</p>
+<ul>
+<li>以 <code>0x</code> 开头的表达式总被认为是十六进制字符。</li>
+<li>以 <code>e</code> 或 <code>E</code> 跟随的数字字符开头的表达式总被看作浮点字符。</li>
+<li>以 <code>f</code> 跟随的数字字符总被看作 32 位浮点字符。</li>
+</ul>
+<p>&emsp;和在数字字符中因为历史原因等于 <code>e</code> 的 <code>E</code> 不同， <code>F</code> 在数字字符中仅仅是另一个字符，并且他的的行为不同于 <code>f</code>。因此以 <code>F</code> 跟随的数字字符开头的表达式都被解释为一个和变量相乘的数字字符，那就是说，比如 <code>1.5F22</code> 是等于 <code>1.5 * F22</code> 的。</p>
+<h3 id="字符零和一"><a href="#字符零和一" class="headerlink" title="字符零和一"></a>字符零和一</h3><p>Julia 提供了返回对应特定类型或给定变量的类型字符 <code>0</code> 和 <code>1</code> 的函数。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Function</th>
+<th style="text-align:center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">zero(x)</td>
+<td style="text-align:center">类型 <code>x</code> 或变量 <code>x</code> 的类型的零字符</td>
+</tr>
+<tr>
+<td style="text-align:center">one(x)</td>
+<td style="text-align:center">类型 <code>x</code> 或变量 <code>x</code> 的类型的字符一</td>
+</tr>
+</tbody>
+</table>
+<p>这些函数在数字比较中避免来自于必要的类型转换的间接开销。</p>
+<p>例子：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; zero(Float32)</span><br><span class="line">0.0f0</span><br><span class="line"></span><br><span class="line">julia&gt; zero(1.0)</span><br><span class="line">0.0</span><br><span class="line"></span><br><span class="line">julia&gt; one(Int32)</span><br><span class="line">1</span><br><span class="line"></span><br><span class="line">julia&gt; one(BigFloat)</span><br><span class="line">1.0</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1784,65 +1792,6 @@
               <p class="site-description motion-element" itemprop="description">AI,人工智能,Julia中文文档，Julia编程语言</p>
           </div>
 
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives">
-                
-                    <span class="site-state-item-count">5</span>
-                    <span class="site-state-item-name">文章</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">7</span>
-                    <span class="site-state-item-name">分类</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">3</span>
-                    <span class="site-state-item-name">标签</span>
-                  
-                </div>
-              
-            </nav>
           
 
           
