@@ -2069,7 +2069,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #1f88b9;
+  background: #c47dff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2821,18 +2821,6 @@ embed {
   -webkit-box-shadow: 0 0 5px rgba(250,250,250,0.8);
   -moz-box-shadow: 0 0 5px rgba(250,250,250,0.8);
 }
-@media screen and (min-width: 1200px) {
-  body {
-    background-color: #13242c;
-    background-image: url("/images/background.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: 50% 50%;
-  }
-  #footer a {
-    color: #eee;
-  }
-}
-.header {
-  background-color: transparent;
+body {
+  background-color: #13242c;
 }

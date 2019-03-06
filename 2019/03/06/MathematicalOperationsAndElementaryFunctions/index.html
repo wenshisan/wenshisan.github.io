@@ -107,25 +107,25 @@
 
 
 
-  <meta name="description" content="变量&amp;emsp;在Julia中，变量是一个对应（或绑定）到一个值的名称。这对您想要储存一个值以备后用（比如您从某些数学计算中得到的值）来说很有帮助。例如：">
+  <meta name="description" content="Julia 提供了一个贯穿它全部简单数字类型的完整基础算术和按位运算符，也提供了大量便利高效的标准数学函数。">
 <meta name="keywords" content="Julia中文文档,Julia中文手册">
 <meta property="og:type" content="article">
-<meta property="og:title" content="变量">
-<meta property="og:url" content="http://www.thgd.net/2019/02/28/Variables/index.html">
+<meta property="og:title" content="数学运算和初等函数">
+<meta property="og:url" content="http://www.thgd.net/2019/03/06/MathematicalOperationsAndElementaryFunctions/index.html">
 <meta property="og:site_name" content="醍醐果冻">
-<meta property="og:description" content="变量&amp;emsp;在Julia中，变量是一个对应（或绑定）到一个值的名称。这对您想要储存一个值以备后用（比如您从某些数学计算中得到的值）来说很有帮助。例如：">
+<meta property="og:description" content="Julia 提供了一个贯穿它全部简单数字类型的完整基础算术和按位运算符，也提供了大量便利高效的标准数学函数。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-06T09:08:27.530Z">
+<meta property="og:updated_time" content="2019-03-06T09:19:20.698Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="变量">
-<meta name="twitter:description" content="变量&amp;emsp;在Julia中，变量是一个对应（或绑定）到一个值的名称。这对您想要储存一个值以备后用（比如您从某些数学计算中得到的值）来说很有帮助。例如：">
+<meta name="twitter:title" content="数学运算和初等函数">
+<meta name="twitter:description" content="Julia 提供了一个贯穿它全部简单数字类型的完整基础算术和按位运算符，也提供了大量便利高效的标准数学函数。">
 
 
 
 
 
 
-  <link rel="canonical" href="http://www.thgd.net/2019/02/28/Variables/">
+  <link rel="canonical" href="http://www.thgd.net/2019/03/06/MathematicalOperationsAndElementaryFunctions/">
 
 
 
@@ -135,7 +135,7 @@
   };
 </script>
 
-  <title>变量 | 醍醐果冻</title>
+  <title>数学运算和初等函数 | 醍醐果冻</title>
   
 
 
@@ -283,7 +283,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.thgd.net/2019/02/28/Variables/">
+    <link itemprop="mainEntityOfPage" href="http://www.thgd.net/2019/03/06/MathematicalOperationsAndElementaryFunctions/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="醍醐果冻">
@@ -300,7 +300,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">变量
+          <h2 class="post-title" itemprop="name headline">数学运算和初等函数
 
               
             
@@ -326,24 +326,12 @@
                 
               
 
-              <time title="创建时间：2019-02-28 17:37:37" itemprop="dateCreated datePublished" datetime="2019-02-28T17:37:37+08:00">2019-02-28</time>
+              <time title="创建时间：2019-03-06 17:37:37 / 修改时间：17:19:20" itemprop="dateCreated datePublished" datetime="2019-03-06T17:37:37+08:00">2019-03-06</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-06 17:08:27" itemprop="dateModified" datetime="2019-03-06T17:08:27+08:00">2019-03-06</time>
               
             
           </span>
@@ -374,7 +362,7 @@
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Julia中文文档/手册/变量/" itemprop="url" rel="index"><span itemprop="name">变量</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Julia中文文档/手册/数学运算和初等函数/" itemprop="url" rel="index"><span itemprop="name">数学运算和初等函数</span></a></span>
 
                 
                 
@@ -409,26 +397,71 @@
       
 
       
-        <h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>&emsp;在Julia中，变量是一个对应（或绑定）到一个值的名称。这对您想要储存一个值以备后用（比如您从某些数学计算中得到的值）来说很有帮助。例如：<br><a id="more"></a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Assign the value 10 to the variable x</span></span><br><span class="line">julia&gt; x = 10</span><br><span class="line">10</span><br><span class="line"></span><br><span class="line"><span class="comment"># Doing math with x's value</span></span><br><span class="line">julia&gt; x + 1</span><br><span class="line">11</span><br><span class="line"></span><br><span class="line"><span class="comment"># Reassign x's value</span></span><br><span class="line">julia&gt; x = 1 + 1</span><br><span class="line">2</span><br><span class="line"></span><br><span class="line"><span class="comment"># You can assign values of other types, like strings of text</span></span><br><span class="line">julia&gt; x = <span class="string">"Hello World!"</span></span><br><span class="line"><span class="string">"Hello World!"</span></span><br></pre></td></tr></table></figure></p>
-<p>&emsp;Julia 为变量的命名提供了一个极其灵活的系统。 变量名是区分大小写且没有语义上的意义（是的，语言不会因为他们的名字而进行区别对待）。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; x = 1.0</span><br><span class="line">1.0</span><br><span class="line"></span><br><span class="line">julia&gt; y = -3</span><br><span class="line">-3</span><br><span class="line"></span><br><span class="line">julia&gt; Z = <span class="string">"My string"</span></span><br><span class="line"><span class="string">"My string"</span></span><br><span class="line"></span><br><span class="line">julia&gt; customary_phrase = <span class="string">"Hello world!"</span></span><br><span class="line"><span class="string">"Hello world!"</span></span><br><span class="line"></span><br><span class="line">julia&gt; UniversalDeclarationOfHumanRightsStart = <span class="string">"人人生而自由，在尊严和权利上一律平等。"</span></span><br><span class="line"><span class="string">"人人生而自由，在尊严和权利上一律平等。"</span></span><br><span class="line">Unicode names (<span class="keyword">in</span> UTF-8 encoding) are allowed:</span><br><span class="line"></span><br><span class="line">julia&gt; δ = 0.00001</span><br><span class="line">1.0e-5</span><br><span class="line"></span><br><span class="line">julia&gt; 안녕하세요 = <span class="string">"Hello"</span></span><br><span class="line"><span class="string">"Hello"</span></span><br></pre></td></tr></table></figure>
-<p>&emsp;在Julia的REPL和其他一些Julia编辑环境中，您可以通过输入反斜杠 LaTeX 符号跟着 <code>tab</code> 输入很多Unicode数学符号。例如，变量名 <code>δ</code> 可以通过输入 <code>\delta-tab</code> 键入，<code>α̂₂</code> 通过 <code>\alpha-tab-\hat- tab-\_2-tab</code> 。（如果你在某个例如其他人的代码里找到了您不知道如何输入的符号，REPL帮助将会告诉您：只需输入 <code>?</code> 然后粘贴这个符号）。</p>
-<p>&emsp;如果需要的话Julia将也允许您重新定义内置的常量和函数（然而为避免潜在的混淆并不推荐您这么做）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; pi = 3</span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">julia&gt; pi</span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">julia&gt; sqrt = 4</span><br><span class="line">4</span><br><span class="line">However, <span class="keyword">if</span> you try to redefine a built-in constant or <span class="keyword">function</span> already <span class="keyword">in</span> use, Julia will give you an error:</span><br><span class="line"></span><br><span class="line">julia&gt; pi</span><br><span class="line">π = 3.1415926535897...</span><br><span class="line"></span><br><span class="line">julia&gt; pi = 3</span><br><span class="line">ERROR: cannot assign variable MathConstants.pi from module Main</span><br><span class="line"></span><br><span class="line">julia&gt; sqrt(100)</span><br><span class="line">10.0</span><br><span class="line"></span><br><span class="line">julia&gt; sqrt = 4</span><br><span class="line">ERROR: cannot assign variable Base.sqrt from module Main</span><br></pre></td></tr></table></figure>
-<h3 id="允许的变量名"><a href="#允许的变量名" class="headerlink" title="允许的变量名"></a>允许的变量名</h3><p>&emsp;变量名必须以字母开头（<code>A-Z</code> 或 <code>a-z</code>），下划线，或者大于00A0的 Unicode 代码标点集合，尤其是 Unicode 字符分类 <code>Lu/Ll/Lt/Lm/Lo/Nl</code>（字母），<code>Sc/So</code>（货币和其他符号），还有其他一些类似字母的字符（例如 Sm 数学符号的集合）都被允许使用。随后的字符也可能包括 <code>!</code> 和数字（0-9和其他分类的字符 <code>Nd/No</code>），同时其他的Unicode代码标点：区分标识和其他标识符（<code>Mn/Mc/Me/Sk</code>分类），一些连接字符（<code>Pc</code> 分类）,上撇号，还有一些其他的字符。</p>
-<p>&emsp;类似+的运算符也都是有效的标识符，但被特殊的格式化了。在一些上下文中，运算符也可以像变量一样使用，例如<code>(+)</code>指的是加法函数，<code>(+) = f</code>将会把它重新赋值。多数的Unicode中缀运算符（在 <code>Sm</code> 分类中）,如<code>⊕</code>，都被格式化为中缀运算符并可用于用户定义的的方法（例如您可以使用 <code>const ⊗ = kron</code> 来定义<code>⊗</code>为一个中缀克罗内克积（Koronecker）乘积）。运算符也可以用修饰符、上撇号和上/下标作为后缀，例如<code>+̂ₐ″</code> 被格式化为以+号开头的中缀运算符。</p>
-<p>&emsp;仅内置语句的名称明确的不能作为变量使用。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; <span class="keyword">else</span> = <span class="literal">false</span></span><br><span class="line">ERROR: syntax: unexpected <span class="string">"else"</span></span><br><span class="line"></span><br><span class="line">julia&gt; try = <span class="string">"No"</span></span><br><span class="line">ERROR: syntax: unexpected <span class="string">"="</span></span><br></pre></td></tr></table></figure>
-<p>&emsp;一些Unicode字符被视为等同于标识符。Unicode组合字符的不同输入方式（例如 <code>,</code> 强调）都被视为相同（Julia标识都是特别的、NPC-标准化的）。Unicode字符<code>ɛ</code>(<code>U+025B</code>:小写拉丁字母 e)和<code>µ</code>（<code>U+00B5</code>: 读谬miu，英文micro sign）都被视为等于对应的希腊字母，因为前者更容易使用输入法输入。</p>
-<h3 id="格式转换"><a href="#格式转换" class="headerlink" title="格式转换"></a>格式转换</h3><p>Julia在有效命名上做了少量限制规则，以变得有益于接下来的类型转换：</p>
-<ul>
-<li>变量名都小写。</li>
-<li>可以使用下划线（<code>&#39;_&#39;</code>）标出单词分隔,但是除非名称难以阅读否则不建议使用下划线。</li>
-<li>类型和模块的名称的开头以及单词分隔使用首字母大写的驼峰形式代替下划线。</li>
-<li>函数和宏命令的名称为小谢形式，没有下划线。</li>
-<li>参数名以<code>!</code>结尾的函数。有时被称之为 “变异” 或 “原位” 函数，因为他们在被调用后会改变他们的参数，不只是返回值。</li>
-<li>更新格式转换的信息，查看<a href="https://docs.julialang.org/en/v1/manual/style-guide/#Style-Guide-1" target="_blank" rel="noopener">格式指南</a>。</li>
-</ul>
+        <p>Julia 提供了一个贯穿它全部简单数字类型的完整基础算术和按位运算符，也提供了大量便利高效的标准数学函数。<br><a id="more"></a></p>
+<h3 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h3><p>下列的算术运算符在全部简单数字类型上都能支持：</p>
+<p>Expression    Name    Description<br>+x    unary plus    the identity operation<br>-x    unary minus    maps values to their additive inverses<br>x + y    binary plus    performs addition<br>x - y    binary minus    performs subtraction<br>x * y    times    performs multiplication<br>x / y    divide    performs division<br>x ÷ y    integer divide    x / y, truncated to an integer<br>x \ y    inverse divide    equivalent to y / x<br>x ^ y    power    raises x to the yth power<br>x % y    remainder    equivalent to rem(x,y)<br>as well as the negation on Bool types:</p>
+<p>Expression    Name    Description<br>!x    negation    changes true to false and vice versa<br>Julia’s promotion system makes arithmetic operations on mixtures of argument types “just work” naturally and automatically. See Conversion and Promotion for details of the promotion system.</p>
+<p>Here are some simple examples using arithmetic operators:</p>
+<p>julia&gt; 1 + 2 + 3<br>6</p>
+<p>julia&gt; 1 - 2<br>-1</p>
+<p>julia&gt; 3*2/12<br>0.5<br>(By convention, we tend to space operators more tightly if they get applied before other nearby operators. For instance, we would generally write -x + 2 to reflect that first x gets negated, and then 2 is added to that result.)</p>
+<p>Bitwise Operators<br>The following bitwise operators are supported on all primitive integer types:</p>
+<p>Expression    Name<br>~x    bitwise not<br>x &amp; y    bitwise and<br>x | y    bitwise or<br>x ⊻ y    bitwise xor (exclusive or)<br>x &gt;&gt;&gt; y    logical shift right<br>x &gt;&gt; y    arithmetic shift right<br>x &lt;&lt; y    logical/arithmetic shift left<br>Here are some examples with bitwise operators:</p>
+<p>julia&gt; ~123<br>-124</p>
+<p>julia&gt; 123 &amp; 234<br>106</p>
+<p>julia&gt; 123 | 234<br>251</p>
+<p>julia&gt; 123 ⊻ 234<br>145</p>
+<p>julia&gt; xor(123, 234)<br>145</p>
+<p>julia&gt; ~UInt32(123)<br>0xffffff84</p>
+<p>julia&gt; ~UInt8(123)<br>0x84<br>Updating operators<br>Every binary arithmetic and bitwise operator also has an updating version that assigns the result of the operation back into its left operand. The updating version of the binary operator is formed by placing a = immediately after the operator. For example, writing x += 3 is equivalent to writing x = x + 3:</p>
+<p>julia&gt; x = 1<br>1</p>
+<p>julia&gt; x += 3<br>4</p>
+<p>julia&gt; x<br>4<br>The updating versions of all the binary arithmetic and bitwise operators are:</p>
+<p>+=  -=  *=  /=  \=  ÷=  %=  ^=  &amp;=  |=  ⊻=  &gt;&gt;&gt;=  &gt;&gt;=  &lt;&lt;=<br>Note<br>An updating operator rebinds the variable on the left-hand side. As a result, the type of the variable may change.</p>
+<p>julia&gt; x = 0x01; typeof(x)<br>UInt8</p>
+<p>julia&gt; x <em>= 2 # Same as x = x </em> 2<br>2</p>
+<p>julia&gt; typeof(x)<br>Int64<br>Vectorized “dot” operators<br>For every binary operation like ^, there is a corresponding “dot” operation .^ that is automatically defined to perform ^ element-by-element on arrays. For example, [1,2,3] ^ 3 is not defined, since there is no standard mathematical meaning to “cubing” a (non-square) array, but [1,2,3] .^ 3 is defined as computing the elementwise (or “vectorized”) result [1^3, 2^3, 3^3]. Similarly for unary operators like ! or √, there is a corresponding .√ that applies the operator elementwise.</p>
+<p>julia&gt; [1,2,3] .^ 3<br>3-element Array{Int64,1}:<br>  1<br>  8<br> 27<br>More specifically, a .^ b is parsed as the “dot” call (^).(a,b), which performs a broadcast operation: it can combine arrays and scalars, arrays of the same size (performing the operation elementwise), and even arrays of different shapes (e.g. combining row and column vectors to produce a matrix). Moreover, like all vectorized “dot calls,” these “dot operators” are fusing. For example, if you compute 2 .<em> A.^2 .+ sin.(A) (or equivalently @. 2A^2 + sin(A), using the @. macro) for an array A, it performs a single loop over A, computing 2a^2 + sin(a) for each element of A. In particular, nested dot calls like f.(g.(x)) are fused, and “adjacent” binary operators like x .+ 3 .</em> x.^2 are equivalent to nested dot calls (+).(x, (*).(3, (^).(x, 2))).</p>
+<p>Furthermore, “dotted” updating operators like a .+= b (or @. a += b) are parsed as a .= a .+ b, where .= is a fused in-place assignment operation (see the dot syntax documentation).</p>
+<p>Note the dot syntax is also applicable to user-defined operators. For example, if you define ⊗(A,B) = kron(A,B) to give a convenient infix syntax A ⊗ B for Kronecker products (kron), then [A,B] .⊗ [C,D] will compute [A⊗C, B⊗D] with no additional coding.</p>
+<p>Combining dot operators with numeric literals can be ambiguous. For example, it is not clear whether 1.+x means 1. + x or 1 .+ x. Therefore this syntax is disallowed, and spaces must be used around the operator in such cases.</p>
+<p>Numeric Comparisons<br>Standard comparison operations are defined for all the primitive numeric types:</p>
+<p>Operator    Name<br>==    equality<br>!=, ≠    inequality<br>&lt;    less than<br>&lt;=, ≤    less than or equal to</p>
+<blockquote>
+<p>   greater than<br>=, ≥    greater than or equal to<br>Here are some simple examples:</p>
+</blockquote>
+<p>julia&gt; 1 == 1<br>true</p>
+<p>julia&gt; 1 == 2<br>false</p>
+<p>julia&gt; 1 != 2<br>true</p>
+<p>julia&gt; 1 == 1.0<br>true</p>
+<p>julia&gt; 1 &lt; 2<br>true</p>
+<p>julia&gt; 1.0 &gt; 3<br>false</p>
+<p>julia&gt; 1 &gt;= 1.0<br>true</p>
+<p>julia&gt; -1 &lt;= 1<br>true</p>
+<p>julia&gt; -1 &lt;= -1<br>true</p>
+<p>julia&gt; -1 &lt;= -2<br>false</p>
+<p>julia&gt; 3 &lt; -0.5<br>false<br>Integers are compared in the standard manner – by comparison of bits. Floating-point numbers are compared according to the IEEE 754 standard:</p>
+<p>Finite numbers are ordered in the usual manner.<br>Positive zero is equal but not greater than negative zero.<br>Inf is equal to itself and greater than everything else except NaN.<br>-Inf is equal to itself and less then everything else except NaN.<br>NaN is not equal to, not less than, and not greater than anything, including itself.<br>The last point is potentially surprising and thus worth noting:</p>
+<p>julia&gt; NaN == NaN<br>false</p>
+<p>julia&gt; NaN != NaN<br>true</p>
+<p>julia&gt; NaN &lt; NaN<br>false</p>
+<p>julia&gt; NaN &gt; NaN<br>false<br>and can cause especial headaches with arrays:</p>
+<p>julia&gt; [1 NaN] == [1 NaN]<br>false<br>Julia provides additional functions to test numbers for special values, which can be useful in situations like hash key comparisons:</p>
+<p>Function    Tests if<br>isequal(x, y)    x and y are identical<br>isfinite(x)    x is a finite number<br>isinf(x)    x is infinite<br>isnan(x)    x is not a number<br>isequal considers NaNs equal to each other:</p>
+<p>julia&gt; isequal(NaN, NaN)<br>true</p>
+<p>julia&gt; isequal([1 NaN], [1 NaN])<br>true</p>
+<p>julia&gt; isequal(NaN, NaN32)<br>true<br>isequal can also be used to distinguish signed zeros:</p>
+<p>julia&gt; -0.0 == 0.0<br>true</p>
+<p>julia&gt; isequal(-0.0, 0.0)<br>false<br>Mixed-type comparisons between signed integers, unsigned integers, and floats can be tricky. A great deal of care has been taken to ensure that Julia does them correctly.</p>
+<p>For other types, isequal defaults to calling ==, so if you want to define equality for your own types then you only need to add a == method. If you define your own equality function, you should probably define a corresponding hash method to ensure that isequal(x,y) implies hash(x) == hash(y).</p>
+<p>Chaining comparisons<br>Unlike most languages, with the notable exception of Python, comparisons can be arbitrarily chained:</p>
+<p>julia&gt; 1 &lt; 2 &lt;= 2 &lt; 3 == 3 &gt; 2 &gt;= 1 == 1 &lt; 3 != 5<br>true<br>Chaining comparisons is often quite convenient in numerical code. Chained comparisons use the &amp;&amp; operator for scalar comparisons, and the &amp; operator for elementwise comparisons, which allows them to work on arrays. For example, 0 .&lt; A .&lt; 1 gives a boolean array whose entries are true where the corresponding elements of A are between 0 and 1.</p>
+<p>Note the evaluation behavior of chained comparisons:</p>
+<p>julia&gt; v(x) = (println(x); x)<br>v (generic function with 1 method)</p>
+<p>julia&gt; v(1) &lt; v(2) &lt;= v(3)<br>2<br>1<br>3<br>true</p>
+<p>julia&gt; v(1) &gt; v(2) &lt;= v(3)<br>2<br>1<br>false<br>The middle expression is only evaluated once, rather than twice as it would be if the expression were written as v(1) &lt; v(2) &amp;&amp; v(2) &lt;= v(3). However, the order of evaluations in a chained comparison is undefined. It is strongly recommended not to use expressions with side effects (such as printing) in chained comparisons. If side effects are required, the short-circuit &amp;&amp; operator should be used explicitly (see Short-Circuit Evaluation).</p>
+<p>Elementary Functions<br>Julia provides a comprehensive collection of mathematical functions and operators. These mathematical operations are defined over as broad a class of numerical values as permit sensible definitions, including integers, floating-point numbers, rationals, and complex numbers, wherever such definitions make sense.</p>
+<p>Moreover, these functions (like any Julia function) can be applied in “vectorized” fashion to arrays and other collections with the dot syntax f.(A), e.g. sin.(A) will compute the sine of each element of an array A.</p>
 
       
     </div>
@@ -496,8 +529,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/28/GettingStart/" rel="next" title="入门">
-                <i class="fa fa-chevron-left"></i> 入门
+              <a href="/2019/03/01/IntegersAndFloat-PointNumbers/" rel="next" title="整数和浮点数">
+                <i class="fa fa-chevron-left"></i> 整数和浮点数
               </a>
             
           </div>
@@ -505,10 +538,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/01/IntegersAndFloat-PointNumbers/" rel="prev" title="整数和浮点数">
-                整数和浮点数 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -600,7 +629,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-text">变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#允许的变量名"><span class="nav-text">允许的变量名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#格式转换"><span class="nav-text">格式转换</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#算术运算符"><span class="nav-text">算术运算符</span></a></li></ol></div>
             
 
           </div>
