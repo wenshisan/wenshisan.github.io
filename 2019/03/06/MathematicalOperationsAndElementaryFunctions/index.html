@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="醍醐果冻">
 <meta property="og:description" content="Julia 提供了一个贯穿它全部简单数字类型的完整基础算术和按位运算符，也提供了大量便利高效的标准数学函数。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-06T09:19:20.698Z">
+<meta property="og:updated_time" content="2019-03-07T01:56:25.773Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数学运算和初等函数">
 <meta name="twitter:description" content="Julia 提供了一个贯穿它全部简单数字类型的完整基础算术和按位运算符，也提供了大量便利高效的标准数学函数。">
@@ -326,12 +326,24 @@
                 
               
 
-              <time title="创建时间：2019-03-06 17:37:37 / 修改时间：17:19:20" itemprop="dateCreated datePublished" datetime="2019-03-06T17:37:37+08:00">2019-03-06</time>
+              <time title="创建时间：2019-03-06 17:37:37" itemprop="dateCreated datePublished" datetime="2019-03-06T17:37:37+08:00">2019-03-06</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-07 09:56:25" itemprop="dateModified" datetime="2019-03-07T09:56:25+08:00">2019-03-07</time>
               
             
           </span>
@@ -399,14 +411,129 @@
       
         <p>Julia 提供了一个贯穿它全部简单数字类型的完整基础算术和按位运算符，也提供了大量便利高效的标准数学函数。<br><a id="more"></a></p>
 <h3 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h3><p>下列的算术运算符在全部简单数字类型上都能支持：</p>
-<p>Expression    Name    Description<br>+x    unary plus    the identity operation<br>-x    unary minus    maps values to their additive inverses<br>x + y    binary plus    performs addition<br>x - y    binary minus    performs subtraction<br>x * y    times    performs multiplication<br>x / y    divide    performs division<br>x ÷ y    integer divide    x / y, truncated to an integer<br>x \ y    inverse divide    equivalent to y / x<br>x ^ y    power    raises x to the yth power<br>x % y    remainder    equivalent to rem(x,y)<br>as well as the negation on Bool types:</p>
-<p>Expression    Name    Description<br>!x    negation    changes true to false and vice versa<br>Julia’s promotion system makes arithmetic operations on mixtures of argument types “just work” naturally and automatically. See Conversion and Promotion for details of the promotion system.</p>
-<p>Here are some simple examples using arithmetic operators:</p>
-<p>julia&gt; 1 + 2 + 3<br>6</p>
-<p>julia&gt; 1 - 2<br>-1</p>
-<p>julia&gt; 3*2/12<br>0.5<br>(By convention, we tend to space operators more tightly if they get applied before other nearby operators. For instance, we would generally write -x + 2 to reflect that first x gets negated, and then 2 is added to that result.)</p>
-<p>Bitwise Operators<br>The following bitwise operators are supported on all primitive integer types:</p>
-<p>Expression    Name<br>~x    bitwise not<br>x &amp; y    bitwise and<br>x | y    bitwise or<br>x ⊻ y    bitwise xor (exclusive or)<br>x &gt;&gt;&gt; y    logical shift right<br>x &gt;&gt; y    arithmetic shift right<br>x &lt;&lt; y    logical/arithmetic shift left<br>Here are some examples with bitwise operators:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">表达式</th>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>+x</code></td>
+<td style="text-align:center">一元加</td>
+<td style="text-align:center">恒等运算</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>-x</code></td>
+<td style="text-align:center">一元减</td>
+<td style="text-align:center">将值映射到他们的反向和</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>x + y</code></td>
+<td style="text-align:center">二元加</td>
+<td style="text-align:center">执行加法</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>x - y</code></td>
+<td style="text-align:center">二元减</td>
+<td style="text-align:center">执行减法</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>x * y</code></td>
+<td style="text-align:center">乘</td>
+<td style="text-align:center">执行乘法</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>x / y</code></td>
+<td style="text-align:center">除</td>
+<td style="text-align:center">执行除法</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>x ÷ y</code></td>
+<td style="text-align:center">整数除</td>
+<td style="text-align:center"><code>x / y</code>，截取到整数</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>x \ y</code></td>
+<td style="text-align:center">反向除</td>
+<td style="text-align:center">等于 <code>y / x</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>x ^ y</code></td>
+<td style="text-align:center">幂运算</td>
+<td style="text-align:center">提升 <code>x</code> 到 <code>y</code> 幂次</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>x % y</code></td>
+<td style="text-align:center">取余</td>
+<td style="text-align:center">等于 <code>rem(x,y)</code></td>
+</tr>
+</tbody>
+</table>
+<p>以及在布尔类型上取反：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">表达式</th>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>!x</code></td>
+<td style="text-align:center">取反</td>
+<td style="text-align:center">将 <code>true</code> 变为 <code>false</code> 反之亦然</td>
+</tr>
+</tbody>
+</table>
+<p>&emsp;Julia 的提升系统让在混合参数类型上的算术运算”只管工作“的自然和自动化。查看提升系统<a href>转换</a>和<a href>提升</a>的细节。</p>
+<p>这里是一些使用算术运算符的简单例子：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; 1 + 2 + 3</span><br><span class="line">6</span><br><span class="line"></span><br><span class="line">julia&gt; 1 - 2</span><br><span class="line">-1</span><br><span class="line"></span><br><span class="line">julia&gt; 3*2/12</span><br><span class="line">0.5</span><br></pre></td></tr></table></figure>
+<p>（传统上我们趋向于在操作符应用在其他临近的操作符之前将他们空的更开一些。例如我们通常想要编写 <code>-x + 2</code> 去表达首先让 <code>x</code> 变为负，然后再在结果加上 <code>2</code>。）</p>
+<h3 id="按位运算符"><a href="#按位运算符" class="headerlink" title="按位运算符"></a>按位运算符</h3><p>下列是全部简单数学类型所支持的按位运算符：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">表达式</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">~x</td>
+<td style="text-align:center">bitwise not</td>
+</tr>
+<tr>
+<td style="text-align:center">x &amp; y</td>
+<td style="text-align:center">bitwise and</td>
+</tr>
+<tr>
+<td style="text-align:center">x</td>
+<td style="text-align:center">y</td>
+<td>bitwise or</td>
+</tr>
+<tr>
+<td style="text-align:center">x ⊻ y</td>
+<td style="text-align:center">bitwise xor (exclusive or)</td>
+</tr>
+<tr>
+<td style="text-align:center">x &gt;&gt;&gt; y</td>
+<td style="text-align:center">logical shift right</td>
+</tr>
+<tr>
+<td style="text-align:center">x &gt;&gt; y</td>
+<td style="text-align:center">arithmetic shift right</td>
+</tr>
+<tr>
+<td style="text-align:center">x &lt;&lt; y</td>
+<td style="text-align:center">logical/arithmetic shift left</td>
+</tr>
+</tbody>
+</table>
+<p>Here are some examples with bitwise operators:</p>
 <p>julia&gt; ~123<br>-124</p>
 <p>julia&gt; 123 &amp; 234<br>106</p>
 <p>julia&gt; 123 | 234<br>251</p>
@@ -629,7 +756,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#算术运算符"><span class="nav-text">算术运算符</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#算术运算符"><span class="nav-text">算术运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#按位运算符"><span class="nav-text">按位运算符</span></a></li></ol></div>
             
 
           </div>
