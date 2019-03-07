@@ -2069,7 +2069,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffff2e;
+  background: #6cf1db;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2824,8 +2824,32 @@ embed {
   -moz-border-radius: 5px;
 /* Old Firefox */
 }
-.button {
-  border-radius: 3;
+.btn {
+  border-radius: 3px;
+}
+.brand {
+  position: relative;
+  display: inline-block;
+  padding: 0 40px;
+  color: #fafafa;
+  background: transparent;
+  border-bottom: none;
+}
+.menu .menu-item a,
+.menu .menu-item span.exturl {
+  color: #fafafa;
+}
+.menu-item-active a,
+.menu .menu-item a:hover,
+.menu .menu-item span.exturl:hover {
+  border-bottom-color: #fafafa !important;
+  color: #fafafa;
+}
+.posts-collapse::after {
+  display: none;
+}
+.posts-collapse::before {
+  display: none;
 }
 body {
   background-color: #13242c;

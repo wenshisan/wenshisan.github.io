@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="醍醐果冻">
 <meta property="og:description" content="Julia 提供了一个贯穿它全部简单数字类型的完整基础算术和按位运算符，也提供了大量便利高效的标准数学函数。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-07T02:21:31.857Z">
+<meta property="og:updated_time" content="2019-03-07T03:21:39.324Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数学运算和初等函数">
 <meta name="twitter:description" content="Julia 提供了一个贯穿它全部简单数字类型的完整基础算术和按位运算符，也提供了大量便利高效的标准数学函数。">
@@ -217,6 +217,21 @@
   
     <ul id="menu" class="menu">
       
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+
+    
+
+    <a href="/" rel="section">首页</a>
+
+  </li>
         
         
         
@@ -343,7 +358,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-07 10:21:31" itemprop="dateModified" datetime="2019-03-07T10:21:31+08:00">2019-03-07</time>
+                <time title="修改时间：2019-03-07 11:21:39" itemprop="dateModified" datetime="2019-03-07T11:21:39+08:00">2019-03-07</time>
               
             
           </span>
@@ -533,14 +548,9 @@
 </tr>
 </tbody>
 </table>
-<p>这是一些使用按位运算符的例子：</p>
-<p>julia&gt; ~123<br>-124</p>
-<p>julia&gt; 123 &amp; 234<br>106</p>
-<p>julia&gt; 123 | 234<br>251</p>
-<p>julia&gt; 123 ⊻ 234<br>145</p>
-<p>julia&gt; xor(123, 234)<br>145</p>
-<p>julia&gt; ~UInt32(123)<br>0xffffff84</p>
-<p>julia&gt; ~UInt8(123)<br>0x84<br>Updating operators<br>Every binary arithmetic and bitwise operator also has an updating version that assigns the result of the operation back into its left operand. The updating version of the binary operator is formed by placing a = immediately after the operator. For example, writing x += 3 is equivalent to writing x = x + 3:</p>
+<p>这里是一些使用按位运算符的例子：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; ~123</span><br><span class="line">-124</span><br><span class="line"></span><br><span class="line">julia&gt; 123 &amp; 234</span><br><span class="line">106</span><br><span class="line"></span><br><span class="line">julia&gt; 123 | 234</span><br><span class="line">251</span><br><span class="line"></span><br><span class="line">julia&gt; 123 ⊻ 234</span><br><span class="line">145</span><br><span class="line"></span><br><span class="line">julia&gt; xor(123, 234)</span><br><span class="line">145</span><br><span class="line"></span><br><span class="line">julia&gt; ~UInt32(123)</span><br><span class="line">0xffffff84</span><br><span class="line"></span><br><span class="line">julia&gt; ~UInt8(123)</span><br><span class="line">0x84</span><br></pre></td></tr></table></figure>
+<p>Updating operators<br>Every binary arithmetic and bitwise operator also has an updating version that assigns the result of the operation back into its left operand. The updating version of the binary operator is formed by placing a = immediately after the operator. For example, writing x += 3 is equivalent to writing x = x + 3:</p>
 <p>julia&gt; x = 1<br>1</p>
 <p>julia&gt; x += 3<br>4</p>
 <p>julia&gt; x<br>4<br>The updating versions of all the binary arithmetic and bitwise operators are:</p>
