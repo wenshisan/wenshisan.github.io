@@ -2069,7 +2069,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #75ff94;
+  background: #ffff2e;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2823,6 +2823,9 @@ embed {
   border-radius: 5px;
   -moz-border-radius: 5px;
 /* Old Firefox */
+}
+.button {
+  border-radius: 3;
 }
 body {
   background-color: #13242c;
