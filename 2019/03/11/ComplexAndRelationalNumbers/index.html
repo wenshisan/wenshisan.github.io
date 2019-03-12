@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="复数和有理数 &amp;emsp;Julia 包含了复数和有理数的预定义类型，并且还支持所有的标准数学运算和初等函数。同样也定义了转换和提升，所以预定义数字类型上的组合运算无论简繁都能如您所期望的那样。">
+<meta name="keywords" content="Julia中文文档,Julia中文手册,数学运算,复数,有理数,公因数,分数,分子,分母,浮点数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="复数和有理数">
+<meta property="og:url" content="http://www.thgd.net/2019/03/11/ComplexAndRelationalNumbers/index.html">
+<meta property="og:site_name" content="醍醐果冻">
+<meta property="og:description" content="复数和有理数 &amp;emsp;Julia 包含了复数和有理数的预定义类型，并且还支持所有的标准数学运算和初等函数。同样也定义了转换和提升，所以预定义数字类型上的组合运算无论简繁都能如您所期望的那样。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-12T07:27:05.686Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="复数和有理数">
+<meta name="twitter:description" content="复数和有理数 &amp;emsp;Julia 包含了复数和有理数的预定义类型，并且还支持所有的标准数学运算和初等函数。同样也定义了转换和提升，所以预定义数字类型上的组合运算无论简繁都能如您所期望的那样。">
+
+
+
+
+
+
+  <link rel="canonical" href="http://www.thgd.net/2019/03/11/ComplexAndRelationalNumbers/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>复数和有理数 | 醍醐果冻</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">醍醐果冻</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.thgd.net/2019/03/11/ComplexAndRelationalNumbers/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="醍醐果冻">
+      <meta itemprop="description" content="AI,人工智能,Julia中文文档，Julia编程语言">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="醍醐果冻">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">复数和有理数
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-11 17:07:10" itemprop="dateCreated datePublished" datetime="2019-03-11T17:07:10+08:00">2019-03-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-12 15:27:05" itemprop="dateModified" datetime="2019-03-12T15:27:05+08:00">2019-03-12</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Julia中文文档/" itemprop="url" rel="index"><span itemprop="name">Julia中文文档</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Julia中文文档/手册/" itemprop="url" rel="index"><span itemprop="name">手册</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Julia中文文档/手册/复数和有理数/" itemprop="url" rel="index"><span itemprop="name">复数和有理数</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="复数和有理数"><a href="#复数和有理数" class="headerlink" title="复数和有理数"></a>复数和有理数</h3><hr>
+<p>&emsp;Julia 包含了复数和有理数的预定义类型，并且还支持所有的标准数学运算和初等函数。同样也定义了转换和提升，所以预定义数字类型上的组合运算无论简繁都能如您所期望的那样。<br><a id="more"></a></p>
+<h4 id="复数"><a href="#复数" class="headerlink" title="复数"></a>复数</h4><p>&emsp;全局常量 <code>im</code> 被绑定到复数 <code>i</code>，代表 <code>-1</code> 的主要平方根。（我们拒绝了使用数学家的 <code>i</code> 和工程师的 <code>j</code> 因为它们都是流行的索引变量名。）因为 Julia 允许数字字符和标识符并列作为系数，这个绑定足以为复数提供类似于传统数学符号的便利语法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; 1+2im</span><br><span class="line">1 + 2im</span><br></pre></td></tr></table></figure>
+<p>您可以使用复数执行所有的标准算术：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; (1 + 2im)*(2 - 3im)</span><br><span class="line">8 + 1im</span><br><span class="line"></span><br><span class="line">julia&gt; (1 + 2im)/(1 - 2im)</span><br><span class="line">-0.6 + 0.8im</span><br><span class="line"></span><br><span class="line">julia&gt; (1 + 2im) + (1 - 2im)</span><br><span class="line">2 + 0im</span><br><span class="line"></span><br><span class="line">julia&gt; (-3 + 2im) - (5 - 1im)</span><br><span class="line">-8 + 3im</span><br><span class="line"></span><br><span class="line">julia&gt; (-1 + 2im)^2</span><br><span class="line">-3 - 4im</span><br><span class="line"></span><br><span class="line">julia&gt; (-1 + 2im)^2.5</span><br><span class="line">2.729624464784009 - 6.9606644595719im</span><br><span class="line"></span><br><span class="line">julia&gt; (-1 + 2im)^(1 + 1im)</span><br><span class="line">-0.27910381075826657 + 0.08708053414102428im</span><br><span class="line"></span><br><span class="line">julia&gt; 3(2 - 5im)</span><br><span class="line">6 - 15im</span><br><span class="line"></span><br><span class="line">julia&gt; 3(2 - 5im)^2</span><br><span class="line">-63 - 60im</span><br><span class="line"></span><br><span class="line">julia&gt; 3(2 - 5im)^-1.0</span><br><span class="line">0.20689655172413796 + 0.5172413793103449im</span><br></pre></td></tr></table></figure>
+<p>提升原理确保了不同类型的组合操作数一样工作：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; 2(1 - 1im)</span><br><span class="line">2 - 2im</span><br><span class="line"></span><br><span class="line">julia&gt; (2 + 3im) - 1</span><br><span class="line">1 + 3im</span><br><span class="line"></span><br><span class="line">julia&gt; (1 + 2im) + 0.5</span><br><span class="line">1.5 + 2.0im</span><br><span class="line"></span><br><span class="line">julia&gt; (2 + 3im) - 0.5im</span><br><span class="line">2.0 + 2.5im</span><br><span class="line"></span><br><span class="line">julia&gt; 0.75(1 + 2im)</span><br><span class="line">0.75 + 1.5im</span><br><span class="line"></span><br><span class="line">julia&gt; (2 + 3im) / 2</span><br><span class="line">1.0 + 1.5im</span><br><span class="line"></span><br><span class="line">julia&gt; (1 - 3im) / (2 + 2im)</span><br><span class="line">-0.5 - 1.0im</span><br><span class="line"></span><br><span class="line">julia&gt; 2im^2</span><br><span class="line">-2 + 0im</span><br><span class="line"></span><br><span class="line">julia&gt; 1 + 3/4im</span><br><span class="line">1.0 - 0.75im</span><br></pre></td></tr></table></figure>
+<p>注意 <code>3/4im == 3/(4*im) == -(3/4*im)</code>，因为字符系数比除法更加地紧固。</p>
+<p>也提供了操作复数的标准函数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; z = 1 + 2im</span><br><span class="line">1 + 2im</span><br><span class="line"></span><br><span class="line">julia&gt; real(1 + 2im) <span class="comment"># z 的实数部分</span></span><br><span class="line">1</span><br><span class="line"></span><br><span class="line">julia&gt; imag(1 + 2im) <span class="comment"># z 的虚数部分</span></span><br><span class="line">2</span><br><span class="line"></span><br><span class="line">julia&gt; conj(1 + 2im) <span class="comment"># z 的共轭复数</span></span><br><span class="line">1 - 2im</span><br><span class="line"></span><br><span class="line">julia&gt; abs(1 + 2im) <span class="comment"># z 的绝对值</span></span><br><span class="line">2.23606797749979</span><br><span class="line"></span><br><span class="line">julia&gt; abs2(1 + 2im) <span class="comment"># 绝对值的平方</span></span><br><span class="line">5</span><br><span class="line"></span><br><span class="line">julia&gt; angle(1 + 2im) <span class="comment"># 弧度的相位角度</span></span><br><span class="line">1.1071487177940904</span><br></pre></td></tr></table></figure>
+<p>&emsp;通常情况下，复数的绝对值(<code>abs</code>)是它从 <code>0</code> 开始的距离。<code>abs2</code> 提供了绝对值的平方，并且它对复数特别有用，因为它避免了取平方根。角度在弧度中返回相位角（也被称为 <code>argument</code> 或 <code>arg</code> 函数）。复数也定义了其他全领域的初等函数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; sqrt(1im)</span><br><span class="line">0.7071067811865476 + 0.7071067811865475im</span><br><span class="line"></span><br><span class="line">julia&gt; sqrt(1 + 2im)</span><br><span class="line">1.272019649514069 + 0.7861513777574233im</span><br><span class="line"></span><br><span class="line">julia&gt; cos(1 + 2im)</span><br><span class="line">2.0327230070196656 - 3.0518977991518im</span><br><span class="line"></span><br><span class="line">julia&gt; exp(1 + 2im)</span><br><span class="line">-1.1312043837568135 + 2.4717266720048188im</span><br><span class="line"></span><br><span class="line">julia&gt; sinh(1 + 2im)</span><br><span class="line">-0.4890562590412937 + 1.4031192506220405im</span><br></pre></td></tr></table></figure>
+<p>&emsp;注意数学函数应用在实数时总是返回实数，应用在复数时总是返回复数。例如当 <code>sqrt</code> 应用到 <code>-1</code> 时的行为与应用到 <code>-1 + 0im</code> 时截然不同，尽管 <code>-1 == -1 + 0im</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; sqrt(-1)</span><br><span class="line">ERROR: DomainError with -1.0:</span><br><span class="line">sqrt will only <span class="built_in">return</span> a complex result <span class="keyword">if</span> called with a complex argument. Try sqrt(Complex(x)).</span><br><span class="line">Stacktrace:</span><br><span class="line">[...]</span><br><span class="line"></span><br><span class="line">julia&gt; sqrt(-1 + 0im)</span><br><span class="line">0.0 + 1.0im</span><br></pre></td></tr></table></figure>
+<p>&emsp;字面上的数字系数符号在从变量构造出复数时无效。乘法反而必须明确地写出来：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; a = 1; b = 2; a + b*im</span><br><span class="line">1 + 2im</span><br></pre></td></tr></table></figure>
+<p>&emsp;然而却不推荐这样做。而是使用更加高效的 <code>complex</code> 函数在它的实部和虚部直接构造出一个复数值来代替：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; a = 1; b = 2; complex(a, b)</span><br><span class="line">1 + 2im</span><br></pre></td></tr></table></figure>
+<p>这个构造避免了乘法和其他额外的运算。</p>
+<p>&emsp;如在<a href>特殊浮点数值</a>部分的描述，<code>Inf</code> 和 <code>NaN</code> 可以在复数中存在于复数的实部和虚部：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; 1 + Inf*im</span><br><span class="line">1.0 + Inf*im</span><br><span class="line"></span><br><span class="line">julia&gt; 1 + NaN*im</span><br><span class="line">1.0 + NaN*im</span><br></pre></td></tr></table></figure>
+<h4 id="有理数"><a href="#有理数" class="headerlink" title="有理数"></a>有理数</h4><p>Julia 的有理数类型代表了整数的绝对比例。有理数使用 <code>//</code> 运算符进行构造：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; 2//3</span><br><span class="line">2//3</span><br></pre></td></tr></table></figure>
+<p>&emsp;如果有理数的分子和分母有公因数，如分母不为负他们会被减少到最的情况：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; 6//9</span><br><span class="line">2//3</span><br><span class="line"></span><br><span class="line">julia&gt; -4//8</span><br><span class="line">-1//2</span><br><span class="line"></span><br><span class="line">julia&gt; 5//-15</span><br><span class="line">-1//3</span><br><span class="line"></span><br><span class="line">julia&gt; -4//-12</span><br><span class="line">1//3</span><br></pre></td></tr></table></figure>
+<p>&emsp;整数比例正常的形式是独一无二的，所以有理数相等性可以通过检查分子和分母的相等性来验证。有理数值的分子和分母检验可以使用 <code>numerator</code> 和 <code>denominator</code> 函数进行提取：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; numerator(2//3)</span><br><span class="line">2</span><br><span class="line"></span><br><span class="line">julia&gt; denominator(2//3)</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+<p>&emsp;通常不必直接比较分子和分母，因为已经为有理数值定义了标准的算术和比较运算：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; 2//3 == 6//9</span><br><span class="line"><span class="literal">true</span></span><br><span class="line"></span><br><span class="line">julia&gt; 2//3 == 9//27</span><br><span class="line"><span class="literal">false</span></span><br><span class="line"></span><br><span class="line">julia&gt; 3//7 &lt; 1//2</span><br><span class="line"><span class="literal">true</span></span><br><span class="line"></span><br><span class="line">julia&gt; 3//4 &gt; 2//3</span><br><span class="line"><span class="literal">true</span></span><br><span class="line"></span><br><span class="line">julia&gt; 2//4 + 1//6</span><br><span class="line">2//3</span><br><span class="line"></span><br><span class="line">julia&gt; 5//12 - 1//4</span><br><span class="line">1//6</span><br><span class="line"></span><br><span class="line">julia&gt; 5//8 * 3//12</span><br><span class="line">5//32</span><br><span class="line"></span><br><span class="line">julia&gt; 6//5 / 10//7</span><br><span class="line">21//25</span><br></pre></td></tr></table></figure>
+<p>有理数可以很容易地转换为浮点数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; <span class="built_in">float</span>(3//4)</span><br><span class="line">0.75</span><br></pre></td></tr></table></figure>
+<p>&emsp;从有理数到浮点的转换遵守下列对于 <code>a</code> 和 <code>b</code> 的任何整数的特性，除去 <code>a == 0</code> 和 <code>b == 0</code> 情况下的例外：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; a = 1; b = 2;</span><br><span class="line"></span><br><span class="line">julia&gt; isequal(<span class="built_in">float</span>(a//b), a/b)</span><br><span class="line"><span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>构造无穷有理数也是可接受的：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; 5//0</span><br><span class="line">1//0</span><br><span class="line"></span><br><span class="line">julia&gt; -3//0</span><br><span class="line">-1//0</span><br><span class="line"></span><br><span class="line">julia&gt; typeof(ans)</span><br><span class="line">Rational&#123;Int64&#125;</span><br></pre></td></tr></table></figure>
+<p>然而尝试构造一个 <code>NaN</code> 的有理数是无效的：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; 0//0</span><br><span class="line">ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)</span><br><span class="line">Stacktrace:</span><br><span class="line">[...]</span><br></pre></td></tr></table></figure>
+<p>提升系统可以一如既往毫不费力地与其他数字类型交互：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; 3//5 + 1</span><br><span class="line">8//5</span><br><span class="line"></span><br><span class="line">julia&gt; 3//5 - 0.5</span><br><span class="line">0.09999999999999998</span><br><span class="line"></span><br><span class="line">julia&gt; 2//7 * (1 + 2im)</span><br><span class="line">2//7 + 4//7*im</span><br><span class="line"></span><br><span class="line">julia&gt; 2//7 * (1.5 + 2im)</span><br><span class="line">0.42857142857142855 + 0.5714285714285714im</span><br><span class="line"></span><br><span class="line">julia&gt; 3//2 / (1 + 2im)</span><br><span class="line">3//10 - 3//5*im</span><br><span class="line"></span><br><span class="line">julia&gt; 1//2 + 2im</span><br><span class="line">1//2 + 2//1*im</span><br><span class="line"></span><br><span class="line">julia&gt; 1 + 2//3im</span><br><span class="line">1//1 - 2//3*im</span><br><span class="line"></span><br><span class="line">julia&gt; 0.5 == 1//2</span><br><span class="line"><span class="literal">true</span></span><br><span class="line"></span><br><span class="line">julia&gt; 0.33 == 1//3</span><br><span class="line"><span class="literal">false</span></span><br><span class="line"></span><br><span class="line">julia&gt; 0.33 &lt; 1//3</span><br><span class="line"><span class="literal">true</span></span><br><span class="line"></span><br><span class="line">julia&gt; 1//3 - 0.33</span><br><span class="line">0.0033333333333332993</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Julia中文文档/" rel="tag"># Julia中文文档</a>
+          
+            <a href="/tags/Julia中文手册/" rel="tag"># Julia中文手册</a>
+          
+            <a href="/tags/数学运算/" rel="tag"># 数学运算</a>
+          
+            <a href="/tags/复数/" rel="tag"># 复数</a>
+          
+            <a href="/tags/有理数/" rel="tag"># 有理数</a>
+          
+            <a href="/tags/公因数/" rel="tag"># 公因数</a>
+          
+            <a href="/tags/分数/" rel="tag"># 分数</a>
+          
+            <a href="/tags/分子/" rel="tag"># 分子</a>
+          
+            <a href="/tags/分母/" rel="tag"># 分母</a>
+          
+            <a href="/tags/浮点数/" rel="tag"># 浮点数</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/06/MathematicalOperationsAndElementaryFunctions/" rel="next" title="数学运算和初等函数">
+                <i class="fa fa-chevron-left"></i> 数学运算和初等函数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">醍醐果冻</p>
+              <div class="site-description motion-element" itemprop="description">AI,人工智能,Julia中文文档，Julia编程语言</div>
+          </div>
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#复数和有理数"><span class="nav-text">复数和有理数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#复数"><span class="nav-text">复数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#有理数"><span class="nav-text">有理数</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">醍醐果冻</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.1"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<style>
+  .copy-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #333;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+    
+    user-select: none;
+    outline: 0;
+  }
+
+  .highlight-wrap .copy-btn {
+    transition: opacity .3s ease-in-out;
+    opacity: 0;
+    padding: 2px 6px;
+    position: absolute;
+    
+      right: 4px;
+      top: 8px;
+    
+  }
+
+  .highlight-wrap:hover .copy-btn,
+  .highlight-wrap .copy-btn:focus {
+    opacity: 1;
+  }
+
+  .highlight-wrap {
+    position: relative;
+  }
+</style>
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('复制成功');
+        else $(this).text('复制失败');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+</body>
+</html>
