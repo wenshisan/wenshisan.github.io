@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="醍醐果冻">
 <meta property="og:description" content="新的语言特性 一个异常栈被修复以让每个异常控制更加的强壮并且开启根原因分析。这个栈可能在使用试验性函数 Base.catch_stack时存取（#28878） 试验性宏命令Base.@locals返回当前的本地变量名和值字典（#29733） 二元~现在可以被加点了，像是在 x .~ y（#30341）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-06T09:10:13.150Z">
+<meta property="og:updated_time" content="2019-03-12T07:56:21.061Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Julia v1.1 更新日志">
 <meta name="twitter:description" content="新的语言特性 一个异常栈被修复以让每个异常控制更加的强壮并且开启根原因分析。这个栈可能在使用试验性函数 Base.catch_stack时存取（#28878） 试验性宏命令Base.@locals返回当前的本地变量名和值字典（#29733） 二元~现在可以被加点了，像是在 x .~ y（#30341）">
@@ -385,7 +385,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-06 17:10:13" itemprop="dateModified" datetime="2019-03-06T17:10:13+08:00">2019-03-06</time>
+                <time title="修改时间：2019-03-12 15:56:21" itemprop="dateModified" datetime="2019-03-12T15:56:21+08:00">2019-03-12</time>
               
             
           </span>
@@ -444,12 +444,14 @@
       
 
       
-        <h2 id="新的语言特性"><a href="#新的语言特性" class="headerlink" title="新的语言特性"></a>新的语言特性</h2><ul>
+        <h4 id="新的语言特性"><a href="#新的语言特性" class="headerlink" title="新的语言特性"></a>新的语言特性</h4><ul>
 <li>一个异常栈被修复以让每个异常控制更加的强壮并且开启根原因分析。这个栈可能在使用试验性函数 Base.catch_stack时存取（#28878）</li>
 <li>试验性宏命令Base.@locals返回当前的本地变量名和值字典（#29733）</li>
-<li>二元~现在可以被加点了，像是在 x .~ y（#30341）<a id="more"></a>
-<h2 id="语言变化"><a href="#语言变化" class="headerlink" title="语言变化"></a>语言变化</h2></li>
-<li>解析器现在将输入以逗号结尾的情况统一认定为未完成。之前取决于空格他们有时被解析为数组（#28506）。</li>
+<li><p>二元~现在可以被加点了，像是在 x .~ y（#30341）</p>
+<a id="more"></a>
+<h4 id="语言变化"><a href="#语言变化" class="headerlink" title="语言变化"></a>语言变化</h4></li>
+<li><p>解析器现在将输入以逗号结尾的情况统一认定为未完成。之前取决于空格他们有时被解析为数组（#28506）。</p>
+</li>
 <li>广播调用语法，e.g.f. (x)中允许意外空格。现在不再允许，统一被认定为正常函数调用语法（#29781）。</li>
 <li>大整数字符和命令语法（反引号）现在被格式化为宏命令的名字（@int128_str,@uint128_str,@big_str,@cmd）以合格地适用于核心模块（#29968）。</li>
 <li>本地变量和静态参数使用同一名称将为是一个错误而不是警告（#29429）。</li>
@@ -457,11 +459,11 @@
 <li>为了其他数组类型的一致性，当a是一个矩阵或者较高维的数组时findmin（::BitArray）和 findmax（::BitArray）现在返回一个CartesianIndex。使用LinearIndices(a)[findmin(a)[2]]以获得旧行为，或者在早期版本的Julia中使用CartesianIndices(a)[findmin(a)[2]]以获得新的行为。</li>
 <li>类似f(::Type{T},::T) where {T &lt;: X} and f(::Type{X}, ::Any)现在都被认为是混淆的。早期的一个故障导致第一个在某些情况下被看作更加明确（#30160）。</li>
 </ul>
-<h2 id="命令行选项变化"><a href="#命令行选项变化" class="headerlink" title="命令行选项变化"></a>命令行选项变化</h2><ul>
+<h4 id="命令行选项变化"><a href="#命令行选项变化" class="headerlink" title="命令行选项变化"></a>命令行选项变化</h4><ul>
 <li>当脚本运行在交互模式（-i）时会抛出一个异常，在异常被抛出后REPL才开始启动。在先前REPL仅在脚本无错误完全开始后才启动（#21233）。</li>
 <li>代码覆盖选项现在支持在LCOV跟踪文件格式并且传播到子进程，比如预编译步骤和测试器（#30381）。</li>
 </ul>
-<h2 id="新的库函数"><a href="#新的库函数" class="headerlink" title="新的库函数"></a>新的库函数</h2><ul>
+<h4 id="新的库函数"><a href="#新的库函数" class="headerlink" title="新的库函数"></a>新的库函数</h4><ul>
 <li>splitpath(p::String)函数，是joinpath(parts…)反函数：它分割一个文件路径进入它的组件中（#28156）。</li>
 <li>isnothing(::Any)判定语句，用于检查参数的有无。（#29679）</li>
 <li>getpid(::Process)方法(#24064)。</li>
@@ -471,7 +473,7 @@
 <li>添加了为检测BSD系统的判断语句Sys.isfreebsd,Sys.isopenbsd,Sys.isnetbsd,and Sys.isdragonfly（#30249）。</li>
 <li>内部的Base.disable_library_threading 设置库去使用一个线程。它执行用Base.at_disable_library_threading注册的函数钩子（#30004）。</li>
 </ul>
-<h2 id="标准库变化"><a href="#标准库变化" class="headerlink" title="标准库变化"></a>标准库变化</h2><ul>
+<h4 id="标准库变化"><a href="#标准库变化" class="headerlink" title="标准库变化"></a>标准库变化</h4><ul>
 <li>CartesianIndices现在可以从两个CartesianIndexes I and I:J进行构造（#29440）。</li>
 <li>CartesianIndices支持使用一个CartesianIndex的广播算法（ + 和 - ）（#29890）。</li>
 <li>支持数组、字典和集合的copy!现在从Future包被移动到Base（#29173）。<ul>
@@ -498,33 +500,33 @@
 </ul>
 </li>
 </ul>
-<h3 id="日期"><a href="#日期" class="headerlink" title="日期"></a>日期</h3><ul>
+<h5 id="日期"><a href="#日期" class="headerlink" title="日期"></a>日期</h5><ul>
 <li>新的DateTime(::Date,::Time)构造器（#29754）。</li>
 <li>TimeZone的在用作广播时的行为近似于一个数量（#30159）。</li>
 </ul>
-<h3 id="可交互实用工具"><a href="#可交互实用工具" class="headerlink" title="可交互实用工具"></a>可交互实用工具</h3><ul>
+<h5 id="可交互实用工具"><a href="#可交互实用工具" class="headerlink" title="可交互实用工具"></a>可交互实用工具</h5><ul>
 <li>edit现在可以被在已定义的文件的模块中调用（#29636）。</li>
 <li>所有的编译器镜像工具（例如函数和宏命令的code_class）现在以一般风格输出精确的线性数字和内联信息，并且给一个可选参数(debuginfo=:default)来控制元数据的显示(#29893)。 </li>
 </ul>
-<h3 id="线性代数"><a href="#线性代数" class="headerlink" title="线性代数"></a>线性代数</h3><ul>
+<h5 id="线性代数"><a href="#线性代数" class="headerlink" title="线性代数"></a>线性代数</h5><ul>
 <li>调式和缩放比例 isdiag 和 isposdef (#29638)。</li>
 <li>缩放比例 nul!、rmull!和lmul! 方法 (#29506)。</li>
 <li>斜对称和埃尔米特矩阵现在在当以数字增大时保持包装(#29469)。</li>
 <li>求幂运算符 ^ 现在支持提升无理数到抽象矩阵的能力（#29782）。</li>
 <li>添加了关键字参数 rtol、rtol 到 pinv、nullspace 和 rank (#29998, #29926)。</li>
 </ul>
-<h3 id="随机"><a href="#随机" class="headerlink" title="随机"></a>随机</h3><ul>
+<h5 id="随机"><a href="#随机" class="headerlink" title="随机"></a>随机</h5><ul>
 <li>randperm 和 randcycle 现在使用他们的参数类型确定返回数组的元素类型(#29670)。</li>
 <li>一个新方法 rand(::Tuple) 实现了来自元组的值的样本(#25278)。</li>
 <li>serialize 和 deserialize 现在和 write 、read 一样接受一个文件名参数(#30151)。</li>
 </ul>
-<h3 id="稀疏数组"><a href="#稀疏数组" class="headerlink" title="稀疏数组"></a>稀疏数组</h3><ul>
+<h5 id="稀疏数组"><a href="#稀疏数组" class="headerlink" title="稀疏数组"></a>稀疏数组</h5><ul>
 <li>sprandn 现在支持指定输出元素类型（#30083）。</li>
 </ul>
-<h3 id="统计"><a href="#统计" class="headerlink" title="统计"></a>统计</h3><ul>
+<h5 id="统计"><a href="#统计" class="headerlink" title="统计"></a>统计</h5><ul>
 <li>mean 和 var 现在可以控制更多类型的空输入（#29003）。</li>
 </ul>
-<h2 id="外部依赖"><a href="#外部依赖" class="headerlink" title="外部依赖"></a>外部依赖</h2><ul>
+<h4 id="外部依赖"><a href="#外部依赖" class="headerlink" title="外部依赖"></a>外部依赖</h4><ul>
 <li>7zip（在windows上和Julia捆绑）从版本16.04升级到了18.05（#30035）。</li>
 <li>Busybox 不再与Windows上的Julia捆绑（#30022）。</li>
 <li>OpenBLAS 从0.3.2 升级到 0.3.3（#29845）。</li>
@@ -532,7 +534,7 @@
 <li>LLVM升级到了6.0.1并且减少到支持小于6.0版本(#28745, #28696)。</li>
 <li>Pkg 升级到1.1版（#30342）。</li>
 </ul>
-<h2 id="替代或移除"><a href="#替代或移除" class="headerlink" title="替代或移除"></a>替代或移除</h2><ul>
+<h4 id="替代或移除"><a href="#替代或移除" class="headerlink" title="替代或移除"></a>替代或移除</h4><ul>
 <li>one(i::CartesianIndex) 被替换为 oneunit(i::CartesianIndex)(#29442)。</li>
 <li>内部数组 Base.Grisu.DIGITS 被替代; 新代码需要使用 Base.Grisu.getbuf() 以获得一个合适的 task-local 缓存，并代替而用它传递给 grisu()。</li>
 <li>移除了内部函数 Base._default_type(T)。它的调用应该只被替换为参数T(#29739)。</li>
@@ -684,7 +686,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#新的语言特性"><span class="nav-text">新的语言特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语言变化"><span class="nav-text">语言变化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令行选项变化"><span class="nav-text">命令行选项变化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新的库函数"><span class="nav-text">新的库函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标准库变化"><span class="nav-text">标准库变化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#日期"><span class="nav-text">日期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可交互实用工具"><span class="nav-text">可交互实用工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性代数"><span class="nav-text">线性代数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机"><span class="nav-text">随机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#稀疏数组"><span class="nav-text">稀疏数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#统计"><span class="nav-text">统计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#外部依赖"><span class="nav-text">外部依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#替代或移除"><span class="nav-text">替代或移除</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#新的语言特性"><span class="nav-text">新的语言特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#语言变化"><span class="nav-text">语言变化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#命令行选项变化"><span class="nav-text">命令行选项变化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新的库函数"><span class="nav-text">新的库函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标准库变化"><span class="nav-text">标准库变化</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#日期"><span class="nav-text">日期</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#可交互实用工具"><span class="nav-text">可交互实用工具</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#线性代数"><span class="nav-text">线性代数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#随机"><span class="nav-text">随机</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#稀疏数组"><span class="nav-text">稀疏数组</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#统计"><span class="nav-text">统计</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#外部依赖"><span class="nav-text">外部依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#替代或移除"><span class="nav-text">替代或移除</span></a></li></ol></div>
             
 
           </div>

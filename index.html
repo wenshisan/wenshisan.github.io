@@ -325,6 +325,201 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.thgd.net/2019/03/12/Strings/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="醍醐果冻">
+      <meta itemprop="description" content="AI,人工智能,Julia中文文档，Julia编程语言">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="醍醐果冻">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/12/Strings/" class="post-title-link" itemprop="url">字符串</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-12 15:40:29" itemprop="dateCreated datePublished" datetime="2019-03-12T15:40:29+08:00">2019-03-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-13 17:45:24" itemprop="dateModified" datetime="2019-03-13T17:45:24+08:00">2019-03-13</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Julia中文文档/" itemprop="url" rel="index"><span itemprop="name">Julia中文文档</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Julia中文文档/手册/" itemprop="url" rel="index"><span itemprop="name">手册</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Julia中文文档/手册/字符串/" itemprop="url" rel="index"><span itemprop="name">字符串</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <!--###大标题H3,依次为H4####,H4都有标题与内容间都有分割线-->
+<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p>&emsp;字符串是有限的字符序列，理所当然，但当有人问什么是字符时真正的问题才得以出现。使用英语的人们所熟悉的常见标点符号和字母 <code>A、B、C</code> 等等都是字符。这些字符都被标准化地按照 <code>ASCII</code> 标准映射到 <code>0</code> 到 <code>127</code> 之间的整数数值。当然很多其他的字符确实在非英语语言中使用，包括多种多样口音和变型的 <code>ASCII</code> 字符，比如像是和西里尔文、希腊文有关联的文法，完全和 <code>ASCII</code> 和英语没有关联的文法，包含了阿拉伯语、中文、希伯来语、北印度语、日文和韩文。<code>Unicode</code> 标准处理了字符实际上是什么的复杂性，并且导致的这个问题通常作为明确的标准接受。取决于您的需求，您可以完全忽略这些复杂性，假装值存储在 <code>ASCII</code> 字符中，或者您可以编写当遇到操作非 <code>ASCII</code> 文本时任何可控的字符或编码。Julia 对 <code>ASCII</code> 文本的处理简单且高效，并且让简单高效地操作 <code>Unicode</code> 成为可能。特别是您可以编写 C 风格的字符串代码去处理 <code>ASCII</code> 字符串，他们也会全部都依照性能和语义一样预期的工作。如果一些代码遭遇到了非 <code>ASCII</code> 文本，它将会温和地抛出错误信息，而不是悄悄地产生出包含糟粕的结果。当这种情况发生时。编辑代码并去操作非 <code>ASCII</code> 数据也很简单直接。</p>
+<p>这里有一些关于 Julia 字符串显著的高级特性：<br>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/03/12/Strings/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </p></div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.thgd.net/2019/03/11/ComplexAndRelationalNumbers/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -387,7 +582,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-12 15:27:05" itemprop="dateModified" datetime="2019-03-12T15:27:05+08:00">2019-03-12</time>
+                <time title="修改时间：2019-03-12 15:55:28" itemprop="dateModified" datetime="2019-03-12T15:55:28+08:00">2019-03-12</time>
               
             
           </span>
@@ -454,8 +649,7 @@
 
       
         
-          <h3 id="复数和有理数"><a href="#复数和有理数" class="headerlink" title="复数和有理数"></a>复数和有理数</h3><hr>
-<p>&emsp;Julia 包含了复数和有理数的预定义类型，并且还支持所有的标准数学运算和初等函数。同样也定义了转换和提升，所以预定义数字类型上的组合运算无论简繁都能如您所期望的那样。<br>
+          <h3 id="复数和有理数"><a href="#复数和有理数" class="headerlink" title="复数和有理数"></a>复数和有理数</h3><p>&emsp;Julia 包含了复数和有理数的预定义类型，并且还支持所有的标准数学运算和初等函数。同样也定义了转换和提升，所以预定义数字类型上的组合运算无论简繁都能如您所期望的那样。<br>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -581,7 +775,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-11 17:04:08" itemprop="dateModified" datetime="2019-03-11T17:04:08+08:00">2019-03-11</time>
+                <time title="修改时间：2019-03-13 16:25:33" itemprop="dateModified" datetime="2019-03-13T16:25:33+08:00">2019-03-13</time>
               
             
           </span>
@@ -648,7 +842,7 @@
 
       
         
-          <p>Julia 提供了一个贯穿它全部简单数字类型的完整基础算术运算符和按位运算符，也提供了大量便利高效的标准数学函数。<br>
+          <h3 id="数学运算和初等函数"><a href="#数学运算和初等函数" class="headerlink" title="数学运算和初等函数"></a>数学运算和初等函数</h3><p>Julia 提供了一个贯穿它全部简单数字类型的完整基础算术运算符和按位运算符，也提供了大量便利高效的标准数学函数。<br>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -774,7 +968,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-06 17:07:45" itemprop="dateModified" datetime="2019-03-06T17:07:45+08:00">2019-03-06</time>
+                <time title="修改时间：2019-03-12 16:00:48" itemprop="dateModified" datetime="2019-03-12T16:00:48+08:00">2019-03-12</time>
               
             
           </span>
@@ -841,8 +1035,7 @@
 
       
         
-          <h3 id="整数和浮点数"><a href="#整数和浮点数" class="headerlink" title="整数和浮点数"></a>整数和浮点数</h3><hr>
-<p>&emsp;整数和浮点数是算法和计算的基础构件。尽管整数和浮点数直接值的表示在代码中被看作是数字字符，一些内置值的表示则被称之为数值类型。例如虽然 <code>1.0</code> 是一个浮点数字符， <code>1</code> 是一个整数字符，他们在内存中的二进制对象都是数值类型。</p>
+          <h3 id="整数和浮点数"><a href="#整数和浮点数" class="headerlink" title="整数和浮点数"></a>整数和浮点数</h3><p>&emsp;整数和浮点数是算法和计算的基础构件。尽管整数和浮点数直接值的表示在代码中被看作是数字字符，一些内置值的表示则被称之为数值类型。例如虽然 <code>1.0</code> 是一个浮点数字符， <code>1</code> 是一个整数字符，他们在内存中的二进制对象都是数值类型。</p>
 <p>&emsp;Julia 提供了一个范围广泛的基础数字类型并且在他们之上定义了标准数学函数还有完整的算法和按位运算的补集。这些直接在数字类型和运算上的映射都原生地被现代计算机所支持，因此让 Julia 可以最大限度的利用计算资源。此外 Julia 提供了可以控制无法有效地在原本的硬件中表示的数值计算的高精度计算的软件支持，但会导致较低性能。</p>
           <!--noindex-->
           
@@ -969,7 +1162,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-06 17:08:27" itemprop="dateModified" datetime="2019-03-06T17:08:27+08:00">2019-03-06</time>
+                <time title="修改时间：2019-03-12 15:54:41" itemprop="dateModified" datetime="2019-03-12T15:54:41+08:00">2019-03-12</time>
               
             
           </span>
@@ -1162,7 +1355,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-06 17:10:13" itemprop="dateModified" datetime="2019-03-06T17:10:13+08:00">2019-03-06</time>
+                <time title="修改时间：2019-03-12 15:56:21" itemprop="dateModified" datetime="2019-03-12T15:56:21+08:00">2019-03-12</time>
               
             
           </span>
@@ -1222,10 +1415,10 @@
 
       
         
-          <h2 id="新的语言特性"><a href="#新的语言特性" class="headerlink" title="新的语言特性"></a>新的语言特性</h2><ul>
+          <h4 id="新的语言特性"><a href="#新的语言特性" class="headerlink" title="新的语言特性"></a>新的语言特性</h4><ul>
 <li>一个异常栈被修复以让每个异常控制更加的强壮并且开启根原因分析。这个栈可能在使用试验性函数 Base.catch_stack时存取（#28878）</li>
 <li>试验性宏命令Base.@locals返回当前的本地变量名和值字典（#29733）</li>
-<li>二元~现在可以被加点了，像是在 x .~ y（#30341）
+<li><p>二元~现在可以被加点了，像是在 x .~ y（#30341）</p>
           <!--noindex-->
           
             <div class="post-button text-center">

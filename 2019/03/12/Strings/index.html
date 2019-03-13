@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="字符串&amp;emsp;字符串是有限的字符序列，理所当然，但当有人问什么是字符时真正的问题才得以出现。使用英语的人们所熟悉的常见标点符号和字母 A、B、C 等等都是字符。这些字符都被标准化地按照 ASCII 标准映射到 0 到 127 之间的整数数值。当然很多其他的字符确实在非英语语言中使用，包括多种多样口音和变型的 ASCII 字符，比如像是和西里尔文、希腊文有关联的文法，完全和 ASCII 和英语">
+<meta name="keywords" content="Julia中文文档,Julia中文手册,字符串,字符">
+<meta property="og:type" content="article">
+<meta property="og:title" content="字符串">
+<meta property="og:url" content="http://www.thgd.net/2019/03/12/Strings/index.html">
+<meta property="og:site_name" content="醍醐果冻">
+<meta property="og:description" content="字符串&amp;emsp;字符串是有限的字符序列，理所当然，但当有人问什么是字符时真正的问题才得以出现。使用英语的人们所熟悉的常见标点符号和字母 A、B、C 等等都是字符。这些字符都被标准化地按照 ASCII 标准映射到 0 到 127 之间的整数数值。当然很多其他的字符确实在非英语语言中使用，包括多种多样口音和变型的 ASCII 字符，比如像是和西里尔文、希腊文有关联的文法，完全和 ASCII 和英语">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-13T09:45:24.988Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="字符串">
+<meta name="twitter:description" content="字符串&amp;emsp;字符串是有限的字符序列，理所当然，但当有人问什么是字符时真正的问题才得以出现。使用英语的人们所熟悉的常见标点符号和字母 A、B、C 等等都是字符。这些字符都被标准化地按照 ASCII 标准映射到 0 到 127 之间的整数数值。当然很多其他的字符确实在非英语语言中使用，包括多种多样口音和变型的 ASCII 字符，比如像是和西里尔文、希腊文有关联的文法，完全和 ASCII 和英语">
+
+
+
+
+
+
+  <link rel="canonical" href="http://www.thgd.net/2019/03/12/Strings/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>字符串 | 醍醐果冻</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">醍醐果冻</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.thgd.net/2019/03/12/Strings/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="醍醐果冻">
+      <meta itemprop="description" content="AI,人工智能,Julia中文文档，Julia编程语言">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="醍醐果冻">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">字符串
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-12 15:40:29" itemprop="dateCreated datePublished" datetime="2019-03-12T15:40:29+08:00">2019-03-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-13 17:45:24" itemprop="dateModified" datetime="2019-03-13T17:45:24+08:00">2019-03-13</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Julia中文文档/" itemprop="url" rel="index"><span itemprop="name">Julia中文文档</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Julia中文文档/手册/" itemprop="url" rel="index"><span itemprop="name">手册</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Julia中文文档/手册/字符串/" itemprop="url" rel="index"><span itemprop="name">字符串</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <!--###大标题H3,依次为H4####,H4都有标题与内容间都有分割线-->
+<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p>&emsp;字符串是有限的字符序列，理所当然，但当有人问什么是字符时真正的问题才得以出现。使用英语的人们所熟悉的常见标点符号和字母 <code>A、B、C</code> 等等都是字符。这些字符都被标准化地按照 <code>ASCII</code> 标准映射到 <code>0</code> 到 <code>127</code> 之间的整数数值。当然很多其他的字符确实在非英语语言中使用，包括多种多样口音和变型的 <code>ASCII</code> 字符，比如像是和西里尔文、希腊文有关联的文法，完全和 <code>ASCII</code> 和英语没有关联的文法，包含了阿拉伯语、中文、希伯来语、北印度语、日文和韩文。<code>Unicode</code> 标准处理了字符实际上是什么的复杂性，并且导致的这个问题通常作为明确的标准接受。取决于您的需求，您可以完全忽略这些复杂性，假装值存储在 <code>ASCII</code> 字符中，或者您可以编写当遇到操作非 <code>ASCII</code> 文本时任何可控的字符或编码。Julia 对 <code>ASCII</code> 文本的处理简单且高效，并且让简单高效地操作 <code>Unicode</code> 成为可能。特别是您可以编写 C 风格的字符串代码去处理 <code>ASCII</code> 字符串，他们也会全部都依照性能和语义一样预期的工作。如果一些代码遭遇到了非 <code>ASCII</code> 文本，它将会温和地抛出错误信息，而不是悄悄地产生出包含糟粕的结果。当这种情况发生时。编辑代码并去操作非 <code>ASCII</code> 数据也很简单直接。</p>
+<p>这里有一些关于 Julia 字符串显著的高级特性：<br><a id="more"></a></p>
+<ul>
+<li>内置于 Julia 中用于字符串（还有字符文字）的固定类型是 <code>String</code>。这是通过 <code>UTF-8</code> 编码支持的全范围的 <code>Unicode</code> 字符。（提供了 <code>transcode</code> 函数去从/到其他 <code>Unicode</code> 编码转换）。</li>
+<li>所有的 <code>string</code> 类型都是抽象类型 <code>AbstractString</code> 的子类型，且扩展包定义了额外的 <code>AbstractString</code> 子类型（比如对其他编码）。如果您定义了一个期望以 <code>string</code> 作为参数的的函数，为了接受任意的 <code>string</code> 类型您需要把类型声明为 <code>AbstractString</code> 类型。</li>
+<li>类似于 <code>C</code> 和 <code>Java</code>， 但不同于多数动态语言，Julia 有一个称作 <code>AbstractChar</code> 用于表示单字符的优秀类型。内置的 <code>AbstractChar</code> 子类型 <code>Char</code> 是一个可表示任何 <code>Unicode</code> 字符的32位简单类型（以 <code>UTF-8</code> 编码为基础）。</li>
+<li>然而在 <code>Java</code> 中字符串是不可变的：<code>AbstractString</code> 对象的值是不能被改变的。去构造一个不同的字符串值您要从其他字符串的部件中构造。</li>
+<li>概念上字符串是从索引到字符的局部函数：对于一些索引值来说，并没有字符值返回，取而代之的却是异常的抛出。这允许在字符串中通过编码表示的字节索引进行高效的索引而不是使用字符索引，但这对于可变宽度的 <code>Unicode</code> 字符串编码来说不能同时实现高效性和简单化。</li>
+</ul>
+<h4 id="字符"><a href="#字符" class="headerlink" title="字符"></a>字符</h4><hr>
+<p>&emsp;<code>Char</code> 值表示单个字符：它仅仅是一个有着特殊字面表示有合适的算术行为的32位简单类型，它可以被转换到表示为 <code>Unicode</code> 代码点的数值。（Julia 的包可能定义 <code>AbstractChar</code> 的子类型，比如为其他的文本编码的优化运算。）这是 <code>Char</code> 值输入和显示的方式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; <span class="string">'x'</span></span><br><span class="line"><span class="string">'x'</span>: ASCII/Unicode U+0078 (category Ll: Letter, lowercase)</span><br><span class="line"></span><br><span class="line">julia&gt; typeof(ans)</span><br><span class="line">Char</span><br></pre></td></tr></table></figure>
+<p>您可以很容易地把 <code>Char</code> 转换到它的整数值，比如代码片段：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; Int(<span class="string">'x'</span>)</span><br><span class="line">120</span><br><span class="line"></span><br><span class="line">julia&gt; typeof(ans)</span><br><span class="line">Int64</span><br></pre></td></tr></table></figure>
+<p>在32位架构中 <code>typeof(ans)</code> 将会是 <code>Int32</code>。您也可以同样很容易地将整数值转换回 <code>Char</code> ：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; Char(120)</span><br><span class="line"><span class="string">'x'</span>: ASCII/Unicode U+0078 (category Ll: Letter, lowercase)</span><br></pre></td></tr></table></figure>
+<p>&emsp;并非所有的整数值都是有效的 <code>Unicode</code> 代码点，但涉及到性能，<code>Char</code> 转换也并不是检查每一个字符值的有效性。如果您想要检查每一个转换的值是否是有效的代码点，请使用 <code>isvalid</code> 函数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; Char(0x110000)</span><br><span class="line"><span class="string">'\U110000'</span>: Unicode U+110000 (category In: Invalid, too high)</span><br><span class="line"></span><br><span class="line">julia&gt; isvalid(Char, 0x110000)</span><br><span class="line"><span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;截至此文编写时，有效的 <code>Unicode</code> 代码点为 <code>U+00</code> 到 <code>U+d7ff</code> 和 <code>U+e000</code> 到 <code>U+10ffff</code>。他们并非都已被赋予了可理解的意义，他们对于应用程序也不必须是可交互的，但所有的这些值都被认为是有效的 <code>Unicode</code> 字符。</p>
+<p>&emsp;您可以在单引号里使用 <code>\u</code> 跟随最多 4 个十六进制数字，或 <code>\U</code> 跟随最多 8 个十六进制数字（最长的有效数值仅需要六个）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; <span class="string">'\u0'</span></span><br><span class="line"><span class="string">'\0'</span>: ASCII/Unicode U+0000 (category Cc: Other, control)</span><br><span class="line"></span><br><span class="line">julia&gt; <span class="string">'\u78'</span></span><br><span class="line"><span class="string">'x'</span>: ASCII/Unicode U+0078 (category Ll: Letter, lowercase)</span><br><span class="line"></span><br><span class="line">julia&gt; <span class="string">'\u2200'</span></span><br><span class="line"><span class="string">'∀'</span>: Unicode U+2200 (category Sm: Symbol, math)</span><br><span class="line"></span><br><span class="line">julia&gt; <span class="string">'\U10ffff'</span></span><br><span class="line"><span class="string">'\U10ffff'</span>: Unicode U+10ffff (category Cn: Other, not assigned)</span><br></pre></td></tr></table></figure>
+<p>&emsp;Julia 使用您系统的本地和语言设置去确定哪些字符可以按照原样打印和那些必须使用通用型输出，避开 <code>\u</code> 或 <code>\U</code> 的输入形式。此外对于这些 <code>Unicode</code> 规避形式，所有 <code>C</code> 的传统规避输入形式都可以使用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; Int(<span class="string">'\0'</span>)</span><br><span class="line">0</span><br><span class="line"></span><br><span class="line">julia&gt; Int(<span class="string">'\t'</span>)</span><br><span class="line">9</span><br><span class="line"></span><br><span class="line">julia&gt; Int(<span class="string">'\n'</span>)</span><br><span class="line">10</span><br><span class="line"></span><br><span class="line">julia&gt; Int(<span class="string">'\e'</span>)</span><br><span class="line">27</span><br><span class="line"></span><br><span class="line">julia&gt; Int(<span class="string">'\x7f'</span>)</span><br><span class="line">127</span><br><span class="line"></span><br><span class="line">julia&gt; Int(<span class="string">'\177'</span>)</span><br><span class="line">127</span><br></pre></td></tr></table></figure>
+<p>您可以使用 <code>Char</code> 进行比较和数量有限的算术操作：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; <span class="string">'A'</span> &lt; <span class="string">'a'</span></span><br><span class="line"><span class="literal">true</span></span><br><span class="line"></span><br><span class="line">julia&gt; <span class="string">'A'</span> &lt;= <span class="string">'a'</span> &lt;= <span class="string">'Z'</span></span><br><span class="line"><span class="literal">false</span></span><br><span class="line"></span><br><span class="line">julia&gt; <span class="string">'A'</span> &lt;= <span class="string">'X'</span> &lt;= <span class="string">'Z'</span></span><br><span class="line"><span class="literal">true</span></span><br><span class="line"></span><br><span class="line">julia&gt; <span class="string">'x'</span> - <span class="string">'a'</span></span><br><span class="line">23</span><br><span class="line"></span><br><span class="line">julia&gt; <span class="string">'A'</span> + 1</span><br><span class="line"><span class="string">'B'</span>: ASCII/Unicode U+0042 (category Lu: Letter, uppercase)</span><br></pre></td></tr></table></figure>
+<h4 id="字符串基础"><a href="#字符串基础" class="headerlink" title="字符串基础"></a>字符串基础</h4><hr>
+<p>字符串字符使用双引号或三个双引号进行分界：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; str = <span class="string">"Hello, world.\n"</span></span><br><span class="line"><span class="string">"Hello, world.\n"</span></span><br><span class="line"></span><br><span class="line">julia&gt; <span class="string">""</span><span class="string">"Contains "</span>quote<span class="string">" characters"</span><span class="string">""</span></span><br><span class="line"><span class="string">"Contains \"quote\" characters"</span></span><br></pre></td></tr></table></figure>
+<p>如果您想要从字符串中提取字符，您可以在其中使用索引：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; str[1]</span><br><span class="line"><span class="string">'H'</span>: ASCII/Unicode U+0048 (category Lu: Letter, uppercase)</span><br><span class="line"></span><br><span class="line">julia&gt; str[6]</span><br><span class="line"><span class="string">','</span>: ASCII/Unicode U+002c (category Po: Punctuation, other)</span><br><span class="line"></span><br><span class="line">julia&gt; str[end]</span><br><span class="line"><span class="string">'\n'</span>: ASCII/Unicode U+000a (category Cc: Other, control)</span><br></pre></td></tr></table></figure>
+<p>&emsp;很多包括字符串在内的对象都可以用整数进行索引。第一个元素的索引通过 <code>firstindex(str)</code> 返回，最后一个元素的索引使用 <code>lastindex(str)</code>。关键词 <code>end</code> 在索引操作中可以沿给定的维度作为最末索引的简写。Julia 中的多数索引都是以 <code>1</code> 作为基础的：多数整数索引对象的首个元素可以在索引 <code>1</code> 上找到。（如下所示，这并非必须表示最末元素可以在字符串长度为 <code>n</code> 的索引 <code>n</code> 上找到。）</p>
+<p>您可以像正常数值一样利用 <code>end</code> 来执行算术和其他运算：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; str[end-1]</span><br><span class="line"><span class="string">'.'</span>: ASCII/Unicode U+002e (category Po: Punctuation, other)</span><br><span class="line"></span><br><span class="line">julia&gt; str[end÷2]</span><br><span class="line"><span class="string">' '</span>: ASCII/Unicode U+0020 (category Zs: Separator, space)</span><br></pre></td></tr></table></figure>
+<p>使用小于 <code>1</code> 或大于 <code>end</code> 的索引将会引发错误：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; str[0]</span><br><span class="line">ERROR: BoundsError: attempt to access <span class="string">"Hello, world.\n"</span></span><br><span class="line">  at index [0]</span><br><span class="line">[...]</span><br><span class="line"></span><br><span class="line">julia&gt; str[end+1]</span><br><span class="line">ERROR: BoundsError: attempt to access <span class="string">"Hello, world.\n"</span></span><br><span class="line">  at index [15]</span><br><span class="line">Stacktrace:</span><br><span class="line">[...]</span><br></pre></td></tr></table></figure>
+<p>您同样可以使用范围索引提取子字符串：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; str[4:9]</span><br><span class="line"><span class="string">"lo, wo"</span></span><br></pre></td></tr></table></figure>
+<p>请注意表达式 <code>str[k]</code> 和 <code>str[k:k]</code> 并不产生同一结果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; str[6]</span><br><span class="line"><span class="string">','</span>: ASCII/Unicode U+002c (category Po: Punctuation, other)</span><br><span class="line"></span><br><span class="line">julia&gt; str[6:6]</span><br><span class="line"><span class="string">","</span></span><br></pre></td></tr></table></figure>
+<p>前者是 <code>Char</code> 类型的单一字符值，然而后者确是一个仅包含了单个字符的字符串值。他们在 Julia 中是两种截然不同的事物。</p>
+<p>范围索引为原始字符串的被选择部分生成了一个拷贝。作为另一种选择，可能是使用 <code>SubString</code> 类型在字符串中创建一个视图，比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; str = <span class="string">"long string"</span></span><br><span class="line"><span class="string">"long string"</span></span><br><span class="line"></span><br><span class="line">julia&gt; substr = SubString(str, 1, 4)</span><br><span class="line"><span class="string">"long"</span></span><br><span class="line"></span><br><span class="line">julia&gt; typeof(substr)</span><br><span class="line">SubString&#123;String&#125;</span><br></pre></td></tr></table></figure>
+<p>一些类似 <code>chop</code>、<code>chomp</code> 或 <code>strip</code> 的标准函数都返回 <code>SubString</code> 。</p>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Julia中文文档/" rel="tag"># Julia中文文档</a>
+          
+            <a href="/tags/Julia中文手册/" rel="tag"># Julia中文手册</a>
+          
+            <a href="/tags/字符串/" rel="tag"># 字符串</a>
+          
+            <a href="/tags/字符/" rel="tag"># 字符</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/11/ComplexAndRelationalNumbers/" rel="next" title="复数和有理数">
+                <i class="fa fa-chevron-left"></i> 复数和有理数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">醍醐果冻</p>
+              <div class="site-description motion-element" itemprop="description">AI,人工智能,Julia中文文档，Julia编程语言</div>
+          </div>
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串"><span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#字符"><span class="nav-text">字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串基础"><span class="nav-text">字符串基础</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">醍醐果冻</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.1"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<style>
+  .copy-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #333;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+    
+    user-select: none;
+    outline: 0;
+  }
+
+  .highlight-wrap .copy-btn {
+    transition: opacity .3s ease-in-out;
+    opacity: 0;
+    padding: 2px 6px;
+    position: absolute;
+    
+      right: 4px;
+      top: 8px;
+    
+  }
+
+  .highlight-wrap:hover .copy-btn,
+  .highlight-wrap .copy-btn:focus {
+    opacity: 1;
+  }
+
+  .highlight-wrap {
+    position: relative;
+  }
+</style>
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('复制成功');
+        else $(this).text('复制失败');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+</body>
+</html>
