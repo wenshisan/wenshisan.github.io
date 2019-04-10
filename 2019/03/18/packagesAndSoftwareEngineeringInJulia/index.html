@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Julia 中的包和软件引擎&amp;emsp;这个部分的资源提供了在 Julia 程序语言上的更多细节，它的生态系统，还有核心软件引擎工具。">
+<meta name="keywords" content="Julia教程,Julia入门,如何安装Julia">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Julia中的包和软件引擎">
+<meta property="og:url" content="http://www.thgd.net/2019/03/18/packagesAndSoftwareEngineeringInJulia/index.html">
+<meta property="og:site_name" content="醍醐果冻">
+<meta property="og:description" content="Julia 中的包和软件引擎&amp;emsp;这个部分的资源提供了在 Julia 程序语言上的更多细节，它的生态系统，还有核心软件引擎工具。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-10T03:38:28.190Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Julia中的包和软件引擎">
+<meta name="twitter:description" content="Julia 中的包和软件引擎&amp;emsp;这个部分的资源提供了在 Julia 程序语言上的更多细节，它的生态系统，还有核心软件引擎工具。">
+
+
+
+
+
+
+  <link rel="canonical" href="http://www.thgd.net/2019/03/18/packagesAndSoftwareEngineeringInJulia/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Julia中的包和软件引擎 | 醍醐果冻</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">醍醐果冻</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.thgd.net/2019/03/18/packagesAndSoftwareEngineeringInJulia/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="醍醐果冻">
+      <meta itemprop="description" content="AI,人工智能,Julia中文文档，Julia编程语言">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="醍醐果冻">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Julia中的包和软件引擎
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-18 11:23:13" itemprop="dateCreated datePublished" datetime="2019-03-18T11:23:13+08:00">2019-03-18</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-10 11:38:28" itemprop="dateModified" datetime="2019-04-10T11:38:28+08:00">2019-04-10</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Julia-编程/" itemprop="url" rel="index"><span itemprop="name">Julia 编程</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Julia-编程/Julia-中的包和软件引擎/" itemprop="url" rel="index"><span itemprop="name">Julia 中的包和软件引擎</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Julia-中的包和软件引擎"><a href="#Julia-中的包和软件引擎" class="headerlink" title="Julia 中的包和软件引擎"></a>Julia 中的包和软件引擎</h3><p>&emsp;这个部分的资源提供了在 Julia 程序语言上的更多细节，它的生态系统，还有核心软件引擎工具。<br><a id="more"></a></p>
+<h4 id="泛型程序"><a href="#泛型程序" class="headerlink" title="泛型程序"></a>泛型程序</h4><p>&emsp;我发现 OOP 方法论是错误的。它从类开始。就像是数学家通过定理开始那样。但您不以定理开始-您开始于证明。只有当您拥有大量证明时，您才可以开始使用定理。在程序中也是一样：您需要以交互计算开始。只有当您理解他们之后，您才能使用一个可以让他们工作的接口。- Alexander Stepanov</p>
+<h4 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h4><p>这个文稿中我们深入研究 Julia 的结构，特别是在：</p>
+<ul>
+<li>虚类型和实类型</li>
+<li>类型树</li>
+<li>设计使用泛型接口</li>
+<li>泛型接口在 Julia 性能中的角色</li>
+</ul>
+<p>理解他们将会帮助您：</p>
+<ul>
+<li>为 Julia 语言形成一个心理模式</li>
+<li>设计匹配 “白板” 算术的代码</li>
+<li>创建可以使用（并被用于）其他多种包的代码</li>
+<li>编写 “组织良好的” 可以容易阅读、修改、维护和调试的 Julia 代码</li>
+<li>改进您代码的运行速度<br>(特别感谢 Jeffrey Sarnoff)</li>
+</ul>
+<h4 id="泛型程序是特性"><a href="#泛型程序是特性" class="headerlink" title="泛型程序是特性"></a>泛型程序是特性</h4><p>来源于数学到泛型程序[SR14]</p>
+<p>&emsp;泛型编程是一种专注于算法设计和数据结构的编程方法所以他们能在大多数不用降低效率的通用设置中工作，泛型编程是特性在前的编程而不是特定的一系列工具。</p>
+<p>&emsp;在那个观念中，把泛型编程理解为一种可交互的方法去不用比对性能而不是作为一系列规则去揭示泛型</p>
+<p>&emsp;就像我们将要观察到的，核心方法是把数据结构和算法看作是松耦合的，这是于面向对象编程继承方法直接对比。</p>
+<p>&emsp;此文稿具有对泛型算法的介绍以及阐述 Julia 如何帮助泛型算法实现的双重角色。</p>
+<h5 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">using InstantiateFromURL</span><br><span class="line">activate_github(<span class="string">"QuantEcon/QuantEconLecturePackages"</span>, tag = <span class="string">"v0.9.7"</span>);</span><br><span class="line">using LinearAlgebra, Statistics, Compat</span><br><span class="line">using Distributions, Plots, QuadGK, Polynomials, Interpolations</span><br></pre></td></tr></table></figure>
+<h4 id="浏览类型树"><a href="#浏览类型树" class="headerlink" title="浏览类型树"></a>浏览类型树</h4><p>数据结构和操作他们的算法之间使用类型系统进行连接。</p>
+<p>&emsp;具体类型（即 <code>Float64</code> 或 <code>Array{Float64, 2}</code>）都是我们应用算法的数据结构,并且抽象类型（比如相应的 <code>Number</code> 和 <code>AbstractArray</code>）在一系列关联的数据结构和算法之间提供了映射。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">using Distributions</span><br><span class="line">x = 1</span><br><span class="line">y = Normal()</span><br><span class="line">z = <span class="string">"foo"</span></span><br><span class="line">@show x, y, z</span><br><span class="line">@show typeof(x), typeof(y), typeof(z)</span><br><span class="line">@show supertype(typeof(x))</span><br><span class="line"></span><br><span class="line"><span class="comment"># pipe operator, |&gt;, is is equivalent</span></span><br><span class="line">@show typeof(x) |&gt; supertype</span><br><span class="line">@show supertype(typeof(y))</span><br><span class="line">@show typeof(z) |&gt; supertype</span><br><span class="line">@show typeof(x) &lt;: Any;</span><br><span class="line">(x, y, z) = (1, Normal&#123;Float64&#125;(μ=0.0, σ=1.0), <span class="string">"foo"</span>)</span><br><span class="line">(typeof(x), typeof(y), typeof(z)) = (Int64, Normal&#123;Float64&#125;, String)</span><br><span class="line">supertype(typeof(x)) = Signed</span><br><span class="line">typeof(x) |&gt; supertype = Signed</span><br><span class="line">supertype(typeof(y)) = Distribution&#123;Univariate,Continuous&#125;</span><br><span class="line">typeof(z) |&gt; supertype = AbstractString</span><br><span class="line">typeof(x) &lt;: Any = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;除了 <code>typeof</code> 和 <code>supertype</code> 函数，一些其他对于分析类型树有用的工具都在类型简介文稿中进行讨论。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">using Base: show_supertypes <span class="comment"># import the function from the `Base` package</span></span><br><span class="line"></span><br><span class="line">show_supertypes(Int64)</span><br><span class="line">Int64 &lt;: Signed &lt;: Integer &lt;: Real &lt;: Number &lt;: Any</span><br><span class="line">subtypes(Integer)</span><br><span class="line">3-element Array&#123;Any,1&#125;:</span><br><span class="line"> Bool    </span><br><span class="line"> Signed  </span><br><span class="line"> Unsigned</span><br></pre></td></tr></table></figure>
+<p>Using the subtypes function, we can write an algorithm to traverse the type tree below any time t – with the confidence that all types support subtypes<br>&emsp;使用 <code>subtypes</code> 函数，我们可以</p>
+<h1 id="from-https-github-com-JuliaLang-julia-issues-24741"><a href="#from-https-github-com-JuliaLang-julia-issues-24741" class="headerlink" title="from https://github.com/JuliaLang/julia/issues/24741"></a>from <a href="https://github.com/JuliaLang/julia/issues/24741" target="_blank" rel="noopener">https://github.com/JuliaLang/julia/issues/24741</a></h1><p>function subtypetree(t, level=1, indent=4)<br>        if level == 1<br>            println(t)<br>        end<br>        for s in subtypes(t)<br>            println(join(fill(“ “, level <em> indent)) </em> string(s))  # print type<br>            subtypetree(s, level+1, indent)  # recursively print the next type, indenting<br>        end<br>    end<br>subtypetree (generic function with 3 methods)<br>Applying this to Number, we see the tree of types currently loaded</p>
+<p>subtypetree(Number) # warning: do not use this function on <code>Any</code>!<br>Number<br>    Complex<br>    Real<br>        AbstractFloat<br>            BigFloat<br>            Float16<br>            Float32<br>            Float64<br>        AbstractIrrational<br>            Irrational<br>        FixedPointNumbers.FixedPoint<br>            FixedPointNumbers.Fixed<br>            FixedPointNumbers.Normed<br>        Integer<br>            Bool<br>            Signed<br>                BigInt<br>                Int128<br>                Int16<br>                Int32<br>                Int64<br>                Int8<br>            Unsigned<br>                UInt128<br>                UInt16<br>                UInt32<br>                UInt64<br>                UInt8<br>        Rational<br>        Ratios.SimpleRatio<br>For the most part, all of the “leaves” will be concrete types</p>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Julia教程/" rel="tag"># Julia教程</a>
+          
+            <a href="/tags/Julia入门/" rel="tag"># Julia入门</a>
+          
+            <a href="/tags/如何安装Julia/" rel="tag"># 如何安装Julia</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/15/GettingStartedWithJulia/" rel="next" title="Julia 入门">
+                <i class="fa fa-chevron-left"></i> Julia 入门
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">醍醐果冻</p>
+              <div class="site-description motion-element" itemprop="description">AI,人工智能,Julia中文文档，Julia编程语言</div>
+          </div>
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Julia-中的包和软件引擎"><span class="nav-text">Julia 中的包和软件引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#泛型程序"><span class="nav-text">泛型程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#概览"><span class="nav-text">概览</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#泛型程序是特性"><span class="nav-text">泛型程序是特性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#配置"><span class="nav-text">配置</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览类型树"><span class="nav-text">浏览类型树</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#from-https-github-com-JuliaLang-julia-issues-24741"><span class="nav-text">from https://github.com/JuliaLang/julia/issues/24741</span></a></li></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">醍醐果冻</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.1"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<style>
+  .copy-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #333;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+    
+    user-select: none;
+    outline: 0;
+  }
+
+  .highlight-wrap .copy-btn {
+    transition: opacity .3s ease-in-out;
+    opacity: 0;
+    padding: 2px 6px;
+    position: absolute;
+    
+      right: 4px;
+      top: 8px;
+    
+  }
+
+  .highlight-wrap:hover .copy-btn,
+  .highlight-wrap .copy-btn:focus {
+    opacity: 1;
+  }
+
+  .highlight-wrap {
+    position: relative;
+  }
+</style>
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('复制成功');
+        else $(this).text('复制失败');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+</body>
+</html>

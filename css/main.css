@@ -827,7 +827,7 @@ pre .javascript .function {
 .post-body .note h4,
 .post-body .note h5,
 .post-body .note h6 {
-  margin-top: 0;
+  margin-top: 3px;
   margin-bottom: 0;
   border-bottom: initial;
   padding-top: 0 !important;
@@ -848,10 +848,23 @@ pre .javascript .function {
 .post-body .note blockquote:last-child {
   margin-bottom: 0;
 }
+.post-body .note:not(.no-icon) {
+  padding-left: 45px;
+}
+.post-body .note:not(.no-icon):before {
+  position: absolute;
+  font-family: 'FontAwesome';
+  font-size: larger;
+  top: 13px;
+  left: 15px;
+}
 .post-body .note.default {
   background-color: #f3f3f3;
   border-color: #e1e1e1;
   color: #666;
+}
+.post-body .note.default:not(.no-icon):before {
+  content: "\f0a9";
 }
 .post-body .note.default a:not(.btn) {
   color: #666;
@@ -866,6 +879,9 @@ pre .javascript .function {
   border-color: #e1c2ff;
   color: #6f42c1;
 }
+.post-body .note.primary:not(.no-icon):before {
+  content: "\f055";
+}
 .post-body .note.primary a:not(.btn) {
   color: #6f42c1;
   border-bottom: 1px solid #6f42c1;
@@ -878,6 +894,9 @@ pre .javascript .function {
   background-color: #d9edf7;
   border-color: #b3e5ef;
   color: #31708f;
+}
+.post-body .note.info:not(.no-icon):before {
+  content: "\f05a";
 }
 .post-body .note.info a:not(.btn) {
   color: #31708f;
@@ -892,6 +911,9 @@ pre .javascript .function {
   border-color: #d0e6be;
   color: #3c763d;
 }
+.post-body .note.success:not(.no-icon):before {
+  content: "\f058";
+}
 .post-body .note.success a:not(.btn) {
   color: #3c763d;
   border-bottom: 1px solid #3c763d;
@@ -905,6 +927,9 @@ pre .javascript .function {
   border-color: #fae4cd;
   color: #8a6d3b;
 }
+.post-body .note.warning:not(.no-icon):before {
+  content: "\f06a";
+}
 .post-body .note.warning a:not(.btn) {
   color: #8a6d3b;
   border-bottom: 1px solid #8a6d3b;
@@ -917,6 +942,9 @@ pre .javascript .function {
   background-color: #f2dfdf;
   border-color: #ebcdd2;
   color: #a94442;
+}
+.post-body .note.danger:not(.no-icon):before {
+  content: "\f056";
 }
 .post-body .note.danger a:not(.btn) {
   color: #a94442;
@@ -1928,7 +1956,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #c344f1;
+  background: #2a3b24;
 }
 .links-of-blogroll {
   font-size: 13px;

@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="&amp;emsp;资源的第一部分为 Julia 编程语言提供了一个相对快速的简介去理解这个文稿。 配置您的 Julia 环境概览&amp;emsp;我们会在这个文稿中介绍如何建立和运行 Julia。 有几种不同的选项去使用 Julia，包括本地桌面安装和 web 端的 Jupyter 主机。如果您进入基于 web 的 Jupyter 和 Julia 配置，这是典型的最简单直接的开始方式了。">
+<meta name="keywords" content="Julia教程,Julia入门,如何安装Julia">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Julia 入门">
+<meta property="og:url" content="http://www.thgd.net/2019/03/15/GettingStartedWithJulia/index.html">
+<meta property="og:site_name" content="醍醐果冻">
+<meta property="og:description" content="&amp;emsp;资源的第一部分为 Julia 编程语言提供了一个相对快速的简介去理解这个文稿。 配置您的 Julia 环境概览&amp;emsp;我们会在这个文稿中介绍如何建立和运行 Julia。 有几种不同的选项去使用 Julia，包括本地桌面安装和 web 端的 Jupyter 主机。如果您进入基于 web 的 Jupyter 和 Julia 配置，这是典型的最简单直接的开始方式了。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.thgd.net/images/julia/juliaMain.png">
+<meta property="og:image" content="http://www.thgd.net/images/julia/git-desktop-intro.png">
+<meta property="og:image" content="http://www.thgd.net/images/julia/git-lfs-dialog.png">
+<meta property="og:updated_time" content="2019-03-18T03:56:03.675Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Julia 入门">
+<meta name="twitter:description" content="&amp;emsp;资源的第一部分为 Julia 编程语言提供了一个相对快速的简介去理解这个文稿。 配置您的 Julia 环境概览&amp;emsp;我们会在这个文稿中介绍如何建立和运行 Julia。 有几种不同的选项去使用 Julia，包括本地桌面安装和 web 端的 Jupyter 主机。如果您进入基于 web 的 Jupyter 和 Julia 配置，这是典型的最简单直接的开始方式了。">
+<meta name="twitter:image" content="http://www.thgd.net/images/julia/juliaMain.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://www.thgd.net/2019/03/15/GettingStartedWithJulia/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Julia 入门 | 醍醐果冻</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">醍醐果冻</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.thgd.net/2019/03/15/GettingStartedWithJulia/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="醍醐果冻">
+      <meta itemprop="description" content="AI,人工智能,Julia中文文档，Julia编程语言">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="醍醐果冻">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Julia 入门
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-15 14:39:35" itemprop="dateCreated datePublished" datetime="2019-03-15T14:39:35+08:00">2019-03-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-18 11:56:03" itemprop="dateModified" datetime="2019-03-18T11:56:03+08:00">2019-03-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Julia-编程/" itemprop="url" rel="index"><span itemprop="name">Julia 编程</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Julia-编程/Julia-入门/" itemprop="url" rel="index"><span itemprop="name">Julia 入门</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&emsp;<strong>资源的第一部分为 Julia 编程语言提供了一个相对快速的简介去理解这个文稿。</strong></p>
+<h3 id="配置您的-Julia-环境"><a href="#配置您的-Julia-环境" class="headerlink" title="配置您的 Julia 环境"></a>配置您的 Julia 环境</h3><h4 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h4><p>&emsp;我们会在这个文稿中介绍如何建立和运行 Julia。 有几种不同的选项去使用 Julia，包括本地桌面安装和 <code>web</code> 端的 <code>Jupyter</code> 主机。如果您进入基于 <code>web</code> 的 <code>Jupyter</code> 和 <code>Julia</code> 配置，这是典型的最简单直接的开始方式了。</p>
+<a id="more"></a>
+<h4 id="Jupyter-要点"><a href="#Jupyter-要点" class="headerlink" title="Jupyter 要点"></a>Jupyter 要点</h4><p>&emsp;类似于 <code>Python</code> 和 <code>R</code> ，但不同于比如 <code>Matlab</code> 和 <code>Stata</code> 的产品，Julia 在作为一个编程语言和明确的开发环境之间是一个松散的联系。</p>
+<p>尽管您最终会使用其他编辑器，但在学习 Julia 的过程中以 <code>Jupyter</code> 作为开始还是会有很多益处：</p>
+<ul>
+<li>混合格式化文本（包括数学表达式）和代码在单个文档中的能力。</li>
+<li>良好的格式输出包括表格、数字、动画、视频等。</li>
+<li>可以创建 PDF 幻灯片、静态 HTML 等的转换工具。</li>
+<li>无需安装的可用于在线的 Jupyter。<br>我们将会在下个文稿中讨论这些特性上的流程。</li>
+</ul>
+<h4 id="在桌面上安装-Julia-和-Jupyter"><a href="#在桌面上安装-Julia-和-Jupyter" class="headerlink" title="在桌面上安装 Julia 和 Jupyter"></a>在桌面上安装 Julia 和 Jupyter</h4><p><em>如果您想在本地机器上安装这些工具，请您下载并安装二进制的 <code>Anaconda Python</code> <a href="https://www.anaconda.com/download/。" target="_blank" rel="noopener">https://www.anaconda.com/download/。</a></em></p>
+<p><em>确认您您点击了 <code>yes</code> 去 “<code>add Anaconda to my PATH</code>”。</em></p>
+<p><em>从下载页面下载并安装 Julia 接受所有默认选项</em></p>
+<p><em>我们不推荐 JuliaPro 因为它包含了很多包</em></p>
+<p>通过以下任一方式打开 Julia ：</p>
+<ul>
+<li>通过您的开始菜单或者桌面图标进入 Julia (Windows 或 Mac 系统)；</li>
+<li>打开终端输入 julia (Linux 系统)；<br>您应该可以看到如下图一样的画面：<br><img src="/images/julia/juliaMain.png" alt="avatar"></li>
+</ul>
+<p>这个叫做 JULIA REPL（Read-Evaluate-Print-Loop 读取-求值-打印-循环），我们下面将会讨论更多。</p>
+<p>在 Julia REPL 中键入 <code>]</code> 进入扩展包模式然后输入：</p>
+<p><code>add IJulia InstantiateFromURL</code></p>
+<p>这个添加的包为了：</p>
+<ul>
+<li>IJulia 核心连接 Julia 到 Jupyter (也就是说允许您的浏览器运行 Julia 代码，关联 Julia 扩展包等。)。</li>
+<li>InstantiateFromURL 是一个由 QE 团队为文稿的依赖包管理而编写的工具。</li>
+</ul>
+<h4 id="安装-QuantEcon-扩展包"><a href="#安装-QuantEcon-扩展包" class="headerlink" title="安装 QuantEcon 扩展包"></a>安装 QuantEcon 扩展包</h4><p>安装过程的下一个步骤是下载并安装 <code>QuantEcon</code> 文稿记录所用的所有扩展包。</p>
+<p>接下来在主 REPL (在蓝色的扩展包模式键入回车键返回) 运行：</p>
+<p><code>using InstantiateFromURL</code></p>
+<p>接着执行以下（取决于您的网络连接和电脑这将会耗费 15-20 分钟时间）：</p>
+<p><code>activate_github(&quot;QuantEcon/QuantEconLectureAllPackages&quot;, tag = &quot;v0.9.6&quot;, add_default_environment = true)</code></p>
+<p>这个函数将：</p>
+<ul>
+<li>下载两个文件，<code>Project.toml</code> 和 <code>Manifest.toml</code> ，包含了用于此文稿笔记扩展包的最新版本。</li>
+<li>安装这些扩展包到您的电脑。</li>
+<li>将他们添加到默认的 Julia 环境，让您可以在 <code>QuantEcon</code> 文稿之外也可以使用这些扩展包。</li>
+</ul>
+<p>注意：<br>在 <code>activate_github</code> 中调用的 <code>tag</code> 对应的数字是 <code>QuantEcon</code> 文稿在特定时间点所使用的包的截图。</p>
+<p>我们将会在以后更加深入地解释 “环境”。</p>
+<h4 id="启动-Jupyter"><a href="#启动-Jupyter" class="headerlink" title="启动 Jupyter"></a>启动 Jupyter</h4><p>&emsp;下面让我们安装 <code>QuantEcon</code> 文稿笔记到我们的电脑并运行他们（对于我们将要使用的工具的更多细节，请查看我们文稿的版本控制）</p>
+<p>1 安装 git<br>2 (可选，但是强烈推荐)安装 GitHub Desktop</p>
+<h5 id="GitHub-Desktop-方法"><a href="#GitHub-Desktop-方法" class="headerlink" title="GitHub Desktop 方法"></a>GitHub Desktop 方法</h5><p>注意：本流程需要 Git LFS(Large File Storage 大文件存储)</p>
+<p>如果您之前没有用过 Git LFS, 选择在这些简介对话框后面显示的 “Initialize Git LFS”。</p>
+<p>安装 Git Desktop 程序之后，在电脑上点击此连接自动安装 notebooks</p>
+<p>它应该会像这样在 GitHub desktop 软件中打开一个窗口</p>
+<p>选择一个您喜欢的路径并克隆仓库：<br><img src="/images/julia/git-desktop-intro.png" alt="avatar"></p>
+<p>至此您应该可以看到 Git LFS 对话框：<br><img src="/images/julia/git-lfs-dialog.png" alt="avatar"></p>
+<p>点击接受</p>
+<p>在顶部的 “Repsitory” 下拉菜单下方， 点击 “Open in Terminal” (MAC, Linux) 或者 “Open in Command Prompt” (Windows)。</p>
+<p>注意：在 Windows中，您可能需要点击出现的 “Open without git” 按钮。</p>
+<p>在最终对话结果中运行：</p>
+<p><code>jupyter lab</code></p>
+<p>您将可以打开 Interacting with Julia notebook 去浏览这个界面并开始编码</p>
+<h4 id="Git-命令行方法"><a href="#Git-命令行方法" class="headerlink" title="Git 命令行方法"></a>Git 命令行方法</h4><p>如果您不想安装 GitHub Desktop，您可以使用 Git 命令行工具获取 notebooks:</p>
+<p>首先，执行以下去安装 Git LFS（Linux/OSX）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash</span><br><span class="line">sudo apt-get install git-lfs</span><br><span class="line">git lfs install</span><br></pre></td></tr></table></figure>
+<p>从最后的命令输出上您应该看到 Git LFS 已经安装。</p>
+<p>打开新终端对话并运行：</p>
+<p><code>git clone https://github.com/quantecon/quantecon-notebooks-jl</code></p>
+<p>这将会在工作目录下载包含 <code>notebooks</code> 的仓库</p>
+<p>然后 <code>cd</code> 进入您的 Mac、Linux 或 Windows PowerShell 终端</p>
+<p><code>cd quantecon-notebooks-jl</code></p>
+<p>然后运行：</p>
+<p><code>jupyter lab</code></p>
+<p>&emsp;打开和 Julia 文稿的交互（在 JupyterLab 中的 notebooks 列表的 <code>julia_environment.ipynb</code> 文件）并继续。</p>
+<h4 id="在-Web-端使用-Julia"><a href="#在-Web-端使用-Julia" class="headerlink" title="在 Web 端使用 Julia"></a>在 Web 端使用 Julia</h4><p>如果您使用在线 Julia 安装，这是最简单的开始方式。</p>
+<p>&emsp;最终您将会为了使用比如 <code>Atom/Juno</code> 的工具和编译器而进行本地安装，但请不要让环境成为学习的阻碍。</p>
+<h4 id="在JupyterHub-中使用-Julia"><a href="#在JupyterHub-中使用-Julia" class="headerlink" title="在JupyterHub 中使用 Julia"></a>在JupyterHub 中使用 Julia</h4><p>如果您使用基于 web 解决方案的 Jupyter, 这将会是典型的直接选项。</p>
+<ul>
+<li>学生：向您的科系咨询资源是否可用。</li>
+<li>大学或工作组：发邮件至 <a href="mailto:contact@equantecon.org" target="_blank" rel="noopener">contact@equantecon.org</a> 获得配置共享的包含预编译扩展包的 JupyterHub 实例以供这些文稿笔记所用。</li>
+<li>JuliaBox 严格控制允许的扩展包，且目前不支持 QuantEcon 文稿。</li>
+</ul>
+<h5 id="获取-Notebooks"><a href="#获取-Notebooks" class="headerlink" title="获取 Notebooks"></a>获取 Notebooks</h5><p>您的第一步是在您的 JupyterHub 环境中获取一个 notebooks 的拷贝。</p>
+<p>&emsp;尽管您可用从网站单独下载 notebooks ,最简单的方式是使用 Git 克隆仓库到您的 JupyterHub 环境。</p>
+<p>&emsp; JupyterHub 的安装有很多不同克隆仓库的方法，您可用使用 notebooks 的仓库 url: <a href="https://github.com/QuantEcon/quantecon-notebooks-jl" target="_blank" rel="noopener">https://github.com/QuantEcon/quantecon-notebooks-jl</a></p>
+<h4 id="安装扩展包"><a href="#安装扩展包" class="headerlink" title="安装扩展包"></a>安装扩展包</h4><p>&emsp;在您已经有了一些可用的 notebooks 之后，像上面那样，这些文稿取决于函数（比如用于测绘、基准、统计的包）在 web 端并非是一同安装于每一个 Jupyter 安装的。</p>
+<p>&emsp;如果您线上的 Jupyter 并没有预安装的 QuantEcon 包，您可用安装 <code>InstantiateFromURL</code> 包，这是一个 <code>QE</code> 团队为此文稿编写的用于管理依赖包的工具。</p>
+<p>在线上的 <code>Jupyter</code> 笔记本中运行（通常使用 <shift-enter>）</shift-enter></p>
+<p><code>] add InstantiateFromURL</code></p>
+<p>&emsp;如果您线上的 Jupyter 环境没有预安装这个包，您 QuantEcon 笔记本的第一次运行将会花费 15-20 分钟。</p>
+<p>在这步之后，打开已下载的 Interacting with Julia 笔记本开始编码。<br>如果在此安装步骤之后 QuantEcon 笔记本仍无法工作，您可用需要咨询 JupyterHub 管理员。</p>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Julia教程/" rel="tag"># Julia教程</a>
+          
+            <a href="/tags/Julia入门/" rel="tag"># Julia入门</a>
+          
+            <a href="/tags/如何安装Julia/" rel="tag"># 如何安装Julia</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/12/Strings/" rel="next" title="字符串">
+                <i class="fa fa-chevron-left"></i> 字符串
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/18/packagesAndSoftwareEngineeringInJulia/" rel="prev" title="Julia中的包和软件引擎">
+                Julia中的包和软件引擎 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">醍醐果冻</p>
+              <div class="site-description motion-element" itemprop="description">AI,人工智能,Julia中文文档，Julia编程语言</div>
+          </div>
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置您的-Julia-环境"><span class="nav-text">配置您的 Julia 环境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概览"><span class="nav-text">概览</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Jupyter-要点"><span class="nav-text">Jupyter 要点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在桌面上安装-Julia-和-Jupyter"><span class="nav-text">在桌面上安装 Julia 和 Jupyter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装-QuantEcon-扩展包"><span class="nav-text">安装 QuantEcon 扩展包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启动-Jupyter"><span class="nav-text">启动 Jupyter</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#GitHub-Desktop-方法"><span class="nav-text">GitHub Desktop 方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Git-命令行方法"><span class="nav-text">Git 命令行方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在-Web-端使用-Julia"><span class="nav-text">在 Web 端使用 Julia</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在JupyterHub-中使用-Julia"><span class="nav-text">在JupyterHub 中使用 Julia</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#获取-Notebooks"><span class="nav-text">获取 Notebooks</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装扩展包"><span class="nav-text">安装扩展包</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">醍醐果冻</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.1"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<style>
+  .copy-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #333;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+    
+    user-select: none;
+    outline: 0;
+  }
+
+  .highlight-wrap .copy-btn {
+    transition: opacity .3s ease-in-out;
+    opacity: 0;
+    padding: 2px 6px;
+    position: absolute;
+    
+      right: 4px;
+      top: 8px;
+    
+  }
+
+  .highlight-wrap:hover .copy-btn,
+  .highlight-wrap .copy-btn:focus {
+    opacity: 1;
+  }
+
+  .highlight-wrap {
+    position: relative;
+  }
+</style>
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('复制成功');
+        else $(this).text('复制失败');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+</body>
+</html>
